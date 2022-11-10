@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const sendOrderPage1Data = async (data) => {
     let response;
-    await axios.post("http://localhost:9000/api/send/order/1", data).then(d => {
+    await axios.post(`http://${variablename}/api/send/order/1`, data).then(d => {
         response = d
     }).catch(err => {
         response = err.code

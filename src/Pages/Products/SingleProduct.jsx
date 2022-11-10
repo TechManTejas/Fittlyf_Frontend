@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
-const SingleProduct = () => {
+const SingleProduct = ({setpack}) => {
 
-    // This will afterwards come from DB
     const pack1 = {
         period : "1 Month",
         price : 499,
@@ -24,9 +23,13 @@ const SingleProduct = () => {
         bottle : 4,
         tablets : 240
     }
+    
+    useEffect(() => {
+        setpack(pack2)
+    }, [])
 
-
-    const [pack, setp] = useState(pack2)
+    // This will afterwards come from DB
+    
 
     const [ pack1css, setPack1css ] = useState("")
     const [ pack2css, setPack2css ] = useState("border border-red-600")
@@ -38,19 +41,19 @@ const SingleProduct = () => {
                 setPack1css("border border-red-600")
                 setPack2css("")
                 setPack3css("")
-                setp(pack1)
+                setpack(pack1)
                 break
             case 2:
                 setPack1css("")
                 setPack2css("border border-red-600")
                 setPack3css("")
-                setp(pack2)
+                setpack(pack2)
                 break
             case 3:
                 setPack1css("")
                 setPack2css("")
                 setPack3css("border border-red-600")
-                setp(pack3)
+                setpack(pack3)
                 break
         }
     }
@@ -59,7 +62,7 @@ const SingleProduct = () => {
     return (
         <div id="SingleProduct" className="md:my-20 flex flex-wrap lg:flex-nowrap items-start justify-evenly">
         
-            <div className="flex flex-col mx-4 mb-3 mt-4">
+            <div className="flex flex-col mx-10 mb-3">
                 <img src="p.png" alt=""/>
                 <div className="flex items-center space-x-8 md:mt-10">
                     <img className="w-20 hidden md:block" src="p.png" alt="" />
@@ -68,7 +71,6 @@ const SingleProduct = () => {
                     <img className="w-20 hidden md:block" src="p.png" alt="" />
                 </div>
             </div>
-            
 
             <div className="md:mt-0 m-4">
                 <h2 className="font-bold md:max-w-3xl text-2xl sm:text-4xl mb-4">
@@ -83,8 +85,8 @@ const SingleProduct = () => {
                     <p className="ml-8">4.8<span className="tracking-light font-light"> | </span>12 reviews</p>
                 </div>
                 <div className="my-5">
-                    <p className="font-semibold text-xl">For Delayed and Irregular Periods due to PCOS PCOD</p>
-                    {/* <p className="text-sm text-red-500 font-normal">Read more</p> */}
+                    <p className="font-normaltext-xl">For Delayed and Irregular Periods due to PCOS PCOD</p>
+                    <p className="text-sm text-red-500 font-normal">Read more</p>
                 </div>
                 <div className="ml-8 flex justify-center md:justify-start">
                     <ul className="list-disc">
@@ -175,9 +177,10 @@ const SingleProduct = () => {
                             </button>
                         </div>
 
-                        <div className="m-8 flex w-72">
-                            {/* <button className="text-xs py-3 px-3 sm:px-16 border rounded-md border-black font-bold tracking-tight">ADD TO CART</button> */}
-                            <Link to="/form" state={{ pack: pack }} className="text-lg py-4 w-full bg-[#4B1785] border rounded-md font-bold text-white justify-center flex">BUY NOW</Link>
+                        <div className="m-8 flex items-center">
+                            <span></span>
+                            <button className="text-xs py-3 px-3 sm:px-16 border rounded-md border-black font-bold tracking-tight">ADD TO CART</button>
+                            <Link to="/form" className="ml-5 text-xs py-3 px-3 sm:px-20 bg-[#4B1785] border rounded-md font-bold text-white">BUY NOW</Link>
                         </div>
                     </div>
                 </div>

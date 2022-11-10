@@ -1,11 +1,22 @@
-import { useRef, use, useState } from "react";
+import { useRef, useState } from "react";
 import { sendOrderPage1Data } from "../../APIs/OrdersAPI";
-import { ValidateAll } from "../../Validator";
-import { Link, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { countries } from "../../APIs/Country";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const C1 = ({pack}) => {
+const C1 = ({ pack }) => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!pack) {
+      navigate("/");
+    }
+  }, []);
 
   const [showSummary, setShowSummary] = useState(true);
+  const [loader, setloader] = useState(false);
 
   const emailPhoneNumber = useRef();
   const emailMe = useRef();
@@ -19,9 +30,11 @@ const C1 = ({pack}) => {
   const zip = useRef();
   const saveThis = useRef();
 
-  const orderPage1Data = () => {
+  // {pack.period} ₹ ${pack.price} ${pack.bottle} bottle ${pack.tablets}
 
+  const orderPage1Data = async () => {
     // console.log(ValidateAll(emailPhoneNumber.current.value, zip.current.value));
+    setloader(true);
 
     const data = {
       emailPhoneNumber: emailPhoneNumber.current.value,
@@ -35,81 +48,109 @@ const C1 = ({pack}) => {
       state: state.current.value,
       zip: zip.current.value,
       saveThis: saveThis.current.checked,
-
+      duration: pack.period,
+      noOfBottles: pack.bottle,
+      noOfTablets: pack.tablets,
+      Price: pack.price,
     };
 
-    console.log(data)
-    // sendOrderPage1Data(data).then((resp) => console.log(resp));
+    let response = await sendOrderPage1Data(data);
+
+    if (response === "ERR_NETWORK") {
+      toast.error("Cannot connect to network", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      setloader(false);
+    }
+
+    if (response.data === "success") {
+      navigate("/shipping");
+    }
   };
 
   return (
     <div className="flex justify-end box:w-[54vw]">
-
       <div className="w-screen sm:w-[36rem] h-screen flex flex-col justify-between px-4 sm:px-0 box:mx-14 box:ml-4">
-
         <div>
           <div>
-            <h1 className="font-normal text-3xl mb-4 mt-3 box:mt-16">fittlyf</h1>
+            <h1 className="font-normal text-3xl mb-4 mt-3 box:mt-16">
+              fittlyf
+            </h1>
 
-            <div className="flex flex-col box:hidden bg-gray-100"> 
+            <div className="flex flex-col box:hidden bg-gray-100">
               <div className="flex justify-between items-center py-4 px-2">
-                <button onClick={() => {
-                  setShowSummary(!showSummary)}
-                  }
-                  >
-                  <div className="text-red-500 text-sm"><i className="fa-solid fa-cart-shopping mr-2"></i>Show order summary<i className="ml-2 fa-solid fa-chevron-down"></i></div>
+                <button
+                  onClick={() => {
+                    setShowSummary(!showSummary);
+                  }}
+                >
+                  <div className="text-red-500 text-sm">
+                    <i className="fa-solid fa-cart-shopping mr-2"></i>Show order
+                    summary<i className="ml-2 fa-solid fa-chevron-down"></i>
+                  </div>
                 </button>
                 <div>
                   <span className="font-semibold text-lg">₹499.00</span>
                 </div>
               </div>
 
-              {showSummary && <div>
-                <hr className="bg-gray-300" />
-                <div className="p-2">
-                  <div className="flex text-sm space-x-3 justify-between items-center my-5">
-                    <img
-                      className="w-20"
-                      src="https://cdn.shopify.com/s/files/1/0618/6765/5415/products/1_small.png?v=1654409191"
-                      alt=""
-                    />
-                    <div className="flex xl:w-96 flex-col">
-                      <h4 className="font-semibold">YOSHA PCOS PCOD tablets | Delayed Periods | Ayurvedic</h4>
-                      <p className="my-2">{`${pack.period} ₹ ${pack.price} ${pack.bottle} bottle ${pack.tablets} tablets`}</p>
-                    </div>
-                    <span className="font-semibold">₹499.00</span>
-                  </div>
-
+              {showSummary && (
+                <div>
                   <hr className="bg-gray-300" />
-
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <h5 className="my-5">Subtotal</h5>
-                      <h5 className="my-5">Shipping</h5>
+                  <div className="p-2">
+                    <div className="flex text-sm space-x-3 justify-between items-center my-5">
+                      <img
+                        className="w-20"
+                        src="https://cdn.shopify.com/s/files/1/0618/6765/5415/products/1_small.png?v=1654409191"
+                        alt=""
+                      />
+                      <div className="flex xl:w-96 flex-col">
+                        <h4 className="font-semibold">
+                          YOSHA PCOS PCOD tablets | Delayed Periods | Ayurvedic
+                        </h4>
+                        <p className="my-2">{`${pack.period} ₹ ${pack.price} ${pack.bottle} bottle ${pack.tablets} tablets`}</p>
+                      </div>
+                      <span className="font-semibold">₹499.00</span>
                     </div>
-                    <div className="text-right">
-                      <h5 className="font-semibold my-4">₹499.00</h5>
-                      <h5 className="font-semibold my-4">Free</h5>
+
+                    <hr className="bg-gray-300" />
+
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h5 className="my-5">Subtotal</h5>
+                        <h5 className="my-5">Shipping</h5>
+                      </div>
+                      <div className="text-right">
+                        <h5 className="font-semibold my-4">₹499.00</h5>
+                        <h5 className="font-semibold my-4">Free</h5>
+                      </div>
+                    </div>
+
+                    <hr className="bg-gray-300" />
+
+                    <div className="flex items-center justify-between my-5">
+                      <div>
+                        <div className="font-semibold">Total</div>
+                        <div className="text-xs">Including ₹76.12 in taxes</div>
+                      </div>
+                      <div>
+                        <span className="text-sm">INR</span>
+                        <span className="font-semibold text-2xl">₹499.00</span>
+                      </div>
                     </div>
                   </div>
-
                   <hr className="bg-gray-300" />
-
-                  <div className="flex items-center justify-between my-5">
-                    <div>
-                      <div className="font-semibold">Total</div>
-                      <div className="text-xs">Including ₹76.12 in taxes</div>
-                    </div>
-                    <div><span className="text-sm">INR</span><span className="font-semibold text-2xl">₹499.00</span></div>
-                  </div>
-
                 </div>
-                <hr className="bg-gray-300" />
-              </div>
-              }
-              
+              )}
             </div>
-            
+
             <p className="text-sm my-5">
               <span className="text-red-500">Cart</span> &gt;{" "}
               <span>Information</span> &gt;{" "}
@@ -129,12 +170,7 @@ const C1 = ({pack}) => {
             />
           </div>
           <div className="space-x-3 my-3 text-sm">
-            <input
-              ref={emailMe}
-              type="checkbox"
-              name=""
-              id=""
-            />
+            <input ref={emailMe} type="checkbox" name="" id="" />
             <span>Email me with news and offers</span>
           </div>
 
@@ -147,8 +183,11 @@ const C1 = ({pack}) => {
             className="px-3 my-2  w-[100%] py-3 bg-white border rounded-lg text-sm"
           >
             <option value="-">Country/region</option>
-            <option value="India">India</option>
-            <option value="USA">USA</option>
+            {countries.map((country) => (
+              <>
+                <option value={country}>{country}</option>
+              </>
+            ))}
           </select>
 
           <div className="sm:flex">
@@ -218,17 +257,11 @@ const C1 = ({pack}) => {
             />
           </div>
           <div className="space-x-3 my-4 text-sm">
-            <input
-              ref={saveThis}
-              type="checkbox"
-              name=""
-              id=""
-            />
+            <input ref={saveThis} type="checkbox" name="" id="" />
             <span>Save this information for next time</span>
           </div>
 
           <div className="flex flex-col-reverse sm:flex-row sm:flex mb-10 sm:justify-between sm:items-center">
-
             <div className=" sm:my-0 flex justify-center">
               <button className="text-sm text-red-500">
                 &lt; Return to cart
@@ -237,27 +270,29 @@ const C1 = ({pack}) => {
 
             <div className="mb-5 sm:my-0">
               <button className="text-sm text-white bg-red-500 rounded-md py-6 sm:py-4 px-6 font-semibold w-full">
-                <Link
-                  to="/shipping"
-                  onClick={() => orderPage1Data()}
-                >
-                  Continue to Shipping
-                </Link>
+                {loader ? (
+                  <>
+                    <div>Loading...</div>
+                  </>
+                ) : (
+                  <div onClick={() => orderPage1Data()}>
+                    Continue to Shipping
+                  </div>
+                )}
               </button>
             </div>
-
           </div>
-
         </div>
 
         <div>
           <hr className="bg-gray-300" />
 
-          <div className="text-gray-500 my-4 text-xs">All Rights Reserved fittlyf</div>
+          <div className="text-gray-500 my-4 text-xs">
+            All Rights Reserved fittlyf
+          </div>
         </div>
-
       </div>
-
+      <ToastContainer />
     </div>
   );
 };
@@ -274,10 +309,12 @@ const C2 = ({ pack }) => {
               alt=""
             />
             <div className="flex xl:w-96 flex-col">
-              <h4 className="font-semibold">YOSHA PCOS PCOD tablets | Delayed Periods | Ayurvedic</h4>
+              <h4 className="font-semibold">
+                YOSHA PCOS PCOD tablets | Delayed Periods | Ayurvedic
+              </h4>
               <p className="my-2">{`${pack.period} ₹ ${pack.price} ${pack.bottle} bottle ${pack.tablets} tablets`}</p>
             </div>
-            <span className="font-semibold">₹499.00</span>
+            <span className="font-semibold">{`₹${pack.price}`}</span>
           </div>
 
           <hr className="bg-gray-300" />
@@ -288,7 +325,7 @@ const C2 = ({ pack }) => {
               <h5 className="my-5">Shipping</h5>
             </div>
             <div className="text-right">
-              <h5 className="font-semibold my-4">₹499.00</h5>
+              <h5 className="font-semibold my-4">{`₹${pack.price}`}</h5>
               <h5 className="font-semibold my-4">Free</h5>
             </div>
           </div>
@@ -300,36 +337,29 @@ const C2 = ({ pack }) => {
               <div className="font-semibold">Total</div>
               <div className="text-xs">Including ₹76.12 in taxes</div>
             </div>
-            <div><span className="text-sm">INR</span><span className="font-semibold text-2xl">₹499.00</span></div>
+            <div>
+              <span className="text-sm">INR</span>
+              <span className="font-semibold text-2xl">{`₹${pack.price}`}</span>
+            </div>
           </div>
-
         </div>
       </div>
     </div>
-
   );
 };
 
-const Form = () => {
-
-  const location = useLocation();
-  const { pack } = location.state;
-
-
-  // useRefs
+const Form = ({ pack }) => {
   return (
     <>
-
       <div id="Form">
         <div className="flex items-center justify-center">
-          <C1 pack={pack}/>
+          <C1 pack={pack} />
 
           <div className="border-r h-screen hidden box:block bg-gray-300"></div>
 
           <div className="hidden box:block">
             <C2 pack={pack} />
           </div>
-
         </div>
       </div>
     </>

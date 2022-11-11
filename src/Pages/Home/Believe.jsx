@@ -20,7 +20,7 @@ const Believe = () => {
                     md:my-20
                 ">
 
-                    <div className="md:grid md:grid-cols-2 flex flex-col-reverse">
+                    <div className="md:grid md:grid-cols-2 md:flex-wrap-reverse">
                         <div className="p-16 bg-[#FFF7F3] flex flex-col items-start justify-center text-2xl">
                             <p className="max-w-[620px]">
                                 “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -31,7 +31,7 @@ const Believe = () => {
                         <img src="b1.png" alt=""/>
                     </div>
 
-                    <div className="md:grid md:grid-cols-2">
+                    <div className="md:grid md:grid-cols-2 md:flex-wrap">
                         <img src="b2.png" alt="" />
                         <div className="p-16 bg-[#FFF7F3] flex flex-col items-start justify-center text-2xl">
                             <p className="max-w-[620px]">

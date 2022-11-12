@@ -18,11 +18,11 @@ const Product = () => {
                         Yosha is an ayurvedic tablet made for delayed and Irregular Periods due 
                         to PCOS PCOD
                     </p>
-                    <button className="border rounded-md mt-10 p-2 pl-4
-                        md:mt-20 bg-violet-700
+                    <button className="border rounded-md mt-10 border-black p-2 pl-4
+                        md:mt-20
                     ">
-                        <span className="text-sm font-semibold tracking-normal text-white">CHECK IT OUT</span>
-                        <i className="ml-8 mr-3 text-white fa-solid fa-arrow-right"></i>
+                        <span className="text-sm font-bold tracking-normal">CHECK IT OUT</span>
+                        <i className="ml-8 mr-3 text-blue-800 fa-solid fa-arrow-right"></i>
                     </button>
                 </div>
             </div>

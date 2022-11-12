@@ -5,18 +5,15 @@ import { useEffect } from "react";
 import { countries } from "../../APIs/Country";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useStateValue } from "../../Context/StateProvider";
+import { actionType } from "../../Context/reducer";
 
 const C1 = ({ pack }) => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!pack) {
-      navigate("/");
-    }
-  }, []);
-
   const [showSummary, setShowSummary] = useState(true);
   const [loader, setloader] = useState(false);
+
+  const navigate = useNavigate();
+  const [{ id }, dispatch] = useStateValue();
 
   const emailPhoneNumber = useRef();
   const emailMe = useRef();
@@ -33,7 +30,6 @@ const C1 = ({ pack }) => {
   // {pack.period} ₹ ${pack.price} ${pack.bottle} bottle ${pack.tablets}
 
   const orderPage1Data = async () => {
-    // console.log(ValidateAll(emailPhoneNumber.current.value, zip.current.value));
     setloader(true);
 
     const data = {
@@ -68,10 +64,12 @@ const C1 = ({ pack }) => {
         theme: "light",
       });
       setloader(false);
-    }
-
-    if (response.data === "success") {
-      navigate("/shipping");
+    } else if (response.code === "success") {
+      dispatch({
+        type: actionType.SET_ID,
+        id: response.data.data.id,
+      });
+      navigate("/payment")
     }
   };
 
@@ -348,7 +346,16 @@ const C2 = ({ pack }) => {
   );
 };
 
-const Form = ({ pack }) => {
+const Form = () => {
+  const [{ pack }, dispatch] = useStateValue();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!pack) {
+      navigate("/");
+    }
+  }, []);
   return (
     <>
       <div id="Form">

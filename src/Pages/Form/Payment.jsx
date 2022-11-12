@@ -1,27 +1,31 @@
 import { useRef, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { sendOrderPage3Data } from "../../APIs/OrdersAPI";
+import { Link, useNavigate } from "react-router-dom";
+import { sendOrderPage2Data } from "../../APIs/OrdersAPI";
+import { useStateValue } from "../../Context/StateProvider";
 
 const C1 = () => {
   const [showSummary, setShowSummary] = useState(true);
 
+  const [{id}, dispatch] = useStateValue();
+  const [showSummary, setShowSummary] = useState(true);
   const [loader, setloader] = useState(false);
   const navigate = useNavigate();
   const shipping = useRef();
 
-  const orderPage3data = async () => {
+  const orderPage2data = async () => {
+
     setloader(true);
     const data = {
-      cashOnDelivery: shipping.current.select,
+      mode : shipping.current.checked,
+      id : id
     };
 
-    let response = await sendOrderPage3Data(data);
+    let response = await sendOrderPage2Data(data);
 
-    console.log(response)
-    
-    if (response.data === "success") {
-      navigate("/payment");
+    console.log(response.data.code);
+
+    if (response.data.code === "success") {
+      navigate("/shipping");
       setloader(false);
     }
   };
@@ -35,7 +39,7 @@ const C1 = () => {
               <h1 className="font-normal text-3xl mb-4 mt-3 box:mt-16">
                 fittlyf
               </h1>
-
+              <div>Order id : {id}</div>
               <div className="flex flex-col box:hidden bg-gray-100">
                 <div className="flex justify-between items-center py-4 px-2">
                   <button
@@ -114,73 +118,46 @@ const C1 = () => {
               <p className="text-sm my-5">
                 <span className="text-red-500">Cart</span> &gt;{" "}
                 <span className="text-red-500">Information</span> &gt;{" "}
-                <span className="text-red-500">Shipping</span> &gt;{" "}
+                <span className="text-gray-500">Shipping</span> &gt;{" "}
                 <span className="text-gray-500">Payment</span>
               </p>
             </div>
 
-            <div className="text-sm border rounded-md ">
-              <p className="flex items-center px-5 py-3 justify-between">
-                <span className="flex xl:flex-row flex-col text-gray-500 ">
+            <div className="border text-sm rounded-md ">
+              <p className="flex flex-wrap  items-center px-5 py-3 justify-between">
+                <span className="text-gray-500">
                   Contact{" "}
-                  <span className="text-black xl:pl-6">myemail@gmail.com</span>{" "}
+                  <span className="text-black pl-6">myemail@gmail.com</span>{" "}
                 </span>
-                <span className="text-sm text-red-500 pl-2">Change</span>
+                <span className="text-xs text-red-500">Change</span>
               </p>
-              {/* <p className="flex flex-wrap items-center px-5 py-3 justify-between">
-                                <span className="text-gray-500">Contact <span className="text-black pl-6">myemail@gmail.com</span> </span>
-                                <span className="text-sm text-red-500 pl-2">Change</span>
-                            </p> */}
               <hr />
-              <p className="flex items-center px-5 py-3 justify-between">
-                <span className="flex xl:flex-row flex-col text-gray-500 ">
+              <p className="flex flex-wrap items-center px-5 py-3 justify-between">
+                <span className="text-gray-500">
                   Ship to{" "}
-                  <span className="text-black xl:pl-6">address, MH, India</span>{" "}
+                  <span className="text-black pl-6">address, MH, India</span>{" "}
                 </span>
-                <span className="text-sm text-red-500 pl-2">Change</span>
-              </p>
-              {/* <p className="flex flex-wrap items-center px-5 py-3 justify-between">
-                                <span className="text-gray-500">Ship to <span className="text-black pl-6">address, MH, India</span> </span>
-                                <span className="text-sm text-red-500 pl-2">Change</span>
-                            </p> */}
-              <hr />
-              <p className="flex items-center px-5 py-3 justify-between">
-                <span className="flex xl:flex-row flex-col text-gray-500 ">
-                  Method{" "}
-                  <span className="text-black xl:pl-6">
-                    Cash on Delivery - Shipping Charges · Free
-                  </span>{" "}
-                </span>
-                <span className="text-sm text-red-500 pl-2">Change</span>
+                <span className="text-xs text-red-500">Change</span>
               </p>
             </div>
 
             <div>
-              <h1 className="text-lg mt-8">Payment</h1>
-              <p className="text-gray-500 text-sm my-3">
-                All transactions are secure and encrypted.
-              </p>
+              <h1 className="text-lg mt-8 my-4">Shipping method</h1>
               <div className="border text-sm rounded-md">
-                <div className=" px-5 py-5">
-                  <p>Cash on Delivery (COD)</p>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h1 className="text-lg mt-8">Billing address</h1>
-              <p className="text-gray-500 text-sm my-2">
-                Select the address that matches your card or payment method.
-              </p>
-              <div className="border text-sm rounded-md">
-                <div className="flex flex-wrap items-center px-5 py-5 justify-start">
-                  <input ref = {shipping} type="radio" name="method" id="" />
-                  <p className="pl-4">Same as shipping address</p>
+                <div className="flex flex-wrap items-center px-5 py-4 justify-between">
+                  <div className="flex">
+                    <input ref={shipping} type="radio" name="method" id="" />
+                    <p className="pl-4">Cash on Delivery - Shipping Charges</p>
+                  </div>
+                  <span>Free</span>
                 </div>
                 <hr />
-                <div className="flex items-center px-5 py-5 justify-start">
-                  <input type="radio" name="method" id="" />
-                  <p className="pl-4">Use a different billing address</p>
+                <div className="flex items-center px-5 py-4 justify-between">
+                  <div className="flex">
+                    <input type="radio" name="method" id="" />
+                    <p className="pl-4">Prepaid - Free Shipping</p>
+                  </div>
+                  <span>Free</span>
                 </div>
               </div>
             </div>
@@ -189,7 +166,7 @@ const C1 = () => {
               <div className="flex flex-col-reverse sm:flex-row sm:flex mb-10 sm:justify-between sm:items-center">
                 <div className=" sm:my-0 flex justify-center">
                   <button className="text-sm text-red-500">
-                    <Link to="/shipping">&lt; Return to Shipping</Link>
+                    <Link to="/form">&lt; Return to Information</Link>
                   </button>
                 </div>
 
@@ -200,20 +177,22 @@ const C1 = () => {
                         <div>Loading...</div>
                       </>
                     ) : (
-                      <div onClick={() => orderPage3data()}>Complete Order</div>
+                      <div onClick={() => orderPage2data()}>
+                        Continue to Payment
+                      </div>
                     )}
                   </button>
                 </div>
-                {/* <div className="flex mb-10 items-center justify-between">
-                                <Link to="/shipping" className="text-sm text-red-500">&lt; Return to cart</Link>
+              </div>
+              {/* <div className="flex mb-10 items-center justify-between">
+                                <Link to="/form" className="text-sm text-red-500">&lt; Return to Information</Link>
                                 <Link
                                     to="/payment"
                                     //   onClick={() => orderPage1Data()} 
-                                    className="text-sm text-white bg-red-500 rounded-md py-5 px-4">
+                                    className="text-sm text-white bg-red-500 rounded-md py-6 sm:py-4 px-6 font-semibold">
                                     Continue to Payment
                                 </Link>
                             </div> */}
-              </div>
             </div>
           </div>
 
@@ -231,13 +210,6 @@ const C1 = () => {
 };
 
 const C2 = ({ pack }) => {
-
-  useEffect(() => {
-    if (!pack) {
-      navigate("/");
-    }
-  }, []);
-
   return (
     <div className="bg-gray-50">
       <div className="h-screen w-[46vw]">
@@ -288,7 +260,17 @@ const C2 = ({ pack }) => {
   );
 };
 
-const Payment = ({ pack }) => {
+const Shipping = () => {
+  const [{ pack }, dispatch] = useStateValue();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!pack) {
+      navigate("/");
+    }
+  }, []);
+
   return (
     <>
       <div id="Form" className="flex items-center justify-center">
@@ -304,4 +286,4 @@ const Payment = ({ pack }) => {
   );
 };
 
-export default Payment;
+export default Shipping;

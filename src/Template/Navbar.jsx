@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <div
       id="Navbar"
-      className="border-0 border-gray-300 border-b-2 md:space-y-0 p-3 flex-wrap flex items-center sm:justify-around justify-between mx-2 sm:mx-0"
+      className="border-0 border-gray-300 border-b-2 md:space-y-0 p-3 flex-wrap flex items-center justify-around "
     >
       <img className="w-28" id="logoImg" src="image2.png" alt="" />
 

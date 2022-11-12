@@ -24,6 +24,7 @@ const C1 = () => {
     console.log(response);
 
     if (response.data.code === "success") {
+      console.log("Navigating")
       navigate("/razorpay");
     }
   };

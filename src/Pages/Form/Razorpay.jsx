@@ -27,7 +27,7 @@ const RazorpayGateway = () => {
         }
 
         const options = {
-            "key": "YOUR_KEY_ID", // Enter the Key ID generated from the Dashboard
+            "key": "rzp_test_YGbpgyDF6Ac4JM", // Enter the Key ID generated from the Dashboard
             "amount": "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
             "currency": "INR",
             "name": "Fittlyf",

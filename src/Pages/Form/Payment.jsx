@@ -4,8 +4,6 @@ import { sendOrderPage2Data } from "../../APIs/OrdersAPI";
 import { useStateValue } from "../../Context/StateProvider";
 
 const C1 = () => {
-  const [showSummary, setShowSummary] = useState(true);
-
   const [{id}, dispatch] = useStateValue();
   const [showSummary, setShowSummary] = useState(true);
   const [loader, setloader] = useState(false);

@@ -1,42 +1,51 @@
 import Navbar from "../../Template/Navbar";
 import Footer from "../../Template/Footer"
+import { useState } from "react";
+import axios from "axios"
 
 async function loadScript(src) {
     return new Promise(resolve => {
         const script = document.createElement('script');
         script.src = src
-        document.body.appendChild(script);
-        script.onload = () =>{
+        
+        script.onload = () => {
             resolve(true);
         }
         script.onerror = () => {
             resolve(false);
         }
+
+        document.body.appendChild(script);
     })
 }
 
 const RazorpayGateway = () => {
 
-    async function displayRazorpay(){
+    const [name, setName] = useState('Test Name')
+
+    async function displayRazorpay() {
 
         const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js')
-        
-        if(!res) {
+
+        if (!res) {
             alert('Razorpay SDK failed to load')
             return
         }
 
+        const data = await axios.post('http://localhost:9000/razorpay/', {})
+        console.log(data)
+
         const options = {
             "key": "rzp_test_YGbpgyDF6Ac4JM", // Enter the Key ID generated from the Dashboard
-            "amount": "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-            "currency": "INR",
+            "currency": data.data.currency,
+            "amount": data.data.amount.toString(),
             "name": "Fittlyf",
             "description": "Test Transaction",
             "image": "https://example.com/your_logo",
-            "order_id": "order_9A33XWu170gUtm", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+            "order_id": data.data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
             "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
             "prefill": {
-                "name": "Gaurav Kumar",
+                "name": name,
                 "email": "gaurav.kumar@example.com",
                 "contact": "9999999999"
             },
@@ -47,18 +56,18 @@ const RazorpayGateway = () => {
                 "color": "#3399cc"
             }
         };
-        var rzp1 = new Razorpay(options);
+
+        const paymentObject = new window.Razorpay(options);
+        paymentObject.open();
     }
 
     return (
         <>
-            <Navbar/>
+            <Navbar />
             <div className="h-screen">
-                <button className="bg-amber-300" onClick={() => {
-                    displayRazorpay()
-                }}>Pay</button>
+                <button className="bg-amber-300" onClick={displayRazorpay}>Pay</button>
             </div>
-            <Footer/>
+            <Footer />
         </>
     )
 }

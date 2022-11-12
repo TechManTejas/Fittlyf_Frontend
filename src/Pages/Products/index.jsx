@@ -12,8 +12,8 @@ const Products = ({setpack}) => {
             <Navbar/>
             <SingleProduct setpack = {setpack}/>
             <Ingredients/>
+            <Experts />
             <Review/>
-            <Experts/>
             <FAQ/>
             <Footer/>
         </div>

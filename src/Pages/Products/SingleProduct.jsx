@@ -134,29 +134,32 @@ const SingleProduct = ({ setpack }) => {
         <div className="md:flex">
           <div className="flex flex-col my-10 items-center">
             <div className="grid grid-cols-3 sm:flex sm:flex-wrap justify-around items-center">
-              <button onClick={() => setBorder(1)} className="sm:mx-3">
-                <div
-                  className={`text-left rounded-lg p-3 m-1 w-28 sm:w-40 ${pack1css}`}
-                  style={{ background: "#F4F4F4" }}
-                >
-                  <div className="sm:flex justify-between">
-                    <div className="font-semibold text-xs tracking-tight">
-                      1 MONTH
+              
+              <div>
+                <button onClick={() => setBorder(1)} className="">
+                  <div
+                    className={`text-left rounded-lg p-3 m-1 w-28 sm:w-40 ${pack1css}`}
+                    style={{ background: "#F4F4F4" }}
+                  >
+                    <div className="sm:flex justify-between">
+                      <div className="font-semibold text-xs tracking-tight">
+                        1 MONTH
+                      </div>
+                      <div className="font-bold text-sm">Rs. 499</div>
                     </div>
-                    <div className="font-bold text-sm">Rs. 499</div>
+                    <hr className="bg-slate-400"></hr>
+                    <div className="font-normal text-xs my-3 tracking-tight">
+                      1 bottle
+                    </div>
+                    <div className="font-normal text-xs my-3 tracking-tight">
+                      60 tablets
+                    </div>
+                    <div className="font-normal text-xs mt-3 tracking-tight">
+                      Expiry: 3 years
+                    </div>
                   </div>
-                  <hr className="bg-slate-400"></hr>
-                  <div className="font-normal text-xs my-3 tracking-tight">
-                    1 bottle
-                  </div>
-                  <div className="font-normal text-xs my-3 tracking-tight">
-                    60 tablets
-                  </div>
-                  <div className="font-normal text-xs mt-3 tracking-tight">
-                    Expiry: 3 years
-                  </div>
-                </div>
-              </button>
+                </button>
+              </div>
 
               <div className="flex flex-col items-center sm:mx-3">
                 <div className="text-center text-xs bg-red-400 text-white absolute rounded-t-md px-1 sm:px-3 -mt-3">
@@ -187,39 +190,38 @@ const SingleProduct = ({ setpack }) => {
                 </button>
               </div>
 
-              <button onClick={() => setBorder(3)} className="sm:mx-3">
-                <div
-                  className={` text-left rounded-lg p-3 m-1 w-28 sm:w-40 ${pack3css}`}
-                  style={{ background: "#F4F4F4" }}
-                >
-                  <div className="sm:flex justify-between">
-                    <div className="font-semibold text-xs tracking-tight">
-                      4 MONTH
+              <div>
+                <button onClick={() => setBorder(3)} className="">
+                  <div
+                    className={`text-left rounded-lg p-3 m-1 w-28 sm:w-40 ${pack3css}`}
+                    style={{ background: "#F4F4F4" }}
+                  >
+                    <div className="sm:flex justify-between">
+                      <div className="font-semibold text-xs tracking-tight">
+                        4 MONTH
+                      </div>
+                      <div className="font-bold text-sm">Rs. 1299</div>
                     </div>
-                    <div className="font-bold text-sm">Rs. 1299</div>
+                    <hr className="bg-slate-400"></hr>
+                    <div className="font-normal text-xs my-3 tracking-tight">
+                      4 bottles
+                    </div>
+                    <div className="font-normal text-xs my-3 tracking-tight">
+                      240 tablets
+                    </div>
+                    <div className="font-normal text-xs mt-3 tracking-tight">
+                      Expiry: 3 years
+                    </div>
                   </div>
-                  <hr className="bg-slate-400"></hr>
-                  <div className="font-normal text-xs my-3 tracking-tight">
-                    4 bottles
-                  </div>
-                  <div className="font-normal text-xs my-3 tracking-tight">
-                    240 tablets
-                  </div>
-                  <div className="font-normal text-xs mt-3 tracking-tight">
-                    Expiry: 3 years
-                  </div>
-                </div>
-              </button>
+                </button>
+              </div>
+              
             </div>
 
             <div className="m-8 flex items-center">
-              <span></span>
-              <button className="text-xs py-3 px-3 sm:px-16 border rounded-md border-black font-bold tracking-tight">
-                ADD TO CART
-              </button>
               <Link
                 to="/form"
-                className="ml-5 text-xs py-3 px-3 sm:px-20 bg-[#4B1785] border rounded-md font-bold text-white"
+                className="text-xl py-4 px-16 bg-[#4B1785] border rounded-md font-bold text-white"
               >
                 BUY NOW
               </Link>

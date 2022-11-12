@@ -24,8 +24,8 @@ const Review = () => {
                             xl:m-8
                         "
           >
-            <img className="md:w-96" src="Card.png" alt="" />
-            <p className="w-96"></p>
+            <img className="sm:w-96 w-56" src="Card.png" alt="" />
+            <p className="sm:w-96 w-56"></p>
           </div>
 
           <div onClick = {() => setsw(true)}
@@ -35,8 +35,8 @@ const Review = () => {
                             xl:m-8
                         "
           >
-            <img className="md:w-96" src="Card2.png" alt="" />
-            <p className="w-96"></p>
+            <img className="sm:w-96 w-56" src="Card2.png" alt="" />
+            <p className="sm:w-96 w-56"></p>
           </div>
 
           <div onClick = {() => setsw(true)}
@@ -46,8 +46,8 @@ const Review = () => {
                             xl:m-8
                         "
           >
-            <img className="md:w-96" src="Card2.png" alt="" />
-            <p className="w-96"></p>
+            <img className="sm:w-96 w-56" src="Card2.png" alt="" />
+            <p className="sm:w-96 w-56"></p>
           </div>
         </div>
       </div>
@@ -315,7 +315,7 @@ const Review = () => {
             </div>
           </div>
         </div>
-        <div className="text-center sm:hidden">See all {'>'} </div>
+        {/* <div className="text-center sm:hidden">See all {'>'} </div> */}
       </div>
     </div>
   );

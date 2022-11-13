@@ -13,7 +13,7 @@ const C1 = ({ pack }) => {
   const [loader, setloader] = useState(false);
 
   const navigate = useNavigate();
-  const [{ id }, dispatch] = useStateValue();
+  const [{ page1Data }, dispatch] = useStateValue();
 
   const emailPhoneNumber = useRef();
   const emailMe = useRef();
@@ -26,6 +26,22 @@ const C1 = ({ pack }) => {
   const state = useRef();
   const zip = useRef();
   const saveThis = useRef();
+
+  useEffect(() => {
+    if (page1Data) {
+      emailPhoneNumber.current.value = page1Data.emailPhoneNumber;
+      emailMe.current.value = page1Data.emailMe;
+      country.current.value = page1Data.country;
+      firstName.current.value = page1Data.firstName;
+      lastName.current.value = page1Data.lastName;
+      address.current.value = page1Data.address,
+      apartmentAndOthers.current.value = page1Data.apartmentAndOthers;
+      city.current.value = page1Data.city;
+      state.current.value = page1Data.state;
+      zip.current.value = page1Data.zip;
+      saveThis.current.checked = page1Data.saveThis;
+    }
+  }, []);
 
   // {pack.period} ₹ ${pack.price} ${pack.bottle} bottle ${pack.tablets}
 
@@ -50,6 +66,11 @@ const C1 = ({ pack }) => {
       Price: pack.price,
     };
 
+    dispatch({
+      type: actionType.SET_PAGE1,
+      page1Data: data,
+    });
+
     let response = await sendOrderPage1Data(data);
 
     if (response === "ERR_NETWORK") {
@@ -71,6 +92,8 @@ const C1 = ({ pack }) => {
       });
       navigate("/payment")
     }
+
+    navigate("/payment");
   };
 
   return (

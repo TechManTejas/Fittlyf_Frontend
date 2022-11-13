@@ -12,7 +12,7 @@ const Products = ({setpack}) => {
             <Navbar/>
             <SingleProduct setpack = {setpack}/>
             <Ingredients/>
-            <Review/>
+            <Review/>   
             <Experts/>
             <FAQ/>
             <Footer/>

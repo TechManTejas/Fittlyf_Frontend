@@ -2,22 +2,32 @@ import { useRef, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { sendOrderPage2Data } from "../../APIs/OrdersAPI";
 import { useStateValue } from "../../Context/StateProvider";
+import { actionType } from "../../Context/reducer";
 
 const C1 = () => {
-
-  const [{id}, dispatch] = useStateValue();
+  const [{ id, page2Data }, dispatch] = useStateValue();
   const [showSummary, setShowSummary] = useState(true);
   const [loader, setloader] = useState(false);
   const navigate = useNavigate();
   const shipping = useRef();
 
-  const orderPage2data = async () => {
+  useEffect(() => {
+    if (page2Data) {
+      shipping.current.checked = page2Data.mode;
+    }
+  }, []);
 
+  const orderPage2data = async () => {
     setloader(true);
     const data = {
-      mode : shipping.current.checked,
-      id : id
+      mode: shipping.current.checked,
+      id: id,
     };
+
+    dispatch({
+      type: actionType.SET_PAGE2,
+      page2Data: data,
+    });
 
     let response = await sendOrderPage2Data(data);
 
@@ -27,6 +37,8 @@ const C1 = () => {
       navigate("/shipping");
       setloader(false);
     }
+
+    // navigate("/shipping");
   };
 
   return (

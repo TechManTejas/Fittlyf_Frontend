@@ -84,6 +84,7 @@ const C1 = () => {
 
     if (response.data.code === "success") {
       displayRazorpay()
+      setloader(false);
     }
   };
 

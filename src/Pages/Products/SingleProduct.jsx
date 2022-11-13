@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useStateValue } from "../../Context/StateProvider";
 import { actionType } from "../../Context/reducer";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
 
 const SingleProduct = ({ setpack }) => {
   const [{ pack }, dispatch] = useStateValue();
@@ -47,27 +49,27 @@ const SingleProduct = ({ setpack }) => {
         setPack2css("");
         setPack3css("");
         dispatch({
-            type: actionType.SET_PACK,
-            pack: pack1,
-          });
+          type: actionType.SET_PACK,
+          pack: pack1,
+        });
         break;
       case 2:
         setPack1css("");
         setPack2css("border border-red-600");
         setPack3css("");
         dispatch({
-            type: actionType.SET_PACK,
-            pack: pack2,
-          });
+          type: actionType.SET_PACK,
+          pack: pack2,
+        });
         break;
       case 3:
         setPack1css("");
         setPack2css("");
         setPack3css("border border-red-600");
         dispatch({
-            type: actionType.SET_PACK,
-            pack: pack3,
-          });
+          type: actionType.SET_PACK,
+          pack: pack3,
+        });
         break;
     }
   };
@@ -77,7 +79,7 @@ const SingleProduct = ({ setpack }) => {
       id="SingleProduct"
       className="md:my-20 flex flex-wrap lg:flex-nowrap items-start justify-evenly"
     >
-      <div className="flex flex-col mx-10 mb-3">
+      {/* <div className="flex flex-col mx-10 mb-3">
         <img src="p.png" alt="" />
         <div className="flex items-center space-x-8 md:mt-10">
           <img className="w-20 hidden md:block" src="p.png" alt="" />
@@ -85,7 +87,19 @@ const SingleProduct = ({ setpack }) => {
           <img className="w-20 hidden md:block" src="p.png" alt="" />
           <img className="w-20 hidden md:block" src="p.png" alt="" />
         </div>
-      </div>
+      </div> */}
+
+      <Carousel showThumbs={false} className="mx-10 my-3 md:w-4/6 lg:w-2/6 " >
+        <div>
+          <img src="p.png" />
+        </div>
+        <div>
+          <img src="p.png" />
+        </div>
+        <div>
+          <img src="p.png" />
+        </div>
+      </Carousel>
 
       <div className="md:mt-0 m-4">
         <h2 className="font-bold md:max-w-3xl text-2xl sm:text-4xl mb-4">

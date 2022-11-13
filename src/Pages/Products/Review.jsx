@@ -1,5 +1,8 @@
 import { VideoRender } from "./VideoRender";
 import { useState } from "react";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
+
 const Review = () => {
   const [showvideo, setsw] = useState(false);
 
@@ -16,8 +19,9 @@ const Review = () => {
           Customer Stories
         </h2>
 
-        <div  className="flex xl:items-center xl:justify-center mx-4 overflow-x-auto">
-          <div onClick = {() => setsw(true)}
+        <div className="hidden sm:flex xl:items-center xl:justify-center mx-4 overflow-x-auto">
+          <div
+            onClick={() => setsw(true)}
             className="m-2 cursor-pointer
                             md:m-2
                             lg:m-6
@@ -28,7 +32,8 @@ const Review = () => {
             <p className="w-96"></p>
           </div>
 
-          <div onClick = {() => setsw(true)}
+          <div
+            onClick={() => setsw(true)}
             className="m-2 cursor-pointer
                             md:m-2
                             lg:m-6
@@ -39,7 +44,8 @@ const Review = () => {
             <p className="w-96"></p>
           </div>
 
-          <div onClick = {() => setsw(true)}
+          <div
+            onClick={() => setsw(true)}
             className="m-2 cursor-pointer
                             md:m-2
                             lg:m-6
@@ -51,6 +57,48 @@ const Review = () => {
           </div>
         </div>
       </div>
+
+      <Carousel showThumbs={false} className="sm:hidden mx-4">
+        <div>
+          <div
+            onClick={() => setsw(true)}
+            className="m-2 cursor-pointer
+                            md:m-2
+                            lg:m-6
+                            xl:m-8
+                        "
+          >
+            <img className="md:w-96" src="Card.png" alt="" />
+            <p className="w-96"></p>
+          </div>
+        </div>
+        <div>
+          <div
+            onClick={() => setsw(true)}
+            className="m-2 cursor-pointer
+                            md:m-2
+                            lg:m-6
+                            xl:m-8
+                        "
+          >
+            <img className="md:w-96" src="Card2.png" alt="" />
+            <p className="w-96"></p>
+          </div>
+        </div>
+        <div>
+          <div
+            onClick={() => setsw(true)}
+            className="m-2 cursor-pointer
+                            md:m-2
+                            lg:m-6
+                            xl:m-8
+                        "
+          >
+            <img className="md:w-96" src="Card2.png" alt="" />
+            <p className="w-96"></p>
+          </div>
+        </div>
+      </Carousel>
 
       <div className="flex flex-col mx-8-4">
         <h2
@@ -315,7 +363,8 @@ const Review = () => {
             </div>
           </div>
         </div>
-        <div className="text-center sm:hidden">See all {'>'} </div>
+
+        <div className="text-center sm:hidden">See all {">"} </div>
       </div>
     </div>
   );

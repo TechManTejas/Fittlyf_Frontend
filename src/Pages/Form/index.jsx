@@ -7,10 +7,12 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useStateValue } from "../../Context/StateProvider";
 import { actionType } from "../../Context/reducer";
+import { getStates } from "../../APIs/States";
 
 const C1 = ({ pack }) => {
   const [showSummary, setShowSummary] = useState(true);
   const [loader, setloader] = useState(false);
+  const [states, sets] = useState([]);
 
   const navigate = useNavigate();
   const [{ page1Data }, dispatch] = useStateValue();
@@ -29,17 +31,20 @@ const C1 = ({ pack }) => {
 
   useEffect(() => {
     if (page1Data) {
+      sets(page1Data.statesArray);
       emailPhoneNumber.current.value = page1Data.emailPhoneNumber;
       emailMe.current.value = page1Data.emailMe;
       country.current.value = page1Data.country;
       firstName.current.value = page1Data.firstName;
       lastName.current.value = page1Data.lastName;
-      address.current.value = page1Data.address,
+      address.current.value = page1Data.address;
       apartmentAndOthers.current.value = page1Data.apartmentAndOthers;
       city.current.value = page1Data.city;
-      state.current.value = page1Data.state;
       zip.current.value = page1Data.zip;
       saveThis.current.checked = page1Data.saveThis;
+      setTimeout(() => {
+        state.current.value = page1Data.state;
+      }, 1000);
     }
   }, []);
 
@@ -68,32 +73,36 @@ const C1 = ({ pack }) => {
 
     dispatch({
       type: actionType.SET_PAGE1,
-      page1Data: data,
+      page1Data: { ...data, statesArray: states },
     });
 
     let response = await sendOrderPage1Data(data);
 
-    if (response === "ERR_NETWORK") {
-      toast.error("Cannot connect to network", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      setloader(false);
-    } else if (response.code === "success") {
-      dispatch({
-        type: actionType.SET_ID,
-        id: response.data.data.id,
-      });
-      navigate("/payment")
-    }
+    // if (response === "ERR_NETWORK") {
+    //   toast.error("Cannot connect to network", {
+    //     position: "top-right",
+    //     autoClose: 5000,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //     theme: "light",
+    //   });
+    //   setloader(false);
+    // } else if (response.code === "success") {
+    //   dispatch({
+    //     type: actionType.SET_ID,
+    //     id: response.data.data.id,
+    //   });
+    //   navigate("/payment");
+    // }
 
     navigate("/payment");
+  };
+
+  const updateStates = (con) => {
+    sets(getStates(con));
   };
 
   return (
@@ -198,6 +207,7 @@ const C1 = ({ pack }) => {
           <h2 className="font-normal text-lg my-2 mt-8">Shipping address</h2>
 
           <select
+            onChange={(e) => updateStates(e.target.value)}
             ref={country}
             name=""
             id=""
@@ -265,8 +275,12 @@ const C1 = ({ pack }) => {
               className="w-full px-3 my-2 py-3 sm:mx-4 bg-white border rounded-md text-sm"
             >
               <option value="-">State</option>
-              <option value="Pune">Pune</option>
-              <option value="Mumbai">Mumbai</option>
+              {console.log(states)}
+              {states.map((state) => (
+                <>
+                  <option value={state}>{state}</option>
+                </>
+              ))}
             </select>
             <input
               ref={zip}

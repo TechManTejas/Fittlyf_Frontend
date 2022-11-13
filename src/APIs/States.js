@@ -1,3 +1,13 @@
+export const getStates = (country) => {
+    let sta = []
+    console.log(country)
+    states.forEach(e => {
+        if (e.country_name === country)
+            sta.push(e.name)
+    })
+    console.log(sta)
+    return sta
+}
 
 const states = [
     {
@@ -20007,12 +20017,4 @@ const states = [
 ]
 
 
-export const getStates = async (country) => {
-    let sta = []
-    states.forEach(e => {
-        if(e.country_name === country)
-            sta.push(e.name)
-    })
-    console.log(sta)
-    return sta
-}
+

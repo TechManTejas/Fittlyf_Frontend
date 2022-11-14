@@ -5,7 +5,7 @@ import { sendOrderPage3Data } from "../../APIs/OrdersAPI";
 import { useEffect } from "react";
 import { useStateValue } from "../../Context/StateProvider";
 import axios from "axios"
-import backendbaseuri from "../../Config/index"
+import {backendbaseuri} from "../../Config/index"
 
 async function loadScript(src) {
   return new Promise(resolve => {

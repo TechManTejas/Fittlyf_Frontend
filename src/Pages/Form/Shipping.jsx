@@ -47,7 +47,7 @@ const C1 = () => {
     console.log(data)
 
     const options = {
-      "key": "rzp_test_YGbpgyDF6Ac4JM", // Enter the Key ID generated from the Dashboard
+      "key": "rzp_live_N1vLKkvguKjZGT", // Enter the Key ID generated from the Dashboard
       "currency": data.data.currency,
       "amount": data.data.amount.toString(),
       "name": "Fittlyf",

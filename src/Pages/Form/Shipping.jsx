@@ -43,7 +43,7 @@ const C1 = () => {
       return
     }
 
-    const data = await axios.post(`http://${backendbaseuri}/razorpay/`, {})
+    const data = await axios.post(`${backendbaseuri}razorpay/`, {})
     console.log(data)
 
     const options = {

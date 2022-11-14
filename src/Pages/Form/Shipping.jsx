@@ -7,7 +7,7 @@ import { useStateValue } from "../../Context/StateProvider";
 
 const C1 = () => {
   const [showSummary, setShowSummary] = useState(true);
-  const [{id}] = useStateValue()
+  const [{ id }] = useStateValue();
   const [loader, setloader] = useState(false);
   const navigate = useNavigate();
   const shipping = useRef();
@@ -116,8 +116,8 @@ const C1 = () => {
               <p className="text-sm my-5">
                 <span className="text-red-500">Cart</span> &gt;{" "}
                 <span className="text-red-500">Information</span> &gt;{" "}
-                <span className="text-red-500">Shipping</span> &gt;{" "}
-                <span className="text-gray-500">Payment</span>
+                <span className="text-gray-500">Payment</span> &gt;{" "}
+                <span className="text-gray-500">Shipping</span>
               </p>
             </div>
 
@@ -233,7 +233,6 @@ const C1 = () => {
 };
 
 const C2 = ({ pack }) => {
-
   return (
     <div className="bg-gray-50">
       <div className="h-screen w-[46vw]">

@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useStateValue } from "../../Context/StateProvider";
 import { actionType } from "../../Context/reducer";
 import { getStates } from "../../APIs/States";
+import { ValidateAll } from "../../Validator";
 
 const C1 = ({ pack }) => {
   const [showSummary, setShowSummary] = useState(true);
@@ -15,7 +16,7 @@ const C1 = ({ pack }) => {
   const [states, sets] = useState([]);
 
   const navigate = useNavigate();
-  const [{ page1Data }, dispatch] = useStateValue();
+  const [{ page1Data, packNumber }, dispatch] = useStateValue();
 
   const emailPhoneNumber = useRef();
   const emailMe = useRef();
@@ -53,6 +54,34 @@ const C1 = ({ pack }) => {
   const orderPage1Data = async () => {
     setloader(true);
 
+    const validate = ValidateAll(
+        emailPhoneNumber.current.value,
+        zip.current.value,
+        country.current.value,
+        firstName.current.value,
+        lastName.current.value,
+        address.current.value,
+        city.current.value,
+        state.current.value
+      )
+
+    if (
+      validate !== "none"
+    ) {
+      setloader(false);
+      toast.error(`${validate} cannot be emplty`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      return;
+    }
+
     const data = {
       emailPhoneNumber: emailPhoneNumber.current.value,
       emailMe: emailMe.current.checked,
@@ -69,6 +98,7 @@ const C1 = ({ pack }) => {
       noOfBottles: pack.bottle,
       noOfTablets: pack.tablets,
       Price: pack.price,
+      packNumber: packNumber,
     };
 
     dispatch({
@@ -78,27 +108,27 @@ const C1 = ({ pack }) => {
 
     let response = await sendOrderPage1Data(data);
 
-    // if (response === "ERR_NETWORK") {
-    //   toast.error("Cannot connect to network", {
-    //     position: "top-right",
-    //     autoClose: 5000,
-    //     hideProgressBar: false,
-    //     closeOnClick: true,
-    //     pauseOnHover: true,
-    //     draggable: true,
-    //     progress: undefined,
-    //     theme: "light",
-    //   });
-    //   setloader(false);
-    // } else if (response.code === "success") {
-    //   dispatch({
-    //     type: actionType.SET_ID,
-    //     id: response.data.data.id,
-    //   });
-    //   navigate("/payment");
-    // }
+    if (response === "ERR_NETWORK") {
+      toast.error("Cannot connect to network", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      setloader(false);
+    } else if (response.code === "success") {
+      dispatch({
+        type: actionType.SET_ID,
+        id: response.data.data.id,
+      });
+      navigate("/payment");
+    }
 
-    navigate("/payment");
+    // navigate("/payment");
   };
 
   const updateStates = (con) => {
@@ -275,7 +305,6 @@ const C1 = ({ pack }) => {
               className="w-full px-3 my-2 py-3 sm:mx-4 bg-white border rounded-md text-sm"
             >
               <option value="-">State</option>
-              {console.log(states)}
               {states.map((state) => (
                 <>
                   <option value={state}>{state}</option>

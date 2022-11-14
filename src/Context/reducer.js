@@ -3,7 +3,8 @@ export const actionType = {
     SET_PACK: "SET_PACK",
     SET_PAGE1: "SET_PAGE1",
     SET_PAGE2: "SET_PAGE2",
-    SET_PAGE3: "SET_PAGE3"
+    SET_PAGE3: "SET_PAGE3",
+    SET_PACKN: "SET_PACKN"
 };
 
 const reducer = (state, action) => {
@@ -26,6 +27,8 @@ const reducer = (state, action) => {
         case actionType.SET_PAGE3:
             return { ...state, page3Data: action.page3Data };
 
+        case actionType.SET_PACKN:
+            return { ...state, packNumber: action.packNumber };
         default:
             return state;
     }

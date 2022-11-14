@@ -34,6 +34,10 @@ const SingleProduct = ({ setpack }) => {
       type: actionType.SET_PACK,
       pack: pack2,
     });
+    dispatch({
+      type: actionType.SET_PACKN,
+      packNumber : 2,
+    });
   }, []);
 
   // This will afterwards come from DB
@@ -52,6 +56,10 @@ const SingleProduct = ({ setpack }) => {
           type: actionType.SET_PACK,
           pack: pack1,
         });
+        dispatch({
+          type: actionType.SET_PACKN,
+          packNumber : 1,
+        });
         break;
       case 2:
         setPack1css("");
@@ -61,6 +69,10 @@ const SingleProduct = ({ setpack }) => {
           type: actionType.SET_PACK,
           pack: pack2,
         });
+        dispatch({
+          type: actionType.SET_PACKN,
+          packNumber : 2,
+        });
         break;
       case 3:
         setPack1css("");
@@ -69,6 +81,10 @@ const SingleProduct = ({ setpack }) => {
         dispatch({
           type: actionType.SET_PACK,
           pack: pack3,
+        });
+        dispatch({
+          type: actionType.SET_PACKN,
+          packNumber : 3,
         });
         break;
     }

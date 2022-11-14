@@ -3,5 +3,6 @@ export const initialState = {
     pack : false,
     page1Data : false,
     page2Data : false,
-    page3Data : false
+    page3Data : false,
+    packNumber : 0
   };  

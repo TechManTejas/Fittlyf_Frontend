@@ -30,16 +30,16 @@ const C1 = () => {
       page2Data: data,
     });
 
-    // let response = await sendOrderPage2Data(data);
+    let response = await sendOrderPage2Data(data);
 
-    // console.log(response.data.code);
+    console.log(response.data.code);
 
-    // if (response.data.code === "success") {
-    //   navigate("/shipping");
-    //   setloader(false);
-    // }
+    if (response.data.code === "success") {
+      navigate("/shipping");
+      setloader(false);
+    }
 
-    navigate("/shipping");
+    // navigate("/shipping");
   };
 
   return (
@@ -51,7 +51,7 @@ const C1 = () => {
               <h1 className="font-normal text-3xl mb-4 mt-3 box:mt-16">
                 fittlyf
               </h1>
-              <div>Order id : {id}</div>
+              {/* <div>Order id : {id}</div> */}
               <div className="flex flex-col box:hidden bg-gray-100">
                 <div className="flex justify-between items-center py-4 px-2">
                   <button
@@ -130,8 +130,8 @@ const C1 = () => {
               <p className="text-sm my-5">
                 <span className="text-red-500">Cart</span> &gt;{" "}
                 <span className="text-red-500">Information</span> &gt;{" "}
-                <span className="text-gray-500">Shipping</span> &gt;{" "}
-                <span className="text-gray-500">Payment</span>
+                <span className="text-gray-500">Payment</span> &gt;{" "}
+                <span className="text-gray-500">Shipping</span>
               </p>
             </div>
 

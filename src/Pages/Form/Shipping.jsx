@@ -5,6 +5,7 @@ import { sendOrderPage3Data } from "../../APIs/OrdersAPI";
 import { useEffect } from "react";
 import { useStateValue } from "../../Context/StateProvider";
 import axios from "axios"
+import backendbaseuri from "../../Config/index"
 
 async function loadScript(src) {
   return new Promise(resolve => {
@@ -42,7 +43,7 @@ const C1 = () => {
       return
     }
 
-    const data = await axios.post('http://localhost:9000/razorpay/', {})
+    const data = await axios.post(`http://${backendbaseuri}/razorpay/`, {})
     console.log(data)
 
     const options = {

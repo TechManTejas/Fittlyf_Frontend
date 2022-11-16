@@ -84,10 +84,17 @@ const C1 = () => {
     console.log(response);
 
     if (response.data.code === "success") {
-      displayRazorpay()
+      // displayRazorpay()
+      placeOrder(id)
       setloader(false);
     }
   };
+
+  const placeOrder = async (id) => {
+    let response = await axios.post(`${backendbaseuri}placeorder`, {id: id})
+    console.log(response);
+    return response
+  }
 
   return (
     <div className="flex justify-end box:w-[54vw]">

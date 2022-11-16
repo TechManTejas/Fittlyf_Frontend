@@ -84,7 +84,7 @@ const C1 = () => {
     console.log(response);
 
     if (response.data.code === "success") {
-      // displayRazorpay()
+      displayRazorpay()
       placeOrder(id)
       setloader(false);
     }

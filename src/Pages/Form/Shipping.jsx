@@ -47,7 +47,7 @@ const C1 = () => {
     console.log(data)
 
     const options = {
-      "key": "rzp_live_N1vLKkvguKjZGT", // Enter the Key ID generated from the Dashboard
+      "key": "rzp_test_WPA6J9hOSf3nLT", // Enter the Key ID generated from the Dashboard
       "currency": data.data.currency,
       "amount": data.data.amount.toString(),
       "name": "Fittlyf",
@@ -65,7 +65,15 @@ const C1 = () => {
       },
       "theme": {
         "color": "#3399cc"
+      },
+      "handler": function (response) {
+        console.log(response.razorpay_payment_id);
+        console.log(response.razorpay_order_id);
+        console.log(response.razorpay_signature)
+        placeOrder(id)
+        console.log("Order placed")
       }
+
     };
 
     const paymentObject = new window.Razorpay(options);
@@ -85,7 +93,7 @@ const C1 = () => {
 
     if (response.data.code === "success") {
       displayRazorpay()
-      placeOrder(id)
+      console.log("Pay!")
       setloader(false);
     }
   };

@@ -6,8 +6,8 @@ import { useEffect } from "react";
 import { useStateValue } from "../../Context/StateProvider";
 
 const C1 = () => {
-  const [showSummary, setShowSummary] = useState(true);
-  const [{ id }] = useStateValue();
+  const [showSummary, setShowSummary] = useState(false);
+  const [{ id, page1Data, page2Data }] = useStateValue();
   const [loader, setloader] = useState(false);
   const navigate = useNavigate();
   const shipping = useRef();
@@ -124,10 +124,10 @@ const C1 = () => {
             <div className="text-sm border rounded-md ">
               <p className="flex items-center px-5 py-3 justify-between">
                 <span className="flex xl:flex-row flex-col text-gray-500 ">
-                  Contact{" "}
-                  <span className="text-black xl:pl-6">myemail@gmail.com</span>{" "}
+                  Contact
+                  <span className="text-black xl:pl-6">{page1Data.emailPhoneNumber}</span>{" "}
                 </span>
-                <span className="text-sm text-red-500 pl-2">Change</span>
+                <span className="text-sm text-red-500 pl-2"><Link to="/form">Change</Link></span>
               </p>
               {/* <p className="flex flex-wrap items-center px-5 py-3 justify-between">
                                 <span className="text-gray-500">Contact <span className="text-black pl-6">myemail@gmail.com</span> </span>
@@ -136,10 +136,10 @@ const C1 = () => {
               <hr />
               <p className="flex items-center px-5 py-3 justify-between">
                 <span className="flex xl:flex-row flex-col text-gray-500 ">
-                  Ship to{" "}
-                  <span className="text-black xl:pl-6">address, MH, India</span>{" "}
+                  Ship to
+                  <span className="text-black xl:pl-6">{`${page1Data.city}, ${page1Data.state}, India`}</span>{" "}
                 </span>
-                <span className="text-sm text-red-500 pl-2">Change</span>
+                <span className="text-sm text-red-500 pl-2"><Link to="/form">Change</Link></span>
               </p>
               {/* <p className="flex flex-wrap items-center px-5 py-3 justify-between">
                                 <span className="text-gray-500">Ship to <span className="text-black pl-6">address, MH, India</span> </span>
@@ -148,12 +148,12 @@ const C1 = () => {
               <hr />
               <p className="flex items-center px-5 py-3 justify-between">
                 <span className="flex xl:flex-row flex-col text-gray-500 ">
-                  Method{" "}
+                  Method
                   <span className="text-black xl:pl-6">
-                    Cash on Delivery - Shipping Charges · Free
+                    {page2Data.mode ? "Cash on Delivery - Shipping Charges · Free" : "Prepaid - Free Shipping" }      
                   </span>{" "}
                 </span>
-                <span className="text-sm text-red-500 pl-2">Change</span>
+                <span className="text-sm text-red-500 pl-2"><Link to="/payment">Change</Link></span>
               </p>
             </div>
 
@@ -164,7 +164,7 @@ const C1 = () => {
               </p>
               <div className="border text-sm rounded-md">
                 <div className=" px-5 py-5">
-                  <p>Cash on Delivery (COD)</p>
+                {page2Data.mode ? "Cash on Delivery - Shipping Charges · Free" : "Prepaid - Free Shipping" }      
                 </div>
               </div>
             </div>
@@ -191,7 +191,7 @@ const C1 = () => {
               <div className="flex flex-col-reverse sm:flex-row sm:flex mb-10 sm:justify-between sm:items-center">
                 <div className=" sm:my-0 flex justify-center">
                   <button className="text-sm text-red-500">
-                    <Link to="/shipping">&lt; Return to Shipping</Link>
+                    <Link to="/payment">&lt; Return to Billing</Link>
                   </button>
                 </div>
 

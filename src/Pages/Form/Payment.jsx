@@ -5,23 +5,25 @@ import { useStateValue } from "../../Context/StateProvider";
 import { actionType } from "../../Context/reducer";
 
 const C1 = () => {
-  const [{ id, page2Data }, dispatch] = useStateValue();
-  const [showSummary, setShowSummary] = useState(true);
+  const [{ id, page2Data, page1Data }, dispatch] = useStateValue();
+  const [showSummary, setShowSummary] = useState(false);
   const [loader, setloader] = useState(false);
   const navigate = useNavigate();
-  const shipping = useRef();
+  const cod = useRef();
+  const prepaid = useRef();
 
   useEffect(() => {
     if (page2Data) {
-      console.log(page2Data)
-      shipping.current.checked = page2Data.mode;
+      // console.log(page2Data);
+      if (page2Data.mode) cod.current.checked = true;
+      else prepaid.current.checked = true;
     }
   }, []);
 
   const orderPage2data = async () => {
     setloader(true);
     const data = {
-      mode: shipping.current.checked,
+      mode: cod.current.checked,
       id: id,
     };
 
@@ -30,16 +32,16 @@ const C1 = () => {
       page2Data: data,
     });
 
-    let response = await sendOrderPage2Data(data);
+    // let response = await sendOrderPage2Data(data);
 
-    console.log(response.data.code);
+    // console.log(response.data.code);
 
-    if (response.data.code === "success") {
-      navigate("/shipping");
-      setloader(false);
-    }
+    // if (response.data.code === "success") {
+    //   navigate("/shipping");
+    //   setloader(false);
+    // }
 
-    // navigate("/shipping");
+    navigate("/shipping");
   };
 
   return (
@@ -138,8 +140,10 @@ const C1 = () => {
             <div className="border text-sm rounded-md ">
               <p className="flex flex-wrap  items-center px-5 py-3 justify-between">
                 <span className="text-gray-500">
-                  Contact{" "}
-                  <span className="text-black pl-6">myemail@gmail.com</span>{" "}
+                  Contact
+                  <span className="text-black pl-6">
+                    {page1Data.emailPhoneNumber}
+                  </span>{" "}
                 </span>
                 <span className="text-xs text-red-500">Change</span>
               </p>
@@ -147,9 +151,11 @@ const C1 = () => {
               <p className="flex flex-wrap items-center px-5 py-3 justify-between">
                 <span className="text-gray-500">
                   Ship to{" "}
-                  <span className="text-black pl-6">address, MH, India</span>{" "}
+                  <span className="text-black pl-6">{`${page1Data.city}, ${page1Data.state}, India`}</span>{" "}
                 </span>
-                <span className="text-xs text-red-500">Change</span>
+                <span className="text-xs text-red-500">
+                  <Link to="/form">Change</Link>
+                </span>
               </p>
             </div>
 
@@ -158,7 +164,7 @@ const C1 = () => {
               <div className="border text-sm rounded-md">
                 <div className="flex flex-wrap items-center px-5 py-4 justify-between">
                   <div className="flex">
-                    <input ref={shipping} type="radio" name="method" id="" />
+                    <input ref={cod} type="radio" name="method" id="" />
                     <p className="pl-4">Cash on Delivery - Shipping Charges</p>
                   </div>
                   <span>Free</span>
@@ -166,7 +172,7 @@ const C1 = () => {
                 <hr />
                 <div className="flex items-center px-5 py-4 justify-between">
                   <div className="flex">
-                    <input type="radio" name="method" id="" />
+                    <input ref={prepaid} type="radio" name="method" id="" />
                     <p className="pl-4">Prepaid - Free Shipping</p>
                   </div>
                   <span>Free</span>

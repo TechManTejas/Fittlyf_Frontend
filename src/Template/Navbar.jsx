@@ -16,7 +16,7 @@ const Navbar = () => {
 
       <div className = {dis ? "flex" : "hidden sm:block"}>
         <ul
-          className="transition-all duration-1000 ease-in-out text-center flex bg-white gap-y-10 h-full fixed p-11 right-0 top-0 font-medium flex-col sm:flex-row sm:gap-20 sm:relative sm:p-0"
+          className="transition-all duration-1000 ease-in-out text-center flex bg-white gap-y-10 h-full fixed p-11 z-10 right-0 top-0 font-medium flex-col sm:flex-row sm:gap-20 sm:relative sm:p-0"
         >
           <NavLink className= { window.location.pathname === "/" ? "text-base opacity-70 border-0 border-violet-700 border-b-2" :  "text-base opacity-70"} to="/">
             Home

@@ -6,11 +6,11 @@ import Ingredients from "./Ingredients"
 import Review from "./Review"
 import SingleProduct from "./SingleProduct"
 
-const Products = ({setpack}) => {
+const Products = () => {
     return (
         <div id="Products">
             <Navbar/>
-            <SingleProduct setpack = {setpack}/>
+            <SingleProduct/>
             <Ingredients/>
             <Experts />
             <Review/>

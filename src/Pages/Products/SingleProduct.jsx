@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useStateValue } from "../../Context/StateProvider";
 import { actionType } from "../../Context/reducer";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
 
 const SingleProduct = ({ setpack }) => {
   const [{ pack }, dispatch] = useStateValue();
@@ -32,6 +34,10 @@ const SingleProduct = ({ setpack }) => {
       type: actionType.SET_PACK,
       pack: pack2,
     });
+    dispatch({
+      type: actionType.SET_PACKN,
+      packNumber: 2,
+    });
   }, []);
 
   // This will afterwards come from DB
@@ -47,27 +53,39 @@ const SingleProduct = ({ setpack }) => {
         setPack2css("");
         setPack3css("");
         dispatch({
-            type: actionType.SET_PACK,
-            pack: pack1,
-          });
+          type: actionType.SET_PACK,
+          pack: pack1,
+        });
+        dispatch({
+          type: actionType.SET_PACKN,
+          packNumber: 1,
+        });
         break;
       case 2:
         setPack1css("");
         setPack2css("border border-red-600");
         setPack3css("");
         dispatch({
-            type: actionType.SET_PACK,
-            pack: pack2,
-          });
+          type: actionType.SET_PACK,
+          pack: pack2,
+        });
+        dispatch({
+          type: actionType.SET_PACKN,
+          packNumber: 2,
+        });
         break;
       case 3:
         setPack1css("");
         setPack2css("");
         setPack3css("border border-red-600");
         dispatch({
-            type: actionType.SET_PACK,
-            pack: pack3,
-          });
+          type: actionType.SET_PACK,
+          pack: pack3,
+        });
+        dispatch({
+          type: actionType.SET_PACKN,
+          packNumber: 3,
+        });
         break;
     }
   };
@@ -77,7 +95,7 @@ const SingleProduct = ({ setpack }) => {
       id="SingleProduct"
       className="md:my-20 flex flex-wrap lg:flex-nowrap items-start justify-evenly"
     >
-      <div className="flex flex-col mx-10 mb-3">
+      {/* <div className="flex flex-col mx-10 mb-3">
         <img src="p.png" alt="" />
         <div className="flex items-center space-x-8 md:mt-10">
           <img className="w-20 hidden md:block" src="p.png" alt="" />
@@ -85,7 +103,19 @@ const SingleProduct = ({ setpack }) => {
           <img className="w-20 hidden md:block" src="p.png" alt="" />
           <img className="w-20 hidden md:block" src="p.png" alt="" />
         </div>
-      </div>
+      </div> */}
+
+      <Carousel showThumbs={false} className="mx-10 my-3 md:w-4/6 lg:w-2/6 " >
+        <div>
+          <img src="p.png" />
+        </div>
+        <div>
+          <img src="p.png" />
+        </div>
+        <div>
+          <img src="p.png" />
+        </div>
+      </Carousel>
 
       <div className="md:mt-0 m-4">
         <h2 className="font-bold md:max-w-3xl text-2xl sm:text-4xl mb-4">
@@ -134,32 +164,29 @@ const SingleProduct = ({ setpack }) => {
         <div className="md:flex">
           <div className="flex flex-col my-10 items-center">
             <div className="grid grid-cols-3 sm:flex sm:flex-wrap justify-around items-center">
-              
-              <div>
-                <button onClick={() => setBorder(1)} className="">
-                  <div
-                    className={`text-left rounded-lg p-3 m-1 w-28 sm:w-40 ${pack1css}`}
-                    style={{ background: "#F4F4F4" }}
-                  >
-                    <div className="sm:flex justify-between">
-                      <div className="font-semibold text-xs tracking-tight">
-                        1 MONTH
-                      </div>
-                      <div className="font-bold text-sm">Rs. 499</div>
+              <button onClick={() => setBorder(1)} className="sm:mx-3">
+                <div
+                  className={`text-left rounded-lg p-3 m-1 w-28 sm:w-40 ${pack1css}`}
+                  style={{ background: "#F4F4F4" }}
+                >
+                  <div className="sm:flex justify-between">
+                    <div className="font-semibold text-xs tracking-tight">
+                      1 MONTH
                     </div>
-                    <hr className="bg-slate-400"></hr>
-                    <div className="font-normal text-xs my-3 tracking-tight">
-                      1 bottle
-                    </div>
-                    <div className="font-normal text-xs my-3 tracking-tight">
-                      60 tablets
-                    </div>
-                    <div className="font-normal text-xs mt-3 tracking-tight">
-                      Expiry: 3 years
-                    </div>
+                    <div className="font-bold text-sm">Rs. 499</div>
                   </div>
-                </button>
-              </div>
+                  <hr className="bg-slate-400"></hr>
+                  <div className="font-normal text-xs my-3 tracking-tight">
+                    1 bottle
+                  </div>
+                  <div className="font-normal text-xs my-3 tracking-tight">
+                    60 tablets
+                  </div>
+                  <div className="font-normal text-xs mt-3 tracking-tight">
+                    Expiry: 3 years
+                  </div>
+                </div>
+              </button>
 
               <div className="flex flex-col items-center sm:mx-3">
                 <div className="text-center text-xs bg-red-400 text-white absolute rounded-t-md px-1 sm:px-3 -mt-3">
@@ -190,38 +217,35 @@ const SingleProduct = ({ setpack }) => {
                 </button>
               </div>
 
-              <div>
-                <button onClick={() => setBorder(3)} className="">
-                  <div
-                    className={`text-left rounded-lg p-3 m-1 w-28 sm:w-40 ${pack3css}`}
-                    style={{ background: "#F4F4F4" }}
-                  >
-                    <div className="sm:flex justify-between">
-                      <div className="font-semibold text-xs tracking-tight">
-                        4 MONTH
-                      </div>
-                      <div className="font-bold text-sm">Rs. 1299</div>
+              <button onClick={() => setBorder(3)} className="sm:mx-3">
+                <div
+                  className={` text-left rounded-lg p-3 m-1 w-28 sm:w-40 ${pack3css}`}
+                  style={{ background: "#F4F4F4" }}
+                >
+                  <div className="sm:flex justify-between">
+                    <div className="font-semibold text-xs tracking-tight">
+                      4 MONTH
                     </div>
-                    <hr className="bg-slate-400"></hr>
-                    <div className="font-normal text-xs my-3 tracking-tight">
-                      4 bottles
-                    </div>
-                    <div className="font-normal text-xs my-3 tracking-tight">
-                      240 tablets
-                    </div>
-                    <div className="font-normal text-xs mt-3 tracking-tight">
-                      Expiry: 3 years
-                    </div>
+                    <div className="font-bold text-sm">Rs. 1299</div>
                   </div>
-                </button>
-              </div>
-              
+                  <hr className="bg-slate-400"></hr>
+                  <div className="font-normal text-xs my-3 tracking-tight">
+                    4 bottles
+                  </div>
+                  <div className="font-normal text-xs my-3 tracking-tight">
+                    240 tablets
+                  </div>
+                  <div className="font-normal text-xs mt-3 tracking-tight">
+                    Expiry: 3 years
+                  </div>
+                </div>
+              </button>
             </div>
 
             <div className="m-8 flex items-center">
               <Link
                 to="/form"
-                className="text-xl py-4 px-16 bg-[#4B1785] border rounded-md font-bold text-white"
+                className="text-xl py-3 px-16 bg-[#4B1785] border rounded-md font-bold text-white"
               >
                 BUY NOW
               </Link>

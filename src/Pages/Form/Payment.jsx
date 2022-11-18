@@ -2,21 +2,35 @@ import { useRef, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { sendOrderPage2Data } from "../../APIs/OrdersAPI";
 import { useStateValue } from "../../Context/StateProvider";
+import { actionType } from "../../Context/reducer";
 
 const C1 = () => {
-  const [{id}, dispatch] = useStateValue();
-  const [showSummary, setShowSummary] = useState(true);
+  const [{ id, page2Data, page1Data }, dispatch] = useStateValue();
+  const [showSummary, setShowSummary] = useState(false);
   const [loader, setloader] = useState(false);
   const navigate = useNavigate();
-  const shipping = useRef();
+  const cod = useRef();
+  const prepaid = useRef();
+
+  useEffect(() => {
+    if (page2Data) {
+      // console.log(page2Data);
+      if (page2Data.mode) cod.current.checked = true;
+      else prepaid.current.checked = true;
+    }
+  }, []);
 
   const orderPage2data = async () => {
-
     setloader(true);
     const data = {
-      mode : shipping.current.checked,
-      id : id
+      mode: cod.current.checked,
+      id: id,
     };
+
+    dispatch({
+      type: actionType.SET_PAGE2,
+      page2Data: data,
+    });
 
     let response = await sendOrderPage2Data(data);
 
@@ -26,18 +40,20 @@ const C1 = () => {
       navigate("/shipping");
       setloader(false);
     }
+
+    // navigate("/shipping");
   };
 
   return (
     <div className="flex justify-end box:w-[54vw]">
-      <div className="w-screen sm:max-w-[45rem]">
-        <div className="h-screen mx-4 md:mx-14 flex flex-col  justify-between">
+      <div className="w-screen sm:w-[44rem]">
+        <div className="h-screen mx-4 sm:mx-14 flex flex-col  justify-between">
           <div>
             <div>
               <h1 className="font-normal text-3xl mb-4 mt-3 box:mt-16">
                 fittlyf
               </h1>
-              <div>Order id : {id}</div>
+              {/* <div>Order id : {id}</div> */}
               <div className="flex flex-col box:hidden bg-gray-100">
                 <div className="flex justify-between items-center py-4 px-2">
                   <button
@@ -116,16 +132,18 @@ const C1 = () => {
               <p className="text-sm my-5">
                 <span className="text-red-500">Cart</span> &gt;{" "}
                 <span className="text-red-500">Information</span> &gt;{" "}
-                <span className="text-gray-500">Shipping</span> &gt;{" "}
-                <span className="text-gray-500">Payment</span>
+                <span className="text-gray-500">Payment</span> &gt;{" "}
+                <span className="text-gray-500">Shipping</span>
               </p>
             </div>
 
             <div className="border text-sm rounded-md ">
               <p className="flex flex-wrap  items-center px-5 py-3 justify-between">
                 <span className="text-gray-500">
-                  Contact{" "}
-                  <span className="text-black pl-6">myemail@gmail.com</span>{" "}
+                  Contact
+                  <span className="text-black pl-6">
+                    {page1Data.emailPhoneNumber}
+                  </span>{" "}
                 </span>
                 <span className="text-xs text-red-500">Change</span>
               </p>
@@ -133,9 +151,11 @@ const C1 = () => {
               <p className="flex flex-wrap items-center px-5 py-3 justify-between">
                 <span className="text-gray-500">
                   Ship to{" "}
-                  <span className="text-black pl-6">address, MH, India</span>{" "}
+                  <span className="text-black pl-6">{`${page1Data.city}, ${page1Data.state}, India`}</span>{" "}
                 </span>
-                <span className="text-xs text-red-500">Change</span>
+                <span className="text-xs text-red-500">
+                  <Link to="/form">Change</Link>
+                </span>
               </p>
             </div>
 
@@ -144,7 +164,7 @@ const C1 = () => {
               <div className="border text-sm rounded-md">
                 <div className="flex flex-wrap items-center px-5 py-4 justify-between">
                   <div className="flex">
-                    <input ref={shipping} type="radio" name="method" id="" />
+                    <input ref={cod} type="radio" name="method" id="" />
                     <p className="pl-4">Cash on Delivery - Shipping Charges</p>
                   </div>
                   <span>Free</span>
@@ -152,7 +172,7 @@ const C1 = () => {
                 <hr />
                 <div className="flex items-center px-5 py-4 justify-between">
                   <div className="flex">
-                    <input type="radio" name="method" id="" />
+                    <input ref={prepaid} type="radio" name="method" id="" />
                     <p className="pl-4">Prepaid - Free Shipping</p>
                   </div>
                   <span>Free</span>
@@ -222,7 +242,7 @@ const C2 = ({ pack }) => {
               <h4 className="font-semibold">
                 YOSHA PCOS PCOD tablets | Delayed Periods | Ayurvedic
               </h4>
-              <p className="my-2">{`${pack.period} ₹ ${pack.price} ${pack.bottle} bottle ${pack.tablets} tablets`}</p>
+              <p>{`${pack.period} ₹ ${pack.price} ${pack.bottle} bottle ${pack.tablets} tablets`}</p>
             </div>
             <span className="font-semibold">{`₹${pack.price}`}</span>
           </div>

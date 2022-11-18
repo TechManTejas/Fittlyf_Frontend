@@ -10,21 +10,21 @@ const Navbar = () => {
   return (
     <div
       id="Navbar"
-      className="border-0 border-gray-300 border-b-2 md:space-y-0 p-3 flex-wrap flex items-center sm:justify-around justify-between mx-2"
+      className="border-0 border-gray-300 border-b-2 md:space-y-0 p-3 flex-wrap flex items-center justify-around "
     >
       <img className="w-28" id="logoImg" src="image2.png" alt="" />
 
-      <div className = {dis ? "flex" : "hidden sm:block"}>
+      <div className={dis ? "flex" : "hidden sm:block"}>
         <ul
-          className="transition-all duration-1000 ease-in-out text-center flex bg-white gap-y-10 h-full fixed p-11 right-0 top-0 font-medium flex-col sm:flex-row sm:gap-20 sm:relative sm:p-0"
+          className="transition-all duration-1000 ease-in-out text-center flex bg-white gap-y-10 h-full fixed p-11 z-10 right-0 top-0 font-medium flex-col sm:flex-row sm:gap-20 sm:relative sm:p-0"
         >
-          <NavLink className= { window.location.pathname === "/" ? "text-base opacity-70 border-0 border-violet-700 border-b-2" :  "text-base opacity-70"} to="/">
+          <NavLink className={window.location.pathname === "/" ? "text-base opacity-70 border-0 border-violet-700 border-b-2" : "text-base opacity-70"} to="/">
             Home
           </NavLink>
-          <NavLink className= { window.location.pathname === "/products" ? "text-base opacity-70 border-0 border-violet-700 border-b-2" :  "text-base opacity-70"} to="/products">
+          <NavLink className={window.location.pathname === "/products" ? "text-base opacity-70 border-0 border-violet-700 border-b-2" : "text-base opacity-70"} to="/products">
             Products
           </NavLink>
-          <NavLink className= { window.location.pathname === "/about" ? "text-base opacity-70 border-0 border-violet-700 border-b-2" :  "text-base opacity-70"} to="/about">
+          <NavLink className={window.location.pathname === "/about" ? "text-base opacity-70 border-0 border-violet-700 border-b-2" : "text-base opacity-70"} to="/about">
             About us
           </NavLink>
           {dis && (

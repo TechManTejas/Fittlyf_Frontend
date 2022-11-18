@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { sendOrderPage3Data } from "../../APIs/OrdersAPI";
 import { useEffect } from "react";
 import { useStateValue } from "../../Context/StateProvider";
-import axios from "axios"
-import {backendbaseuri} from "../../Config/index"
+import axios from "axios" // newly added 
+import {backendbaseuri} from "../../Config/index" //newly added
 
 async function loadScript(src) {
   return new Promise(resolve => {
@@ -25,8 +25,8 @@ async function loadScript(src) {
 
 
 const C1 = () => {
-  const [showSummary, setShowSummary] = useState(true);
-  const [{id}] = useStateValue()
+  const [showSummary, setShowSummary] = useState(false);
+  const [{ id, page1Data, page2Data }] = useStateValue();
   const [loader, setloader] = useState(false);
   const navigate = useNavigate();
   const shipping = useRef();
@@ -80,6 +80,12 @@ const C1 = () => {
     paymentObject.open();
   }
 
+  const placeOrder = async (id) => {
+    let response = await axios.post(`${backendbaseuri}placeorder`, { id: id })
+    console.log(response);
+    return response
+  }
+
   const orderPage3data = async () => {
     setloader(true);
     const data = {
@@ -98,16 +104,12 @@ const C1 = () => {
     }
   };
 
-  const placeOrder = async (id) => {
-    let response = await axios.post(`${backendbaseuri}placeorder`, {id: id})
-    console.log(response);
-    return response
-  }
+  
 
   return (
     <div className="flex justify-end box:w-[54vw]">
-      <div className="w-screen sm:w-[44rem]">
-        <div className="h-screen mx-4 sm:mx-14 flex flex-col  justify-between">
+      <div className="w-screen sm:max-w-[45rem]">
+        <div className="h-screen mx-4 md:mx-14 flex flex-col  justify-between">
           <div>
             <div>
               <h1 className="font-normal text-3xl mb-4 mt-3 box:mt-16">
@@ -192,18 +194,18 @@ const C1 = () => {
               <p className="text-sm my-5">
                 <span className="text-red-500">Cart</span> &gt;{" "}
                 <span className="text-red-500">Information</span> &gt;{" "}
-                <span className="text-red-500">Shipping</span> &gt;{" "}
-                <span className="text-gray-500">Payment</span>
+                <span className="text-gray-500">Payment</span> &gt;{" "}
+                <span className="text-gray-500">Shipping</span>
               </p>
             </div>
 
             <div className="text-sm border rounded-md ">
               <p className="flex items-center px-5 py-3 justify-between">
                 <span className="flex xl:flex-row flex-col text-gray-500 ">
-                  Contact{" "}
-                  <span className="text-black xl:pl-6">myemail@gmail.com</span>{" "}
+                  Contact
+                  <span className="text-black xl:pl-6">{page1Data.emailPhoneNumber}</span>{" "}
                 </span>
-                <span className="text-sm text-red-500 pl-2">Change</span>
+                <span className="text-sm text-red-500 pl-2"><Link to="/form">Change</Link></span>
               </p>
               {/* <p className="flex flex-wrap items-center px-5 py-3 justify-between">
                                 <span className="text-gray-500">Contact <span className="text-black pl-6">myemail@gmail.com</span> </span>
@@ -212,10 +214,10 @@ const C1 = () => {
               <hr />
               <p className="flex items-center px-5 py-3 justify-between">
                 <span className="flex xl:flex-row flex-col text-gray-500 ">
-                  Ship to{" "}
-                  <span className="text-black xl:pl-6">address, MH, India</span>{" "}
+                  Ship to
+                  <span className="text-black xl:pl-6">{`${page1Data.city}, ${page1Data.state}, India`}</span>{" "}
                 </span>
-                <span className="text-sm text-red-500 pl-2">Change</span>
+                <span className="text-sm text-red-500 pl-2"><Link to="/form">Change</Link></span>
               </p>
               {/* <p className="flex flex-wrap items-center px-5 py-3 justify-between">
                                 <span className="text-gray-500">Ship to <span className="text-black pl-6">address, MH, India</span> </span>
@@ -224,12 +226,12 @@ const C1 = () => {
               <hr />
               <p className="flex items-center px-5 py-3 justify-between">
                 <span className="flex xl:flex-row flex-col text-gray-500 ">
-                  Method{" "}
+                  Method
                   <span className="text-black xl:pl-6">
-                    Cash on Delivery - Shipping Charges · Free
+                    {page2Data.mode ? "Cash on Delivery - Shipping Charges · Free" : "Prepaid - Free Shipping"}
                   </span>{" "}
                 </span>
-                <span className="text-sm text-red-500 pl-2">Change</span>
+                <span className="text-sm text-red-500 pl-2"><Link to="/payment">Change</Link></span>
               </p>
             </div>
 
@@ -240,7 +242,7 @@ const C1 = () => {
               </p>
               <div className="border text-sm rounded-md">
                 <div className=" px-5 py-5">
-                  <p>Cash on Delivery (COD)</p>
+                  {page2Data.mode ? "Cash on Delivery - Shipping Charges · Free" : "Prepaid - Free Shipping"}
                 </div>
               </div>
             </div>
@@ -267,7 +269,7 @@ const C1 = () => {
               <div className="flex flex-col-reverse sm:flex-row sm:flex mb-10 sm:justify-between sm:items-center">
                 <div className=" sm:my-0 flex justify-center">
                   <button className="text-sm text-red-500">
-                    <Link to="/shipping">&lt; Return to Shipping</Link>
+                    <Link to="/payment">&lt; Return to Billing</Link>
                   </button>
                 </div>
 
@@ -323,7 +325,7 @@ const C2 = ({ pack }) => {
               <h4 className="font-semibold">
                 YOSHA PCOS PCOD tablets | Delayed Periods | Ayurvedic
               </h4>
-              <p className="my-2">{`${pack.period} ₹ ${pack.price} ${pack.bottle} bottle ${pack.tablets} tablets`}</p>
+              <p>{`${pack.period} ₹ ${pack.price} ${pack.bottle} bottle ${pack.tablets} tablets`}</p>
             </div>
             <span className="font-semibold">{`₹${pack.price}`}</span>
           </div>

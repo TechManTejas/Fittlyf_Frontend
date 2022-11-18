@@ -9,13 +9,13 @@ import Product from "./Product"
 const Home = () => {
     return (
         <div id="Home">
-            <Navbar/>
-            <Main/>
-            <Mission/>
-            <Product/>
-            <Believe/>
-            <Join/>
-            <Footer/>
+            <Navbar />
+            <Main />
+            <Mission />
+            <Product />
+            <Believe />
+            <Join />
+            <Footer />
         </div>
     )
 }

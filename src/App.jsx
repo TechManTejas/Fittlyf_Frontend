@@ -4,8 +4,7 @@ import Products from "./Pages/Products";
 import Form from "./Pages/Form";
 import Shipping from "./Pages/Form/Shipping";
 import Payment from "./Pages/Form/Payment";
-import Razorpay from "./Pages/Form/Razorpay"
-import { TempPage } from "./Pages/TempPage";
+import { Notify } from "./Components/Notify";
 
 const App = () => {
   return (
@@ -17,8 +16,8 @@ const App = () => {
         <Route exact path="/form" element={<Form />} />
         <Route exact path="/shipping" element={<Shipping />} />
         <Route exact path="/payment" element={<Payment />} />
-        <Route exact path="/temp" element={<TempPage />} />
       </Routes>
+      <Notify />
     </>
   );
 };

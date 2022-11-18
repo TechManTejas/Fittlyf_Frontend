@@ -1,76 +1,84 @@
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { sendOrderPage1Data } from "../../APIs/OrdersAPI";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { countries } from "../../APIs/Country";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { useStateValue } from "../../Context/StateProvider";
 import { actionType } from "../../Context/reducer";
+import { ValidateAll } from "../../Validator";
+import { Link } from "react-router-dom";
+import { states } from "../../APIs/States";
+import { Refs } from "../../Hooks/Refs";
+import {
+  page1SetInitialValue,
+  resolveResponse,
+} from "../../APIs/SetValueFunctions";
+import { notify } from "../../Components/Notify";
 
 const C1 = ({ pack }) => {
-  const [showSummary, setShowSummary] = useState(true);
+  //Inital States
+  const [showSummary, setShowSummary] = useState(false);
   const [loader, setloader] = useState(false);
-
+  const [{ page1Data, packNumber }, dispatch] = useStateValue();
   const navigate = useNavigate();
-  const [{ id }, dispatch] = useStateValue();
 
-  const emailPhoneNumber = useRef();
-  const emailMe = useRef();
-  const country = useRef();
-  const firstName = useRef();
-  const lastName = useRef();
-  const address = useRef();
-  const apartmentAndOthers = useRef();
-  const city = useRef();
-  const state = useRef();
-  const zip = useRef();
-  const saveThis = useRef();
-
-  // {pack.period} ₹ ${pack.price} ${pack.bottle} bottle ${pack.tablets}
+  // Set Initial Value to Input Tags
+  useEffect(() => {
+    page1SetInitialValue(page1Data);
+  }, []);
 
   const orderPage1Data = async () => {
     setloader(true);
 
+    const validate = ValidateAll();
+    if (validate !== "none") {
+      setloader(false);
+      notify(validate);
+      return;
+    }
+
     const data = {
-      emailPhoneNumber: emailPhoneNumber.current.value,
-      emailMe: emailMe.current.checked,
-      country: country.current.value,
-      firstName: firstName.current.value,
-      lastName: lastName.current.value,
-      address: address.current.value,
-      apartmentAndOthers: apartmentAndOthers.current.value,
-      city: city.current.value,
-      state: state.current.value,
-      zip: zip.current.value,
-      saveThis: saveThis.current.checked,
+      emailPhoneNumber: Refs.emailPhoneNumber.current.value,
+      emailMe: Refs.emailMe.current.checked,
+      country: Refs.country.current.value,
+      firstName: Refs.firstName.current.value,
+      lastName: Refs.lastName.current.value,
+      address: Refs.address.current.value,
+      apartmentAndOthers: Refs.apartmentAndOthers.current.value,
+      city: Refs.city.current.value,
+      state: Refs.state.current.value,
+      zip: Refs.zip.current.value,
+      saveThis: Refs.saveThis.current.checked,
       duration: pack.period,
       noOfBottles: pack.bottle,
       noOfTablets: pack.tablets,
       Price: pack.price,
+      packNumber: packNumber,
+      PhoneNumber: Refs.PhoneNumber.current.value,
     };
+
+    dispatch({
+      type: actionType.SET_PAGE1,
+      page1Data: data,
+    });
 
     let response = await sendOrderPage1Data(data);
 
-    if (response === "ERR_NETWORK") {
-      toast.error("Cannot connect to network", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+
+    if (response === "ERR_BAD_RESPONSE") {
+      notify("Server not Responding, Try After Some Time...");
       setloader(false);
-    } else if (response.code === "success") {
+    } else if (response === "ERR_NETWORK") {
+      notify("Cannot connect to network");
+      setloader(false);
+    } else if (response.data.code === "success") {
       dispatch({
         type: actionType.SET_ID,
         id: response.data.data.id,
       });
-      navigate("/payment")
+      navigate("/payment");
     }
+
+    // navigate("/payment");
   };
 
   return (
@@ -159,38 +167,48 @@ const C1 = ({ pack }) => {
           <h2 className="font-normal text-lg my-3">Contact Information</h2>
           <div>
             <input
-              ref={emailPhoneNumber}
+              ref={Refs.emailPhoneNumber}
               className="  w-[100%] focus:outline-red-500 border rounded-md px-4 py-3 text-sm"
-              placeholder="Email or mobile phone number"
+              placeholder="Email"
               type="text"
               name=""
               id=""
             />
           </div>
+          <div className="flex items-center gap-3 mt-3 border border-gray-500 rounded-md px-4 py-3">
+            <img
+              className="w-12 h-8"
+              src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/255px-Flag_of_India.svg.png"
+            ></img>
+            <div>+91</div>
+            <input
+              ref={Refs.PhoneNumber}
+              className=" w-[100%] focus:outline-red-500 border-t-0 border-x-0 text-sm"
+              placeholder="Mobile phone number"
+              type="tel"
+              name=""
+              id=""
+            />
+          </div>
           <div className="space-x-3 my-3 text-sm">
-            <input ref={emailMe} type="checkbox" name="" id="" />
+            <input ref={Refs.emailMe} type="checkbox" name="" id="" />
             <span>Email me with news and offers</span>
           </div>
 
           <h2 className="font-normal text-lg my-2 mt-8">Shipping address</h2>
 
           <select
-            ref={country}
+            ref={Refs.country}
             name=""
             id=""
             className="px-3 my-2  w-[100%] py-3 bg-white border rounded-lg text-sm"
           >
-            <option value="-">Country/region</option>
-            {countries.map((country) => (
-              <>
-                <option value={country}>{country}</option>
-              </>
-            ))}
+            <option value="India">India</option>
           </select>
 
           <div className="sm:flex">
             <input
-              ref={firstName}
+              ref={Refs.firstName}
               className="focus:outline-red-500 sm:mr-2 my-2 w-full border rounded-md px-4 py-3 text-sm"
               placeholder="First Name"
               type="text"
@@ -198,7 +216,7 @@ const C1 = ({ pack }) => {
               id=""
             />
             <input
-              ref={lastName}
+              ref={Refs.lastName}
               className=" focus:outline-red-500 sm:ml-2 my-2 w-full border rounded-md px-4 py-3 text-sm"
               placeholder="Last Name"
               type="text"
@@ -208,8 +226,8 @@ const C1 = ({ pack }) => {
           </div>
           <div>
             <input
-              ref={address}
-              className=" focus:outline-red-500  w-full my-2 border rounded-md px-4 py-3 text-sm"
+              ref={Refs.address}
+              className=" focus:outline-red-500 w-full my-2 border rounded-md px-4 py-3 text-sm"
               placeholder="Address"
               type="text"
               name=""
@@ -218,7 +236,7 @@ const C1 = ({ pack }) => {
           </div>
           <div>
             <input
-              ref={apartmentAndOthers}
+              ref={Refs.apartmentAndOthers}
               className=" focus:outline-red-500 my-2 w-full border rounded-md px-4 py-3 text-sm"
               placeholder="Apartment, suite, etc. (optional)"
               type="text"
@@ -228,7 +246,7 @@ const C1 = ({ pack }) => {
           </div>
           <div className="sm:flex">
             <input
-              ref={city}
+              ref={Refs.city}
               className="focus:outline-red-500 my-2 w-full border rounded-md px-4 py-3 text-sm"
               placeholder="City"
               type="text"
@@ -236,17 +254,22 @@ const C1 = ({ pack }) => {
               id=""
             />
             <select
-              ref={state}
+              ref={Refs.state}
               name=""
               id=""
               className="w-full px-3 my-2 py-3 sm:mx-4 bg-white border rounded-md text-sm"
             >
               <option value="-">State</option>
-              <option value="Pune">Pune</option>
-              <option value="Mumbai">Mumbai</option>
+              {states.map((state) => (
+                <>
+                  <option key={state} value={state}>
+                    {state}
+                  </option>
+                </>
+              ))}
             </select>
             <input
-              ref={zip}
+              ref={Refs.zip}
               className="focus:outline-red-500 my-2 w-full border rounded-md px-4 py-3 text-sm"
               placeholder="PIN code"
               type="text"
@@ -255,27 +278,28 @@ const C1 = ({ pack }) => {
             />
           </div>
           <div className="space-x-3 my-4 text-sm">
-            <input ref={saveThis} type="checkbox" name="" id="" />
+            <input ref={Refs.saveThis} type="checkbox" name="" id="" />
             <span>Save this information for next time</span>
           </div>
 
           <div className="flex flex-col-reverse sm:flex-row sm:flex mb-10 sm:justify-between sm:items-center">
             <div className=" sm:my-0 flex justify-center">
-              <button className="text-sm text-red-500">
-                &lt; Return to cart
-              </button>
+              <Link to="/products" className="text-sm text-red-500">
+                &lt; Return to Product
+              </Link>
             </div>
 
             <div className="mb-5 sm:my-0">
-              <button className="text-sm text-white bg-red-500 rounded-md py-6 sm:py-4 px-6 font-semibold w-full">
+              <button
+                onClick={() => orderPage1Data()}
+                className="text-sm text-white bg-red-500 rounded-md py-6 sm:py-4 px-6 font-semibold w-full"
+              >
                 {loader ? (
                   <>
                     <div>Loading...</div>
                   </>
                 ) : (
-                  <div onClick={() => orderPage1Data()}>
-                    Continue to Shipping
-                  </div>
+                  <div>Continue to Shipping</div>
                 )}
               </button>
             </div>
@@ -290,7 +314,6 @@ const C1 = ({ pack }) => {
           </div>
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 };
@@ -361,9 +384,7 @@ const Form = () => {
       <div id="Form">
         <div className="flex items-center justify-center">
           <C1 pack={pack} />
-
           <div className="border-r h-screen hidden box:block bg-gray-300"></div>
-
           <div className="hidden box:block">
             <C2 pack={pack} />
           </div>

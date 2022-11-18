@@ -32,16 +32,16 @@ const C1 = () => {
       page2Data: data,
     });
 
-    // let response = await sendOrderPage2Data(data);
+    let response = await sendOrderPage2Data(data);
 
-    // console.log(response.data.code);
+    console.log(response.data.code);
 
-    // if (response.data.code === "success") {
-    //   navigate("/shipping");
-    //   setloader(false);
-    // }
+    if (response.data.code === "success") {
+      navigate("/shipping");
+      setloader(false);
+    }
 
-    navigate("/shipping");
+    // navigate("/shipping");
   };
 
   return (

@@ -1,6 +1,6 @@
 // import validator from "validator";
 const validator = require('validator');
-import { Refs } from '../APIs/Refs';
+import { Refs } from '../Hooks/Refs';
 
 
 export const ValidateAll = () => {

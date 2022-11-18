@@ -2,15 +2,17 @@ import React, { useRef, useState } from "react";
 import { sendOrderPage1Data } from "../../APIs/OrdersAPI";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { useStateValue } from "../../Context/StateProvider";
 import { actionType } from "../../Context/reducer";
 import { ValidateAll } from "../../Validator";
 import { Link } from "react-router-dom";
 import { states } from "../../APIs/States";
-import { Refs } from "../../APIs/Refs";
-import { page1SetInitialValue } from "../../APIs/Refs";
+import { Refs } from "../../Hooks/Refs";
+import {
+  page1SetInitialValue,
+  resolveResponse,
+} from "../../APIs/SetValueFunctions";
+import { notify } from "../../Components/Notify";
 
 const C1 = ({ pack }) => {
   //Inital States
@@ -27,19 +29,10 @@ const C1 = ({ pack }) => {
   const orderPage1Data = async () => {
     setloader(true);
 
-    const validate = ValidateAll()
+    const validate = ValidateAll();
     if (validate !== "none") {
       setloader(false);
-      toast.error(`${validate}`, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light", 
-      });
+      notify(validate);
       return;
     }
 
@@ -68,29 +61,24 @@ const C1 = ({ pack }) => {
       page1Data: data,
     });
 
-    // let response = await sendOrderPage1Data(data);
+    let response = await sendOrderPage1Data(data);
 
-    // if (response === "ERR_NETWORK") {
-    //   toast.error("Cannot connect to network", {
-    //     position: "top-right",
-    //     autoClose: 5000,
-    //     hideProgressBar: false,
-    //     closeOnClick: true,
-    //     pauseOnHover: true,
-    //     draggable: true,
-    //     progress: undefined,
-    //     theme: "light",
-    //   });
-    //   setloader(false);
-    // } else if (response.code === "success") {
-    //   dispatch({
-    //     type: actionType.SET_ID,
-    //     id: response.data.data.id,
-    //   });
-    //   navigate("/payment");
-    // }
+  
+    if (response === "ERR_BAD_RESPONSE") {
+      notify("Server not Responding, Try After Some Time...");
+      setloader(false);
+    } else if (response === "ERR_NETWORK") {
+      notify("Cannot connect to network");
+      setloader(false);
+    } else if (response.data.code === "success") {
+      dispatch({
+        type: actionType.SET_ID,
+        id: response.data.data.id,
+      });
+      navigate("/payment");
+    }
 
-    navigate("/payment");
+    // navigate("/payment");
   };
 
   return (
@@ -274,7 +262,9 @@ const C1 = ({ pack }) => {
               <option value="-">State</option>
               {states.map((state) => (
                 <>
-                  <option value={state}>{state}</option>
+                  <option key={state} value={state}>
+                    {state}
+                  </option>
                 </>
               ))}
             </select>
@@ -324,7 +314,6 @@ const C1 = ({ pack }) => {
           </div>
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 };

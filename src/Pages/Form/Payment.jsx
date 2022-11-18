@@ -189,17 +189,18 @@ const C1 = () => {
                 </div>
 
                 <div className="mb-5 sm:my-0">
-                  <button className="text-sm text-white bg-red-500 rounded-md py-6 sm:py-4 px-6 font-semibold w-full">
-                    {loader ? (
-                      <>
-                        <div>Loading...</div>
-                      </>
-                    ) : (
-                      <div onClick={() => orderPage2data()}>
-                        Continue to Payment
-                      </div>
-                    )}
-                  </button>
+                  {loader ? (
+                    <button className="text-sm text-white bg-red-500 rounded-md py-6 sm:py-4 px-6 font-semibold w-full">
+                      <div>Loading...</div>
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => orderPage2data()}
+                      className="text-sm text-white bg-red-500 rounded-md py-6 sm:py-4 px-6 font-semibold w-full"
+                    >
+                      <div>Continue to Payment</div>
+                    </button>
+                  )}
                 </div>
               </div>
               {/* <div className="flex mb-10 items-center justify-between">

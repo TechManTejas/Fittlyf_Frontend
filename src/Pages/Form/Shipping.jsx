@@ -4,25 +4,24 @@ import { Link } from "react-router-dom";
 import { sendOrderPage3Data } from "../../APIs/OrdersAPI";
 import { useEffect } from "react";
 import { useStateValue } from "../../Context/StateProvider";
-import axios from "axios" // newly added 
-import {backendbaseuri} from "../../Config/index" //newly added
+import axios from "axios"; // newly added
+import { backendbaseuri } from "../../Config/index"; //newly added
 
 async function loadScript(src) {
-  return new Promise(resolve => {
-    const script = document.createElement('script');
-    script.src = src
+  return new Promise((resolve) => {
+    const script = document.createElement("script");
+    script.src = src;
 
     script.onload = () => {
       resolve(true);
-    }
+    };
     script.onerror = () => {
       resolve(false);
-    }
+    };
 
     document.body.appendChild(script);
-  })
+  });
 }
-
 
 const C1 = () => {
   const [showSummary, setShowSummary] = useState(false);
@@ -31,48 +30,48 @@ const C1 = () => {
   const shipping = useRef();
 
   //Razorpay Info
-  const [name, setName] = useState('Test Name')
+  const [name, setName] = useState("Test Name");
 
   async function displayRazorpay() {
-
-    const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js')
+    const res = await loadScript(
+      "https://checkout.razorpay.com/v1/checkout.js"
+    );
 
     if (!res) {
-      alert('Razorpay SDK failed to load')
-      return
+      alert("Razorpay SDK failed to load");
+      return;
     }
 
-    const data = await axios.post(`${backendbaseuri}razorpay/`, {})
-    console.log(data)
+    const data = await axios.post(`${backendbaseuri}razorpay/`, {});
+    console.log(data);
 
     const options = {
-      "key": "rzp_test_WPA6J9hOSf3nLT", // Enter the Key ID generated from the Dashboard
-      "currency": data.data.currency,
-      "amount": data.data.amount.toString(),
-      "name": "Fittlyf",
-      "description": "Test Transaction",
-      "image": "https://example.com/your_logo",
-      "order_id": data.data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-      "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
-      "prefill": {
-        "name": name,
-        "email": "gaurav.kumar@example.com",
-        "contact": "9999999999"
+      key: "rzp_test_WPA6J9hOSf3nLT", // Enter the Key ID generated from the Dashboard
+      currency: data.data.currency,
+      amount: data.data.amount.toString(),
+      name: "Fittlyf",
+      description: "Test Transaction",
+      image: "https://example.com/your_logo",
+      order_id: data.data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+      callback_url: "https://eneqd3r9zrjok.x.pipedream.net/",
+      prefill: {
+        name: name,
+        email: "gaurav.kumar@example.com",
+        contact: "9999999999",
       },
-      "notes": {
-        "address": "Razorpay Corporate Office"
+      notes: {
+        address: "Razorpay Corporate Office",
       },
-      "theme": {
-        "color": "#3399cc"
+      theme: {
+        color: "#3399cc",
       },
-      "handler": function (response) {
+      handler: function (response) {
         console.log(response.razorpay_payment_id);
         console.log(response.razorpay_order_id);
-        console.log(response.razorpay_signature)
-        placeOrder(id)
-        console.log("Order placed")
-      }
-
+        console.log(response.razorpay_signature);
+        placeOrder(id);
+        console.log("Order placed");
+      },
     };
 
     const paymentObject = new window.Razorpay(options);
@@ -80,10 +79,10 @@ const C1 = () => {
   }
 
   const placeOrder = async (id) => {
-    let response = await axios.post(`${backendbaseuri}placeorder`, { id: id })
+    let response = await axios.post(`${backendbaseuri}placeorder`, { id: id });
     console.log(response);
-    return response
-  }
+    return response;
+  };
 
   const orderPage3data = async () => {
     setloader(true);
@@ -97,13 +96,11 @@ const C1 = () => {
     console.log(response);
 
     if (response.data.code === "success") {
-      displayRazorpay()
-      console.log("Pay!")
+      displayRazorpay();
+      console.log("Pay!");
       setloader(false);
     }
   };
-
-  
 
   return (
     <div className="flex justify-end box:w-[54vw]">
@@ -202,9 +199,13 @@ const C1 = () => {
               <p className="flex items-center px-5 py-3 justify-between">
                 <span className="flex xl:flex-row flex-col text-gray-500 ">
                   Contact
-                  <span className="text-black xl:pl-6">{page1Data.emailPhoneNumber}</span>{" "}
+                  <span className="text-black xl:pl-6">
+                    {page1Data.emailPhoneNumber}
+                  </span>{" "}
                 </span>
-                <span className="text-sm text-red-500 pl-2"><Link to="/form">Change</Link></span>
+                <span className="text-sm text-red-500 pl-2">
+                  <Link to="/form">Change</Link>
+                </span>
               </p>
               {/* <p className="flex flex-wrap items-center px-5 py-3 justify-between">
                                 <span className="text-gray-500">Contact <span className="text-black pl-6">myemail@gmail.com</span> </span>
@@ -216,7 +217,9 @@ const C1 = () => {
                   Ship to
                   <span className="text-black xl:pl-6">{`${page1Data.city}, ${page1Data.state}, India`}</span>{" "}
                 </span>
-                <span className="text-sm text-red-500 pl-2"><Link to="/form">Change</Link></span>
+                <span className="text-sm text-red-500 pl-2">
+                  <Link to="/form">Change</Link>
+                </span>
               </p>
               {/* <p className="flex flex-wrap items-center px-5 py-3 justify-between">
                                 <span className="text-gray-500">Ship to <span className="text-black pl-6">address, MH, India</span> </span>
@@ -227,10 +230,14 @@ const C1 = () => {
                 <span className="flex xl:flex-row flex-col text-gray-500 ">
                   Method
                   <span className="text-black xl:pl-6">
-                    {page2Data.mode ? "Cash on Delivery - Shipping Charges · Free" : "Prepaid - Free Shipping"}
+                    {page2Data.mode
+                      ? "Cash on Delivery - Shipping Charges · Free"
+                      : "Prepaid - Free Shipping"}
                   </span>{" "}
                 </span>
-                <span className="text-sm text-red-500 pl-2"><Link to="/payment">Change</Link></span>
+                <span className="text-sm text-red-500 pl-2">
+                  <Link to="/payment">Change</Link>
+                </span>
               </p>
             </div>
 
@@ -241,7 +248,9 @@ const C1 = () => {
               </p>
               <div className="border text-sm rounded-md">
                 <div className=" px-5 py-5">
-                  {page2Data.mode ? "Cash on Delivery - Shipping Charges · Free" : "Prepaid - Free Shipping"}
+                  {page2Data.mode
+                    ? "Cash on Delivery - Shipping Charges · Free"
+                    : "Prepaid - Free Shipping"}
                 </div>
               </div>
             </div>
@@ -273,15 +282,20 @@ const C1 = () => {
                 </div>
 
                 <div className="mb-5 sm:my-0">
-                  <button className="text-sm text-white bg-red-500 rounded-md py-6 sm:py-4 px-6 font-semibold w-full">
-                    {loader ? (
-                      <>
-                        <div>Loading...</div>
-                      </>
-                    ) : (
-                      <div onClick={() => orderPage3data()}>Complete Order</div>
-                    )}
-                  </button>
+                  {loader ? (
+                    <>
+                      <button className="text-sm text-white bg-red-500 rounded-md py-6 sm:py-4 px-6 font-semibold w-full">
+                        <div>Complete Order</div>
+                      </button>
+                    </>
+                  ) : (
+                    <button
+                      onClick={() => orderPage3data()}
+                      className="text-sm text-white bg-red-500 rounded-md py-6 sm:py-4 px-6 font-semibold w-full"
+                    >
+                      <div>Complete Order</div>
+                    </button>
+                  )}
                 </div>
                 {/* <div className="flex mb-10 items-center justify-between">
                                 <Link to="/shipping" className="text-sm text-red-500">&lt; Return to cart</Link>

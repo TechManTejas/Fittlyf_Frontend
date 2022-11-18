@@ -63,6 +63,7 @@ const C1 = ({ pack }) => {
 
     let response = await sendOrderPage1Data(data);
 
+    console.log(response);
 
     if (response === "ERR_BAD_RESPONSE") {
       notify("Server not Responding, Try After Some Time...");

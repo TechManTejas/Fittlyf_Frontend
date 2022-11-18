@@ -28,7 +28,6 @@ const C1 = () => {
   const [showSummary, setShowSummary] = useState(false);
   const [{ id, page1Data, page2Data }] = useStateValue();
   const [loader, setloader] = useState(false);
-  const navigate = useNavigate();
   const shipping = useRef();
 
   //Razorpay Info

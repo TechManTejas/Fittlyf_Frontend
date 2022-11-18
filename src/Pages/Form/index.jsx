@@ -74,7 +74,7 @@ const C1 = ({ pack }) => {
     } else if (response.data.code === "success") {
       dispatch({
         type: actionType.SET_ID,
-        id: response.data.data.id,
+        id: response.data.data.data.id,
       });
       navigate("/payment");
     }

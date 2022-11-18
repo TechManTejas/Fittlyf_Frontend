@@ -29,6 +29,7 @@ const C1 = () => {
   const [{ id, page1Data, page2Data }] = useStateValue();
   const [loader, setloader] = useState(false);
   const shipping = useRef();
+  const navigate = useNavigate();
 
   //Razorpay Info
   const [name, setName] = useState('Test Name')
@@ -82,6 +83,8 @@ const C1 = () => {
   const placeOrder = async (id) => {
     let response = await axios.post(`${backendbaseuri}placeorder`, { id: id })
     console.log(response);
+    navigate("/")
+    
     return response
   }
 

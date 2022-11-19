@@ -8,22 +8,25 @@ const C1 = () => {
   const [{ id, page2Data, page1Data }, dispatch] = useStateValue();
   const [showSummary, setShowSummary] = useState(false);
   const [loader, setloader] = useState(false);
+
   const navigate = useNavigate();
   const cod = useRef();
   const prepaid = useRef();
 
   useEffect(() => {
     if (page2Data) {
-      // console.log(page2Data);
-      if (page2Data.mode) cod.current.checked = true;
+      if (page2Data.cod) cod.current.checked = true;
       else prepaid.current.checked = true;
     }
+    else prepaid.current.checked = true;
   }, []);
+
+
 
   const orderPage2data = async () => {
     setloader(true);
     const data = {
-      mode: cod.current.checked,
+      cod: cod.current.checked,
       id: id,
     };
 
@@ -162,7 +165,7 @@ const C1 = () => {
             <div>
               <h1 className="text-lg mt-8 my-4">Shipping method</h1>
               <div className="border text-sm rounded-md">
-                <div className="flex flex-wrap items-center px-5 py-4 justify-between">
+                <div onClick={() => { cod.current.checked = true }} className=" cursor-pointer flex flex-wrap items-center px-5 py-4 justify-between">
                   <div className="flex">
                     <input ref={cod} type="radio" name="method" id="" />
                     <p className="pl-4">Cash on Delivery - Shipping Charges</p>
@@ -170,7 +173,7 @@ const C1 = () => {
                   <span>Free</span>
                 </div>
                 <hr />
-                <div className="flex items-center px-5 py-4 justify-between">
+                <div onClick={() => { prepaid.current.checked = true }} className=" cursor-pointer flex items-center px-5 py-4 justify-between">
                   <div className="flex">
                     <input ref={prepaid} type="radio" name="method" id="" />
                     <p className="pl-4">Prepaid - Free Shipping</p>

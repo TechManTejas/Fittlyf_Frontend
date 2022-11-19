@@ -107,13 +107,13 @@ const SingleProduct = ({ setpack }) => {
 
       <Carousel showThumbs={false} className="mx-10 my-3 md:w-4/6 lg:w-2/6 " >
         <div>
-          <img src="p.png" />
+          <img loading="lazy" src="p.png" />
         </div>
         <div>
-          <img src="p.png" />
+          <img loading="lazy" src="p.png" />
         </div>
         <div>
-          <img src="p.png" />
+          <img loading="lazy" src="p.png" />
         </div>
       </Carousel>
 

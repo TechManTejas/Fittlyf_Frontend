@@ -56,6 +56,7 @@ const Main = () => {
 
       <img
         src="homeImg.png"
+        loading="lazy"
         alt=""
         className="mr-4
                 md:w-[60vw] md:mt-24

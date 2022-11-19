@@ -4,6 +4,7 @@ import Products from "./Pages/Products";
 import Form from "./Pages/Form";
 import Shipping from "./Pages/Form/Shipping";
 import Payment from "./Pages/Form/Payment";
+import { Success } from "./Pages/Success";
 import { Notify } from "./Components/Notify";
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
         <Route exact path="/form" element={<Form />} />
         <Route exact path="/shipping" element={<Shipping />} />
         <Route exact path="/payment" element={<Payment />} />
+        <Route exact path="/success" element={<Success />} />
       </Routes>
       <Notify />
     </>

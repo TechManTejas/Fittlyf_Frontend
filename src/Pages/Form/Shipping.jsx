@@ -25,10 +25,20 @@ async function loadScript(src) {
 
 const C1 = () => {
   const [showSummary, setShowSummary] = useState(false);
-  const [{ id, page1Data, page2Data }] = useStateValue();
+  const [{ id, page1Data, page2Data, page3Data }, dispatch] = useStateValue();
   const [loader, setloader] = useState(false);
-  const shipping = useRef();
+  const [shippingSame, sss] = useState(false);
   const navigate = useNavigate();
+
+  const same = useRef();
+  const different = useRef();
+
+  useEffect(() => {
+    if (page3Data) {
+      if (page3Data.shippingSame) same.current.checked = true;
+      else {different.current.checked = true; sss(true)}
+    } else same.current.checked = true;
+  }, []);
 
   //Razorpay Info
   const [name, setName] = useState("Test Name");
@@ -71,6 +81,7 @@ const C1 = () => {
         console.log(response.razorpay_order_id);
         console.log(response.razorpay_signature);
         placeOrder(id);
+        console.log(response);
         console.log("Order placed");
       },
     };
@@ -82,19 +93,24 @@ const C1 = () => {
   const placeOrder = async (id) => {
     let response = await axios.post(`${backendbaseuri}placeorder`, { id: id });
     console.log(response);
-    navigate("/")
-    
-    return response
-  }
+
+    navigate("/");
+    return response;
+  };
 
   const orderPage3data = async () => {
     setloader(true);
     const data = {
-      shippingSame: shipping.current.checked,
+      shippingSame: shippingSame,
       id: id,
     };
 
     let response = await sendOrderPage3Data(data);
+
+    dispatch({
+      type: actionType.SET_PAGE3,
+      page3Data: data,
+    });
 
     console.log(response);
 
@@ -233,7 +249,7 @@ const C1 = () => {
                 <span className="flex xl:flex-row flex-col text-gray-500 ">
                   Method
                   <span className="text-black xl:pl-6">
-                    {page2Data.mode
+                    {page2Data.cod
                       ? "Cash on Delivery - Shipping Charges · Free"
                       : "Prepaid - Free Shipping"}
                   </span>{" "}
@@ -251,7 +267,7 @@ const C1 = () => {
               </p>
               <div className="border text-sm rounded-md">
                 <div className=" px-5 py-5">
-                  {page2Data.mode
+                  {page2Data.cod
                     ? "Cash on Delivery - Shipping Charges · Free"
                     : "Prepaid - Free Shipping"}
                 </div>
@@ -264,16 +280,23 @@ const C1 = () => {
                 Select the address that matches your card or payment method.
               </p>
               <div className="border text-sm rounded-md">
-                <div className="flex flex-wrap items-center px-5 py-5 justify-start">
-                  <input ref={shipping} type="radio" name="method" id="" />
+                <div
+                  onClick={() => (same.current.checked = true, sss(false))}
+                  className=" cursor-pointer flex flex-wrap items-center px-5 py-5 justify-start"
+                >
+                  <input ref={same} type="radio" name="method" id="" />
                   <p className="pl-4">Same as shipping address</p>
                 </div>
                 <hr />
-                <div className="flex items-center px-5 py-5 justify-start">
-                  <input type="radio" name="method" id="" />
+                <div
+                  onClick={() => (different.current.checked = true, sss(true))}
+                  className=" cursor-pointer flex items-center px-5 py-5 justify-start"
+                >
+                  <input ref={different} type="radio" name="method" id="" />
                   <p className="pl-4">Use a different billing address</p>
                 </div>
               </div>
+              { shippingSame && <DropDown />}
             </div>
 
             <div className="mt-5">
@@ -300,15 +323,6 @@ const C1 = () => {
                     </button>
                   )}
                 </div>
-                {/* <div className="flex mb-10 items-center justify-between">
-                                <Link to="/shipping" className="text-sm text-red-500">&lt; Return to cart</Link>
-                                <Link
-                                    to="/payment"
-                                    //   onClick={() => orderPage1Data()} 
-                                    className="text-sm text-white bg-red-500 rounded-md py-5 px-4">
-                                    Continue to Payment
-                                </Link>
-                            </div> */}
               </div>
             </div>
           </div>
@@ -377,16 +391,55 @@ const C2 = ({ pack }) => {
   );
 };
 
+const DropDown = () => {
+  return (
+    <div className="flex flex-col gap-4 py-6 rounded items-center ">
+      <input
+        className="  w-[90%] focus:outline-red-500 border rounded-md px-4 py-3 text-sm"
+        placeholder="Country/Region"
+      />
+      <input
+        className="  w-[90%] focus:outline-red-500 border rounded-md px-4 py-3 text-sm"
+        placeholder="First Name"
+      />
+      <input
+        className="  w-[90%] focus:outline-red-500 border rounded-md px-4 py-3 text-sm"
+        placeholder="Last Name"
+      />
+      <input
+        className="  w-[90%] focus:outline-red-500 border rounded-md px-4 py-3 text-sm"
+        placeholder="Address"
+      />
+      <input
+        className="  w-[90%] focus:outline-red-500 border rounded-md px-4 py-3 text-sm"
+        placeholder="Appartment, suit, etc"
+      />
+      <input
+        className="  w-[90%] focus:outline-red-500 border rounded-md px-4 py-3 text-sm"
+        placeholder="City"
+      />
+      <input
+        className="  w-[90%] focus:outline-red-500 border rounded-md px-4 py-3 text-sm"
+        placeholder="state"
+      />
+      <input
+        className="  w-[90%] focus:outline-red-500 border rounded-md px-4 py-3 text-sm"
+        placeholder="pincode"
+      />
+    </div>
+  );
+};
+
 const Payment = () => {
   const [{ pack }, dispatch] = useStateValue();
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!pack) {
-      navigate("/");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!pack) {
+  //     navigate("/");
+  //   }
+  // }, []);
 
   return (
     <>

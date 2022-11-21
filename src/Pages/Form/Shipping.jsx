@@ -411,14 +411,6 @@ const DropDown = () => {
       />
       <input
         className="  w-[90%] focus:outline-red-500 border rounded-md px-4 py-3 text-sm"
-        placeholder="First Name"
-      />
-      <input
-        className="  w-[90%] focus:outline-red-500 border rounded-md px-4 py-3 text-sm"
-        placeholder="Last Name"
-      />
-      <input
-        className="  w-[90%] focus:outline-red-500 border rounded-md px-4 py-3 text-sm"
         placeholder="Address"
       />
       <input

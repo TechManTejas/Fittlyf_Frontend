@@ -104,10 +104,12 @@ const C1 = ({ pack }) => {
                   </div>
                 </button>
                 <div>
-                  <span className="font-semibold text-lg">₹499.00</span>
+              {/* <p className="my-2">{`${pack.period} ₹ ${pack.price} ${pack.bottle} bottle ${pack.tablets} tablets`}</p> */}
+                  <span className="font-semibold text-lg">₹{`${pack.price}`}</span>
                 </div>
               </div>
 
+                  
               {showSummary && (
                 <div>
                   <hr className="bg-gray-300" />
@@ -124,7 +126,7 @@ const C1 = ({ pack }) => {
                         </h4>
                         <p className="my-2">{`${pack.period} ₹ ${pack.price} ${pack.bottle} bottle ${pack.tablets} tablets`}</p>
                       </div>
-                      <span className="font-semibold">₹499.00</span>
+                      <span className="font-semibold">₹{`${pack.price}`}</span>
                     </div>
 
                     <hr className="bg-gray-300" />
@@ -135,7 +137,7 @@ const C1 = ({ pack }) => {
                         <h5 className="my-5">Shipping</h5>
                       </div>
                       <div className="text-right">
-                        <h5 className="font-semibold my-4">₹499.00</h5>
+                        <h5 className="font-semibold my-4">₹{`${pack.price}`}</h5>
                         <h5 className="font-semibold my-4">Free</h5>
                       </div>
                     </div>
@@ -149,7 +151,7 @@ const C1 = ({ pack }) => {
                       </div>
                       <div>
                         <span className="text-sm">INR</span>
-                        <span className="font-semibold text-2xl">₹499.00</span>
+                        <span className="font-semibold text-2xl">₹{`${pack.price}`}</span>
                       </div>
                     </div>
                   </div>
@@ -185,7 +187,7 @@ const C1 = ({ pack }) => {
             <input
               ref={Refs.PhoneNumber}
               className=" w-[100%] focus:outline-red-500 border-t-0 border-x-0 text-sm"
-              placeholder="Mobile phone number"
+              placeholder="Phone"
               type="tel"
               name=""
               id=""

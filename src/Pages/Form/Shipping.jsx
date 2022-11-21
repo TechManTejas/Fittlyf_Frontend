@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useStateValue } from "../../Context/StateProvider";
 import axios from "axios"; // newly added
 import { backendbaseuri } from "../../Config/index"; //newly added
+import { actionType } from "../../Context/reducer";
 
 async function loadScript(src) {
   return new Promise((resolve) => {
@@ -23,15 +24,21 @@ async function loadScript(src) {
   });
 }
 
+
+
 const C1 = () => {
   const [showSummary, setShowSummary] = useState(false);
-  const [{ id, page1Data, page2Data, page3Data }, dispatch] = useStateValue();
+  const [{ id, page1Data, page2Data, page3Data, pack }, dispatch] = useStateValue();
   const [loader, setloader] = useState(false);
   const [shippingSame, sss] = useState(false);
   const navigate = useNavigate();
 
   const same = useRef();
   const different = useRef();
+
+  const handlePaymentData = async (res) => {
+    await axios.post(`${backendbaseuri}api/send/order/payment`, {...res, id : id})
+  }
 
   useEffect(() => {
     if (page3Data) {
@@ -40,6 +47,7 @@ const C1 = () => {
     } else same.current.checked = true;
   }, []);
 
+ 
   //Razorpay Info
   const [name, setName] = useState("Test Name");
 
@@ -76,13 +84,16 @@ const C1 = () => {
       theme: {
         color: "#3399cc",
       },
-      handler: function (response) {
+      handler: function async (response) {
         console.log(response.razorpay_payment_id);
         console.log(response.razorpay_order_id);
         console.log(response.razorpay_signature);
         placeOrder(id);
         console.log(response);
         console.log("Order placed");
+
+        handlePaymentData(response)
+        
       },
     };
 
@@ -105,6 +116,8 @@ const C1 = () => {
       id: id,
     };
 
+    console.log(data)
+
     let response = await sendOrderPage3Data(data);
 
     dispatch({
@@ -115,6 +128,11 @@ const C1 = () => {
     console.log(response);
 
     if (response.data.code === "success") {
+      if(page2Data.cod){
+        placeOrder(id)
+        navigate("/")
+        return;
+      }
       displayRazorpay();
       console.log("Pay!");
       setloader(false);
@@ -145,65 +163,58 @@ const C1 = () => {
                     </div>
                   </button>
                   <div>
-                    <span className="font-semibold text-lg">₹499.00</span>
+                    <span className="font-semibold text-lg">₹{`${pack.price}`}</span>
                   </div>
                 </div>
 
                 {showSummary && (
-                  <div>
+                <div>
+                  <hr className="bg-gray-300" />
+                  <div className="p-2">
+                    <div className="flex text-sm space-x-3 justify-between items-center my-5">
+                      <img
+                        className="w-20"
+                        src="https://cdn.shopify.com/s/files/1/0618/6765/5415/products/1_small.png?v=1654409191"
+                        alt=""
+                      />
+                      <div className="flex xl:w-96 flex-col">
+                        <h4 className="font-semibold">
+                          YOSHA PCOS PCOD tablets | Delayed Periods | Ayurvedic
+                        </h4>
+                        <p className="my-2">{`${pack.period} ₹ ${pack.price} ${pack.bottle} bottle ${pack.tablets} tablets`}</p>
+                      </div>
+                      <span className="font-semibold">₹{`${pack.price}`}</span>
+                    </div>
+
                     <hr className="bg-gray-300" />
-                    <div className="p-2">
-                      <div className="flex text-sm space-x-3 justify-between items-center my-5">
-                        <img
-                          className="w-20"
-                          src="https://cdn.shopify.com/s/files/1/0618/6765/5415/products/1_small.png?v=1654409191"
-                          alt=""
-                        />
-                        <div className="flex xl:w-96 flex-col">
-                          <h4 className="font-semibold">
-                            YOSHA PCOS PCOD tablets | Delayed Periods |
-                            Ayurvedic
-                          </h4>
-                          <p className="my-2">
-                            1 Month ₹ 499 1 bottle 60 tablets
-                          </p>
-                        </div>
-                        <span className="font-semibold">₹499.00</span>
+
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h5 className="my-5">Subtotal</h5>
+                        <h5 className="my-5">Shipping</h5>
                       </div>
-
-                      <hr className="bg-gray-300" />
-
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <h5 className="my-5">Subtotal</h5>
-                          <h5 className="my-5">Shipping</h5>
-                        </div>
-                        <div className="text-right">
-                          <h5 className="font-semibold my-4">₹499.00</h5>
-                          <h5 className="font-semibold my-4">Free</h5>
-                        </div>
-                      </div>
-
-                      <hr className="bg-gray-300" />
-
-                      <div className="flex items-center justify-between my-5">
-                        <div>
-                          <div className="font-semibold">Total</div>
-                          <div className="text-xs">
-                            Including ₹76.12 in taxes
-                          </div>
-                        </div>
-                        <div>
-                          <span className="text-sm">INR</span>
-                          <span className="font-semibold text-2xl">
-                            ₹499.00
-                          </span>
-                        </div>
+                      <div className="text-right">
+                        <h5 className="font-semibold my-4">₹{`${pack.price}`}</h5>
+                        <h5 className="font-semibold my-4">Free</h5>
                       </div>
                     </div>
+
                     <hr className="bg-gray-300" />
+
+                    <div className="flex items-center justify-between my-5">
+                      <div>
+                        <div className="font-semibold">Total</div>
+                        <div className="text-xs">Including ₹76.12 in taxes</div>
+                      </div>
+                      <div>
+                        <span className="text-sm">INR</span>
+                        <span className="font-semibold text-2xl">₹{`${pack.price}`}</span>
+                      </div>
+                    </div>
                   </div>
-                )}
+                  <hr className="bg-gray-300" />
+                </div>
+              )}
               </div>
 
               <p className="text-sm my-5">
@@ -435,11 +446,11 @@ const Payment = () => {
 
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (!pack) {
-  //     navigate("/");
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (!pack) {
+      navigate("/");
+    }
+  }, []);
 
   return (
     <>

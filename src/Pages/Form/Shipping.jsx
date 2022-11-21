@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 import { sendOrderPage3Data } from "../../APIs/OrdersAPI";
 import { useEffect } from "react";
 import { useStateValue } from "../../Context/StateProvider";
-import axios from "axios"; // newly added
 import { backendbaseuri } from "../../Config/index"; //newly added
 import { actionType } from "../../Context/reducer";
+import axios from "axios"; // newly added
+import swal from "sweetalert"
 
 async function loadScript(src) {
   return new Promise((resolve) => {
@@ -65,7 +66,8 @@ const C1 = () => {
     console.log(data);
 
     const options = {
-      key: "rzp_live_N1vLKkvguKjZGT", // Enter the Key ID generated from the Dashboard
+      // key: "rzp_live_N1vLKkvguKjZGT", // Enter the Key ID generated from the Dashboard
+      key: "rzp_test_WPA6J9hOSf3nLT", // Enter the Key ID generated from the Dashboard
       currency: data.data.currency,
       amount: data.data.amount.toString(),
       name: "Fittlyf",
@@ -91,6 +93,13 @@ const C1 = () => {
         placeOrder(id);
         console.log(response);
         console.log("Order placed");
+
+        swal({
+          title: "Order Placed Successfully",
+          text: "You will recieve an email about your order. THANK YOU :)",
+          icon: "success",
+          button: "Close",
+        });
 
         handlePaymentData(response)
         

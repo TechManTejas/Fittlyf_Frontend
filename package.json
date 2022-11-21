@@ -40,6 +40,7 @@
     "react-responsive-carousel": "^3.2.23",
     "react-toastify": "^9.1.1",
     "simple-react-validator": "^1.6.2",
+    "sweetalert": "^2.1.2",
     "tw-elements": "^1.0.0-alpha12",
     "validator": "^13.7.0",
     "validators": "^0.3.1"

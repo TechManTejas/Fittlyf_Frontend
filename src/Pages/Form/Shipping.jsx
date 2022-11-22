@@ -38,17 +38,17 @@ const C1 = () => {
   const different = useRef();
 
   const handlePaymentData = async (res) => {
-    await axios.post(`${backendbaseuri}api/send/order/payment`, {...res, id : id})
+    await axios.post(`${backendbaseuri}api/send/order/payment`, { ...res, id: id })
   }
 
   useEffect(() => {
     if (page3Data) {
       if (page3Data.shippingSame) same.current.checked = true;
-      else {different.current.checked = true; sss(true)}
+      else { different.current.checked = true; sss(true) }
     } else same.current.checked = true;
   }, []);
 
- 
+
   //Razorpay Info
   const [name, setName] = useState("Test Name");
 
@@ -86,7 +86,7 @@ const C1 = () => {
       theme: {
         color: "#3399cc",
       },
-      handler: function async (response) {
+      handler: function async(response) {
         console.log(response.razorpay_payment_id);
         console.log(response.razorpay_order_id);
         console.log(response.razorpay_signature);
@@ -102,7 +102,7 @@ const C1 = () => {
         });
 
         handlePaymentData(response)
-        
+
       },
     };
 
@@ -137,7 +137,7 @@ const C1 = () => {
     console.log(response);
 
     if (response.data.code === "success") {
-      if(page2Data.cod){
+      if (page2Data.cod) {
         placeOrder(id)
         navigate("/")
         return;
@@ -177,53 +177,53 @@ const C1 = () => {
                 </div>
 
                 {showSummary && (
-                <div>
-                  <hr className="bg-gray-300" />
-                  <div className="p-2">
-                    <div className="flex text-sm space-x-3 justify-between items-center my-5">
-                      <img
-                        className="w-20"
-                        src="https://cdn.shopify.com/s/files/1/0618/6765/5415/products/1_small.png?v=1654409191"
-                        alt=""
-                      />
-                      <div className="flex xl:w-96 flex-col">
-                        <h4 className="font-semibold">
-                          YOSHA PCOS PCOD tablets | Delayed Periods | Ayurvedic
-                        </h4>
-                        <p className="my-2">{`${pack.period} ₹ ${pack.price} ${pack.bottle} bottle ${pack.tablets} tablets`}</p>
-                      </div>
-                      <span className="font-semibold">₹{`${pack.price}`}</span>
-                    </div>
-
+                  <div>
                     <hr className="bg-gray-300" />
-
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <h5 className="my-5">Subtotal</h5>
-                        <h5 className="my-5">Shipping</h5>
+                    <div className="p-2">
+                      <div className="flex text-sm space-x-3 justify-between items-center my-5">
+                        <img
+                          className="w-20"
+                          src="https://cdn.shopify.com/s/files/1/0618/6765/5415/products/1_small.png?v=1654409191"
+                          alt=""
+                        />
+                        <div className="flex xl:w-96 flex-col">
+                          <h4 className="font-semibold">
+                            YOSHA PCOS PCOD tablets | Delayed Periods | Ayurvedic
+                          </h4>
+                          <p className="my-2">{`${pack.period} ₹ ${pack.price} ${pack.bottle} bottle ${pack.tablets} tablets`}</p>
+                        </div>
+                        <span className="font-semibold">₹{`${pack.price}`}</span>
                       </div>
-                      <div className="text-right">
-                        <h5 className="font-semibold my-4">₹{`${pack.price}`}</h5>
-                        <h5 className="font-semibold my-4">Free</h5>
+
+                      <hr className="bg-gray-300" />
+
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <h5 className="my-5">Subtotal</h5>
+                          <h5 className="my-5">Shipping</h5>
+                        </div>
+                        <div className="text-right">
+                          <h5 className="font-semibold my-4">₹{`${pack.price}`}</h5>
+                          <h5 className="font-semibold my-4">Free</h5>
+                        </div>
+                      </div>
+
+                      <hr className="bg-gray-300" />
+
+                      <div className="flex items-center justify-between my-5">
+                        <div>
+                          <div className="font-semibold">Total</div>
+                          <div className="text-xs">Including ₹76.12 in taxes</div>
+                        </div>
+                        <div>
+                          <span className="text-sm">INR</span>
+                          <span className="font-semibold text-2xl">₹{`${pack.price}`}</span>
+                        </div>
                       </div>
                     </div>
-
                     <hr className="bg-gray-300" />
-
-                    <div className="flex items-center justify-between my-5">
-                      <div>
-                        <div className="font-semibold">Total</div>
-                        <div className="text-xs">Including ₹76.12 in taxes</div>
-                      </div>
-                      <div>
-                        <span className="text-sm">INR</span>
-                        <span className="font-semibold text-2xl">₹{`${pack.price}`}</span>
-                      </div>
-                    </div>
                   </div>
-                  <hr className="bg-gray-300" />
-                </div>
-              )}
+                )}
               </div>
 
               <p className="text-sm my-5">
@@ -316,7 +316,7 @@ const C1 = () => {
                   <p className="pl-4">Use a different billing address</p>
                 </div>
               </div>
-              { shippingSame && <DropDown />}
+              {shippingSame && <DropDown />}
             </div>
 
             <div className="mt-5">
@@ -413,31 +413,33 @@ const C2 = ({ pack }) => {
 
 const DropDown = () => {
   return (
-    <div className="flex flex-col gap-4 py-6 rounded items-center ">
-      <input
-        className="  w-[90%] focus:outline-red-500 border rounded-md px-4 py-3 text-sm"
-        placeholder="Country/Region"
-      />
-      <input
-        className="  w-[90%] focus:outline-red-500 border rounded-md px-4 py-3 text-sm"
-        placeholder="Address"
-      />
-      <input
-        className="  w-[90%] focus:outline-red-500 border rounded-md px-4 py-3 text-sm"
-        placeholder="Appartment, suit, etc"
-      />
-      <input
-        className="  w-[90%] focus:outline-red-500 border rounded-md px-4 py-3 text-sm"
-        placeholder="City"
-      />
-      <input
-        className="  w-[90%] focus:outline-red-500 border rounded-md px-4 py-3 text-sm"
-        placeholder="state"
-      />
-      <input
-        className="  w-[90%] focus:outline-red-500 border rounded-md px-4 py-3 text-sm"
-        placeholder="pincode"
-      />
+    <div className="bg-gray-100">
+      <div className="flex flex-col gap-4 py-6 rounded items-center ">
+        <input
+          className="  w-[90%] focus:outline-red-500 border rounded-md px-4 py-3 text-sm"
+          placeholder="Country/Region"
+        />
+        <input
+          className="  w-[90%] focus:outline-red-500 border rounded-md px-4 py-3 text-sm"
+          placeholder="Address"
+        />
+        <input
+          className="  w-[90%] focus:outline-red-500 border rounded-md px-4 py-3 text-sm"
+          placeholder="Appartment, suit, etc"
+        />
+        <input
+          className="  w-[90%] focus:outline-red-500 border rounded-md px-4 py-3 text-sm"
+          placeholder="City"
+        />
+        <input
+          className="  w-[90%] focus:outline-red-500 border rounded-md px-4 py-3 text-sm"
+          placeholder="state"
+        />
+        <input
+          className="  w-[90%] focus:outline-red-500 border rounded-md px-4 py-3 text-sm"
+          placeholder="pincode"
+        />
+      </div>
     </div>
   );
 };

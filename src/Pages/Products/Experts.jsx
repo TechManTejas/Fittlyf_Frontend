@@ -47,7 +47,7 @@ const Experts = () => {
                 </div>
             </div>
 
-            <Carousel showThumbs={false} className="sm:hidden mx-10 my-3">
+            <Carousel showThumbs={true} className="sm:hidden mx-10 my-3" thumbWidth={200}>
                 <div>
                     <div className="lg:flex items-center justify-center mx-10">
                         <img className="w-56 mx-2" src="e1.png" alt="" />

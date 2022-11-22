@@ -83,7 +83,7 @@ const C1 = ({ pack }) => {
   };
 
   return (
-    <div className="flex justify-end box:w-[54vw]">
+    <div className="flex justify-end box:w-[54vw] overflow-auto">
       <div className="w-screen sm:w-[36rem] h-screen flex flex-col justify-between px-4 sm:px-0 box:mx-14 box:ml-4">
         <div>
           <div>

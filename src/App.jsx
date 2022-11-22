@@ -4,7 +4,7 @@ import Products from "./Pages/Products";
 import Form from "./Pages/Form";
 import Shipping from "./Pages/Form/Shipping";
 import Payment from "./Pages/Form/Payment";
-import { Success } from "./Pages/Success";
+import Success from "./Pages/Form/Success"
 import { Notify } from "./Components/Notify";
 
 const App = () => {

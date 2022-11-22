@@ -150,7 +150,7 @@ const C1 = () => {
 
   return (
     <div className="flex justify-end box:w-[54vw]">
-      <div className="w-screen sm:max-w-[45rem]">
+      <div className="w-screen sm:max-w-[45rem] overflow-auto">
         <div className="h-screen mx-4 md:mx-14 flex flex-col  justify-between">
           <div>
             <div>

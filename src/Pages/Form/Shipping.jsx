@@ -111,11 +111,32 @@ const C1 = () => {
   }
 
   const placeOrder = async (id) => {
-    let response = await axios.post(`${backendbaseuri}placeorder`, { id: id });
-    console.log(response);
+    // let response = await axios.post(`${backendbaseuri}placeorder`, { id: id });
+    // console.log(response);
 
-    navigate("/");
-    return response;
+    console.log(pack)
+    await axios.post(`${backendbaseuri}orders/set`, {
+      id : id,
+      emailPhoneNumber: page1Data.emailPhoneNumber,
+      address: page1Data.address,
+      cod: page2Data.cod,
+      country: page1Data.country,
+      firstName: page1Data.firstName,
+      lastName: page1Data.lastName,
+      apartmentAndOthers: page1Data.apartmentAndOthers,
+      city: page1Data.city,
+      state: page1Data.state,
+      zip: page1Data.zip,
+      price: pack.price,
+      PhoneNumber : page1Data.PhoneNumber,
+      period: pack.period,
+      bottle: pack.bottle,
+      tablets: pack.tablets
+    }).then(data => navigate(`/order/${data.data.data.orderID}`))
+
+    // console.log(response)
+    // navigate("/");
+    // return response;
   };
 
   const orderPage3data = async () => {

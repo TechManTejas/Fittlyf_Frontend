@@ -3,9 +3,11 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { backendbaseuri } from "../../Config";
+import { useNavigate } from "react-router-dom";
 
 const C1 = ({ data }) => {
   const [showSummary, setShowSummary] = useState(false);
+  const navigate = useNavigate()
 
   return (
     <div className="flex justify-end box:w-[54vw] overflow-auto">
@@ -30,7 +32,9 @@ const C1 = ({ data }) => {
                 </button>
                 <div>
                   {/* <p className="my-2">{`${data.period} ₹ ${data.price} ${data.bottle} bottle ${data.tablets} tablets`}</p> */}
-                  <span className="font-semibold text-lg">₹{`${data.price}`}</span>
+                  <span className="font-semibold text-lg">
+                    ₹{`${data.price}`}
+                  </span>
                 </div>
               </div>
 
@@ -61,7 +65,9 @@ const C1 = ({ data }) => {
                         <h5 className="my-5">Shipping</h5>
                       </div>
                       <div className="text-right">
-                        <h5 className="font-semibold my-4">₹{`${data.price}`}</h5>
+                        <h5 className="font-semibold my-4">
+                          ₹{`${data.price}`}
+                        </h5>
                         <h5 className="font-semibold my-4">Free</h5>
                       </div>
                     </div>
@@ -75,7 +81,9 @@ const C1 = ({ data }) => {
                       </div>
                       <div>
                         <span className="text-sm">INR</span>
-                        <span className="font-semibold text-2xl">₹{`${data.price}`}</span>
+                        <span className="font-semibold text-2xl">
+                          ₹{`${data.price}`}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -150,12 +158,18 @@ const C1 = ({ data }) => {
           <div className="mb-5">
             {true ? (
               <>
-                <button className="text-sm text-white bg-red-500 rounded-md py-6 sm:py-4 px-6 font-semibold w-full">
+                <button
+                  onClick={() => navigate("/")}
+                  className="text-sm text-white bg-red-500 rounded-md py-6 sm:py-4 px-6 font-semibold w-full"
+                >
                   <div>Continue Shopping</div>
                 </button>
               </>
             ) : (
-              <button className="text-sm text-white bg-red-500 rounded-md py-6 sm:py-4 px-6 font-semibold w-full">
+              <button
+                onClick={() => navigate("/")}
+                className="text-sm text-white bg-red-500 rounded-md py-6 sm:py-4 px-6 font-semibold w-full"
+              >
                 <div>Continue Shopping</div>
               </button>
             )}
@@ -185,7 +199,7 @@ const C1 = ({ data }) => {
   );
 };
 
-const C2 = ({data}) => {
+const C2 = ({ data }) => {
   return (
     <div className="bg-gray-50">
       <div className="h-screen w-[46vw]">
@@ -257,7 +271,7 @@ const Form = () => {
             <C1 data={data} />
             <div className="border-r h-screen hidden box:block bg-gray-300"></div>
             <div className="hidden box:block">
-              <C2 data = {data} />
+              <C2 data={data} />
             </div>
           </div>
         </div>

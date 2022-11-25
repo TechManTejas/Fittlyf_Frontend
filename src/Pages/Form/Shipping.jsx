@@ -111,8 +111,8 @@ const C1 = () => {
   }
 
   const placeOrder = async (id) => {
-    // let response = await axios.post(`${backendbaseuri}placeorder`, { id: id });
-    // console.log(response);
+    let response = await axios.post(`${backendbaseuri}placeorder`, { id: id });
+    console.log(response);
 
     console.log(pack)
     await axios.post(`${backendbaseuri}orders/set`, {

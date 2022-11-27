@@ -5,14 +5,13 @@ const Mission = () => {
             2xl:m-16
         ">
 
-            <h1 className="text-3xl font-bold">Our Mission</h1>
+            <h1 className="text-3xl font-bold">Company Vision</h1>
 
             <p className="mt-4 text-lg font-medium 
                 xl:text-xl xl:mt-8 xl:mx-40
                 2xl:text-2xl 2xl:mt-14 2xl:mx-60
             ">
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                Make every Indian women carefree to empower them in building a stronger India
             </p>
 
             <div className="mt-12 justify-center items-center flex flex-col

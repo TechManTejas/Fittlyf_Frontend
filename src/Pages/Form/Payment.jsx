@@ -147,7 +147,9 @@ const C1 = () => {
                     {page1Data.emailPhoneNumber}
                   </span>{" "}
                 </span>
-                <span className="text-xs text-red-500">Change</span>
+                <span className="text-xs text-red-500">
+                <Link to="/form">Change</Link>
+                </span>
               </p>
               <hr />
               <p className="flex flex-wrap items-center px-5 py-3 justify-between">
@@ -191,12 +193,21 @@ const C1 = () => {
                 </div>
               </div>
             </div>
-
             <div className="mt-5">
               <div className="flex flex-col-reverse sm:flex-row sm:flex mb-10 sm:justify-between sm:items-center">
                 <div className=" sm:my-0 flex justify-center">
                   <button className="text-sm text-red-500">
-                    <Link to="/form">&lt; Return to Information</Link>
+                    <Link to="/form" onClick={() => {
+                      const data = {
+                        cod: cod.current.checked,
+                        id: id,
+                      };
+                  
+                      dispatch({
+                        type: actionType.SET_PAGE2,
+                        page2Data: data,
+                      });
+                    }}>&lt; Return to Information</Link>
                   </button>
                 </div>
 
@@ -255,7 +266,7 @@ const C2 = ({ pack }) => {
               <h4 className="font-semibold">
                 YOSHA PCOS PCOD tablets | Delayed Periods | Ayurvedic
               </h4>
-              <p>{`${pack.period} ₹ ${pack.price} ${pack.bottle} bottle ${pack.tablets} tablets`}</p>
+              <p className="my-2">{`${pack.period} ₹ ${pack.price} ${pack.bottle} bottle ${pack.tablets} tablets`}</p>
             </div>
             <span className="font-semibold">{`₹${pack.price}`}</span>
           </div>

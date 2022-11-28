@@ -31,7 +31,7 @@ const C1 = () => {
   const [showSummary, setShowSummary] = useState(false);
   const [{ id, page1Data, page2Data, page3Data, pack }, dispatch] = useStateValue();
   const [loader, setloader] = useState(false);
-  const [shippingSame, sss] = useState(false);
+  const [shippingSame, sss] = useState(true);
   const navigate = useNavigate();
 
   const same = useRef();
@@ -43,9 +43,16 @@ const C1 = () => {
 
   useEffect(() => {
     if (page3Data) {
-      if (page3Data.shippingSame) same.current.checked = true;
-      else { different.current.checked = true; sss(true) }
-    } else same.current.checked = true;
+      if (page3Data.shippingSame){
+        same.current.checked = true;
+        sss(true)
+      }
+      else { 
+        different.current.checked = true; 
+        sss(false)
+      }
+    }else 
+      same.current.checked = true;
   }, []);
 
 
@@ -320,7 +327,7 @@ const C1 = () => {
               </p>
               <div className="border text-sm rounded-md">
                 <div
-                  onClick={() => (same.current.checked = true, sss(false))}
+                  onClick={() => (same.current.checked = true, sss(true))}
                   className=" cursor-pointer flex flex-wrap items-center px-5 py-5 justify-start"
                 >
                   <input ref={same} type="radio" name="method" id="" />
@@ -328,14 +335,14 @@ const C1 = () => {
                 </div>
                 <hr />
                 <div
-                  onClick={() => (different.current.checked = true, sss(true))}
+                  onClick={() => (different.current.checked = true, sss(false))}
                   className=" cursor-pointer flex items-center px-5 py-5 justify-start"
                 >
                   <input ref={different} type="radio" name="method" id="" />
                   <p className="pl-4">Use a different billing address</p>
                 </div>
               </div>
-              {shippingSame && <DropDown />}
+              {!shippingSame && <DropDown />}
             </div>
 
             <div className="mt-5">
@@ -394,7 +401,7 @@ const C2 = ({ pack }) => {
               <h4 className="font-semibold">
                 YOSHA PCOS PCOD tablets | Delayed Periods | Ayurvedic
               </h4>
-              <p>{`${pack.period} ₹ ${pack.price} ${pack.bottle} bottle ${pack.tablets} tablets`}</p>
+              <p className="my-2">{`${pack.period} ₹ ${pack.price} ${pack.bottle} bottle ${pack.tablets} tablets`}</p>
             </div>
             <span className="font-semibold">{`₹${pack.price}`}</span>
           </div>

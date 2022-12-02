@@ -9,6 +9,7 @@ const SingleProduct = ({ setpack }) => {
   const [{ pack }, dispatch] = useStateValue();
 
   const pack1 = {
+    sku: "yosha60",
     period: "1 Month",
     price: 499,
     bottle: 1,
@@ -16,6 +17,7 @@ const SingleProduct = ({ setpack }) => {
   };
 
   const pack2 = {
+    sku: "yosha120",
     period: "2 Month",
     price: 849,
     bottle: 2,
@@ -23,6 +25,7 @@ const SingleProduct = ({ setpack }) => {
   };
 
   const pack3 = {
+    sku: "yosha240",
     period: "4 Month",
     price: 1299,
     bottle: 4,

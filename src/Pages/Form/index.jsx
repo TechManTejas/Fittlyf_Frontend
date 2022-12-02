@@ -48,11 +48,7 @@ const C1 = ({ pack }) => {
       state: Refs.state.current.value,
       zip: Refs.zip.current.value,
       saveThis: Refs.saveThis.current.checked,
-      duration: pack.period,
-      noOfBottles: pack.bottle,
-      noOfTablets: pack.tablets,
-      Price: pack.price,
-      packNumber: packNumber,
+      sku: pack.sku,
       PhoneNumber: Refs.PhoneNumber.current.value,
     };
 

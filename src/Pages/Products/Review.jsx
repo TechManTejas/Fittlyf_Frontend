@@ -19,8 +19,8 @@ const Review = () => {
           Customer Stories
         </h2>
 
-        <div className="hidden sm:flex xl:items-center xl:justify-center mx-4 overflow-x-auto">
-          <div
+        <div className="flex xl:items-center xl:justify-center mx-4 overflow-x-auto">
+          {/* <div
             onClick={() => setsw(true)}
             className="m-2 cursor-pointer
                             md:m-2
@@ -30,7 +30,7 @@ const Review = () => {
           >
             <img className="md:w-96" src="Card.png" alt="" />
             <p className="w-96"></p>
-          </div>
+          </div> */}
 
           <div
             onClick={() => setsw(true)}
@@ -44,7 +44,7 @@ const Review = () => {
             <p className="w-96"></p>
           </div>
 
-          <div
+          {/* <div
             onClick={() => setsw(true)}
             className="m-2 cursor-pointer
                             md:m-2
@@ -54,11 +54,11 @@ const Review = () => {
           >
             <img className="md:w-96" src="Card2.png" alt="" />
             <p className="w-96"></p>
-          </div>
+          </div> */}
         </div>
       </div>
 
-      <Carousel showThumbs={false} className="sm:hidden mx-4">
+      {/* <Carousel showThumbs={false} className="sm:hidden mx-4">
         <div>
           <div
             onClick={() => setsw(true)}
@@ -98,7 +98,7 @@ const Review = () => {
             <p className="w-96"></p>
           </div>
         </div>
-      </Carousel>
+      </Carousel> */}
 
       <div className="flex flex-col mx-8-4">
         <h2

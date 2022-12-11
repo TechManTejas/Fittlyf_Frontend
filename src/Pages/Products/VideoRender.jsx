@@ -5,7 +5,7 @@ export const VideoRender = ({ showvideo, setsw }) => {
   return (
     <div>
       {showvideo ? (
-        <div className="bg-zinc-500 flex justify-center items-center opacity-90 w-screen h-screen fixed bottom-0 z-40">
+        <div className="bg-zinc-500 flex justify-center items-center opacity-100 w-screen h-screen fixed bottom-0 z-40">
           <div className="fixed z-30 flex flex-col items-end">
             <div className="cursor-pointer" onClick={() => setsw(false)}>
               Close <CloseIcon />

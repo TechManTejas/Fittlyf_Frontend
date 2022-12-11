@@ -6,8 +6,10 @@ import { useEffect } from "react";
 import { useStateValue } from "../../Context/StateProvider";
 import { backendbaseuri } from "../../Config/index"; //newly added
 import { actionType } from "../../Context/reducer";
+import { Refs } from "../../Hooks/Refs";
+import { UpdateBillingAddress } from "../../APIs/OrdersAPI";
 import axios from "axios"; // newly added
-import swal from "sweetalert"
+import swal from "sweetalert";
 
 async function loadScript(src) {
   return new Promise((resolve) => {
@@ -25,11 +27,10 @@ async function loadScript(src) {
   });
 }
 
-
-
 const C1 = () => {
   const [showSummary, setShowSummary] = useState(false);
-  const [{ id, page1Data, page2Data, page3Data, pack }, dispatch] = useStateValue();
+  const [{ id, page1Data, page2Data, page3Data, pack }, dispatch] =
+    useStateValue();
   const [loader, setloader] = useState(false);
   const [shippingSame, sss] = useState(true);
   const navigate = useNavigate();
@@ -38,23 +39,23 @@ const C1 = () => {
   const different = useRef();
 
   const handlePaymentData = async (res) => {
-    await axios.post(`${backendbaseuri}api/send/order/payment`, { ...res, id: id })
-  }
+    await axios.post(`${backendbaseuri}api/send/order/payment`, {
+      ...res,
+      id: id,
+    });
+  };
 
   useEffect(() => {
     if (page3Data) {
-      if (page3Data.shippingSame){
+      if (page3Data.shippingSame) {
         same.current.checked = true;
-        sss(true)
+        sss(true);
+      } else {
+        different.current.checked = true;
+        sss(false);
       }
-      else { 
-        different.current.checked = true; 
-        sss(false)
-      }
-    }else 
-      same.current.checked = true;
+    } else same.current.checked = true;
   }, []);
-
 
   //Razorpay Info
   const [name, setName] = useState("Test Name");
@@ -69,7 +70,7 @@ const C1 = () => {
       return;
     }
 
-    const data = await axios.post(`${backendbaseuri}razorpay/`, {id: id});
+    const data = await axios.post(`${backendbaseuri}razorpay/`, { id: id });
     console.log(data);
 
     const options = {
@@ -108,8 +109,10 @@ const C1 = () => {
           button: "Close",
         });
 
-        handlePaymentData(response)
-
+        handlePaymentData(response);
+        if (!shippingSame) {
+          UpdateBillingAddress(id);
+        }
       },
     };
 
@@ -118,26 +121,28 @@ const C1 = () => {
   }
 
   const placeOrder = async (id) => {
-    let response = await axios.post(`${backendbaseuri}placeorder`, { id: id });
-    console.log(response);
+    // let response = await axios.post(`${backendbaseuri}placeorder`, { id: id });
+    // console.log(response);
 
-    console.log(pack)
-    await axios.post(`${backendbaseuri}orders/set`, {
-      id : id,
-      emailPhoneNumber: page1Data.emailPhoneNumber,
-      address: page1Data.address,
-      cod: page2Data.cod,
-      country: page1Data.country,
-      firstName: page1Data.firstName,
-      lastName: page1Data.lastName,
-      apartmentAndOthers: page1Data.apartmentAndOthers,
-      city: page1Data.city,
-      state: page1Data.state,
-      zip: page1Data.zip,
-      price: pack.price,
-      sku: pack.sku,
-      PhoneNumber : page1Data.PhoneNumber,
-    }).then(data => navigate(`/order/${data.data.data.orderID}`))
+    console.log(pack);
+    await axios
+      .post(`${backendbaseuri}orders/set`, {
+        id: id,
+        emailPhoneNumber: page1Data.emailPhoneNumber,
+        address: page1Data.address,
+        cod: page2Data.cod,
+        country: page1Data.country,
+        firstName: page1Data.firstName,
+        lastName: page1Data.lastName,
+        apartmentAndOthers: page1Data.apartmentAndOthers,
+        city: page1Data.city,
+        state: page1Data.state,
+        zip: page1Data.zip,
+        price: pack.price,
+        sku: pack.sku,
+        PhoneNumber: page1Data.PhoneNumber,
+      })
+      .then((data) => navigate(`/order/${data.data.data.orderID}`));
 
     // console.log(response)
     // navigate("/");
@@ -151,7 +156,11 @@ const C1 = () => {
       id: id,
     };
 
-    console.log(data)
+    console.log(data);
+
+    if (!shippingSame) {
+      UpdateBillingAddress();
+    }
 
     let response = await sendOrderPage3Data(data);
 
@@ -164,8 +173,8 @@ const C1 = () => {
 
     if (response.data.code === "success") {
       if (page2Data.cod) {
-        placeOrder(id)
-        navigate("/")
+        placeOrder(id);
+        navigate("/");
         return;
       }
       displayRazorpay(id);
@@ -173,6 +182,8 @@ const C1 = () => {
       setloader(false);
     }
   };
+
+  
 
   return (
     <div className="flex justify-end box:w-[54vw]">
@@ -198,7 +209,9 @@ const C1 = () => {
                     </div>
                   </button>
                   <div>
-                    <span className="font-semibold text-lg">₹{`${pack.price}`}</span>
+                    <span className="font-semibold text-lg">
+                      ₹{`${pack.price}`}
+                    </span>
                   </div>
                 </div>
 
@@ -214,11 +227,14 @@ const C1 = () => {
                         />
                         <div className="flex xl:w-96 flex-col">
                           <h4 className="font-semibold">
-                            YOSHA PCOS PCOD tablets | Delayed Periods | Ayurvedic
+                            YOSHA PCOS PCOD tablets | Delayed Periods |
+                            Ayurvedic
                           </h4>
                           <p className="my-2">{`${pack.period} ₹ ${pack.price} ${pack.bottle} bottle ${pack.tablets} tablets`}</p>
                         </div>
-                        <span className="font-semibold">₹{`${pack.price}`}</span>
+                        <span className="font-semibold">
+                          ₹{`${pack.price}`}
+                        </span>
                       </div>
 
                       <hr className="bg-gray-300" />
@@ -229,7 +245,9 @@ const C1 = () => {
                           <h5 className="my-5">Shipping</h5>
                         </div>
                         <div className="text-right">
-                          <h5 className="font-semibold my-4">₹{`${pack.price}`}</h5>
+                          <h5 className="font-semibold my-4">
+                            ₹{`${pack.price}`}
+                          </h5>
                           <h5 className="font-semibold my-4">Free</h5>
                         </div>
                       </div>
@@ -239,11 +257,15 @@ const C1 = () => {
                       <div className="flex items-center justify-between my-5">
                         <div>
                           <div className="font-semibold">Total</div>
-                          <div className="text-xs">Including ₹76.12 in taxes</div>
+                          <div className="text-xs">
+                            Including ₹76.12 in taxes
+                          </div>
                         </div>
                         <div>
                           <span className="text-sm">INR</span>
-                          <span className="font-semibold text-2xl">₹{`${pack.price}`}</span>
+                          <span className="font-semibold text-2xl">
+                            ₹{`${pack.price}`}
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -269,7 +291,22 @@ const C1 = () => {
                   </span>{" "}
                 </span>
                 <span className="text-sm text-red-500 pl-2">
-                  <Link to="/form">Change</Link>
+                  <Link
+                    to="/form"
+                    onClick={() => {
+                      const data = {
+                        shippingSame: shippingSame,
+                        id: id,
+                      };
+
+                      dispatch({
+                        type: actionType.SET_PAGE3,
+                        page3Data: data,
+                      });
+                    }}
+                  >
+                    Change
+                  </Link>
                 </span>
               </p>
               {/* <p className="flex flex-wrap items-center px-5 py-3 justify-between">
@@ -283,7 +320,22 @@ const C1 = () => {
                   <span className="text-black xl:pl-6">{`${page1Data.city}, ${page1Data.state}, India`}</span>{" "}
                 </span>
                 <span className="text-sm text-red-500 pl-2">
-                  <Link to="/form">Change</Link>
+                  <Link
+                    to="/form"
+                    onClick={() => {
+                      const data = {
+                        shippingSame: shippingSame,
+                        id: id,
+                      };
+
+                      dispatch({
+                        type: actionType.SET_PAGE3,
+                        page3Data: data,
+                      });
+                    }}
+                  >
+                    Change
+                  </Link>
                 </span>
               </p>
               {/* <p className="flex flex-wrap items-center px-5 py-3 justify-between">
@@ -301,7 +353,22 @@ const C1 = () => {
                   </span>{" "}
                 </span>
                 <span className="text-sm text-red-500 pl-2">
-                  <Link to="/payment">Change</Link>
+                  <Link
+                    to="/payment"
+                    onClick={() => {
+                      const data = {
+                        shippingSame: shippingSame,
+                        id: id,
+                      };
+
+                      dispatch({
+                        type: actionType.SET_PAGE3,
+                        page3Data: data,
+                      });
+                    }}
+                  >
+                    Change
+                  </Link>
                 </span>
               </p>
             </div>
@@ -327,7 +394,7 @@ const C1 = () => {
               </p>
               <div className="border text-sm rounded-md">
                 <div
-                  onClick={() => (same.current.checked = true, sss(true))}
+                  onClick={() => ((same.current.checked = true), sss(true))}
                   className=" cursor-pointer flex flex-wrap items-center px-5 py-5 justify-start"
                 >
                   <input ref={same} type="radio" name="method" id="" />
@@ -335,7 +402,9 @@ const C1 = () => {
                 </div>
                 <hr />
                 <div
-                  onClick={() => (different.current.checked = true, sss(false))}
+                  onClick={() => (
+                    (different.current.checked = true), sss(false)
+                  )}
                   className=" cursor-pointer flex items-center px-5 py-5 justify-start"
                 >
                   <input ref={different} type="radio" name="method" id="" />
@@ -349,7 +418,22 @@ const C1 = () => {
               <div className="flex flex-col-reverse sm:flex-row sm:flex mb-10 sm:justify-between sm:items-center">
                 <div className=" sm:my-0 flex justify-center">
                   <button className="text-sm text-red-500">
-                    <Link to="/payment">&lt; Return to Billing</Link>
+                    <Link
+                      to="/payment"
+                      onClick={() => {
+                        const data = {
+                          shippingSame: shippingSame,
+                          id: id,
+                        };
+
+                        dispatch({
+                          type: actionType.SET_PAGE3,
+                          page3Data: data,
+                        });
+                      }}
+                    >
+                      &lt; Return to Billing
+                    </Link>
                   </button>
                 </div>
 
@@ -442,26 +526,32 @@ const DropDown = () => {
     <div className="bg-gray-100">
       <div className="flex flex-col gap-4 py-6 rounded items-center ">
         <input
+          ref={Refs.billingCountry}
           className="  w-[90%] focus:outline-red-500 border rounded-md px-4 py-3 text-sm"
           placeholder="Country/Region"
         />
         <input
+          ref={Refs.billingAddress}
           className="  w-[90%] focus:outline-red-500 border rounded-md px-4 py-3 text-sm"
           placeholder="Address"
         />
         <input
+          ref={Refs.billingOtherAddress}
           className="  w-[90%] focus:outline-red-500 border rounded-md px-4 py-3 text-sm"
           placeholder="Appartment, suit, etc"
         />
         <input
+          ref={Refs.billingCity}
           className="  w-[90%] focus:outline-red-500 border rounded-md px-4 py-3 text-sm"
           placeholder="City"
         />
         <input
+          ref={Refs.billingState}
           className="  w-[90%] focus:outline-red-500 border rounded-md px-4 py-3 text-sm"
           placeholder="state"
         />
         <input
+          ref={Refs.billingPin}
           className="  w-[90%] focus:outline-red-500 border rounded-md px-4 py-3 text-sm"
           placeholder="pincode"
         />

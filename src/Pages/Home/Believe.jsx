@@ -11,8 +11,7 @@ const Believe = () => {
             <p className="mt-6 text-2xl text-center mx-4
                 md:text-3xl
             ">
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua.
+                We believe in building innovative products and solutions for women one problem at a time.
             </p>
 
             <div className="flex items-center justify-center">

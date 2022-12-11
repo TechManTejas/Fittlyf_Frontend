@@ -13,4 +13,10 @@ export const Refs = {
     zip: React.createRef(),
     saveThis: React.createRef(),
     PhoneNumber: React.createRef(),
+    billingCountry : React.createRef(),
+    billingAddress : React.createRef(),
+    billingCity : React.createRef(),
+    billingState : React.createRef(),
+    billingPin : React.createRef(),
+    billingOtherAddress : React.createRef()
 };

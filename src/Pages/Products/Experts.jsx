@@ -1,9 +1,17 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+import { useState } from "react";
+import { VideoRender } from "./VideoRender";
 
 const Experts = () => {
+
+    const [showvideo, setsw] = useState(false);
+
+
     return (
+        
         <div id="Experts" className="my-36">
+            <VideoRender showvideo={showvideo} setsw={setsw} />
             <h2
                 className="my-8 text-center font-serif font-semibold text-2xl tracking-tighter
                 md:my-12
@@ -24,7 +32,7 @@ const Experts = () => {
                         <p className="my-5 text-sm w-60">
                             Yosha is made for women's health and wellness.
                         </p>
-                        <button className="px-16 py-3 text-sm font-bold border rounded-md border-black">
+                        <button onClick={() => setsw(true)} className="px-16 py-3 text-sm font-bold border rounded-md border-black">
                             Watch Video
                         </button>
                     </div>
@@ -40,7 +48,7 @@ const Experts = () => {
                         <p className="my-5 text-sm w-60">
                             Yosha is made for women's health and wellness.
                         </p>
-                        <button className="px-16 py-3 text-sm font-bold border rounded-md border-black">
+                        <button onClick={() => setsw(true)} className="px-16 py-3 text-sm font-bold border rounded-md border-black">
                             Watch Video
                         </button>
                     </div>

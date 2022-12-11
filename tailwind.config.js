@@ -9,7 +9,7 @@ module.exports = {
     extend: {
       screens: {
         'box': '1000px',
-      }
+      },
     },
   },
   plugins: [require('tw-elements/dist/plugin'), require('flowbite/plugin')],

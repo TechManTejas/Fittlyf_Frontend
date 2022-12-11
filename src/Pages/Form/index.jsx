@@ -8,10 +8,7 @@ import { ValidateAll } from "../../Validator";
 import { Link } from "react-router-dom";
 import { states } from "../../APIs/States";
 import { Refs } from "../../Hooks/Refs";
-import {
-  page1SetInitialValue,
-  resolveResponse,
-} from "../../APIs/SetValueFunctions";
+import { page1SetInitialValue } from "../../APIs/SetValueFunctions";
 import { notify } from "../../Components/Notify";
 
 const C1 = ({ pack }) => {
@@ -100,12 +97,13 @@ const C1 = ({ pack }) => {
                   </div>
                 </button>
                 <div>
-              {/* <p className="my-2">{`${pack.period} ₹ ${pack.price} ${pack.bottle} bottle ${pack.tablets} tablets`}</p> */}
-                  <span className="font-semibold text-lg">₹{`${pack.price}`}</span>
+                  {/* <p className="my-2">{`${pack.period} ₹ ${pack.price} ${pack.bottle} bottle ${pack.tablets} tablets`}</p> */}
+                  <span className="font-semibold text-lg">
+                    ₹{`${pack.price}`}
+                  </span>
                 </div>
               </div>
 
-                  
               {showSummary && (
                 <div>
                   <hr className="bg-gray-300" />
@@ -133,7 +131,9 @@ const C1 = ({ pack }) => {
                         <h5 className="my-5">Shipping</h5>
                       </div>
                       <div className="text-right">
-                        <h5 className="font-semibold my-4">₹{`${pack.price}`}</h5>
+                        <h5 className="font-semibold my-4">
+                          ₹{`${pack.price}`}
+                        </h5>
                         <h5 className="font-semibold my-4">Free</h5>
                       </div>
                     </div>
@@ -147,7 +147,9 @@ const C1 = ({ pack }) => {
                       </div>
                       <div>
                         <span className="text-sm">INR</span>
-                        <span className="font-semibold text-2xl">₹{`${pack.price}`}</span>
+                        <span className="font-semibold text-2xl">
+                          ₹{`${pack.price}`}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -290,11 +292,9 @@ const C1 = ({ pack }) => {
 
             <div className="mb-5 sm:my-0">
               {loader ? (
-                <button
-                className="text-sm text-white bg-red-500 rounded-md py-6 sm:py-4 px-6 font-semibold w-full"
-              >
-                <div>Loading...</div>
-              </button>
+                <button className="text-sm text-white bg-red-500 rounded-md py-6 sm:py-4 px-6 font-semibold w-full">
+                  <div>Loading...</div>
+                </button>
               ) : (
                 <button
                   onClick={() => orderPage1Data()}

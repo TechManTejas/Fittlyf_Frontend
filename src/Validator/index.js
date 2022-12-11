@@ -33,3 +33,7 @@ export const ValidateAll = () => {
 
     return "none"
 }
+
+export const ValidateBillingAddress = () => {
+    
+}

@@ -122,9 +122,9 @@ const Review = () => {
                 className="relative top-20 left-6 w-32 -mt-20"
               />
               <div className="border rounded-xl px-10 py-6">
-                <div className="flex items-center justify-center mb-4">
+                <div className="flex items-center justify-end mb-4">
                   <div className="ml-5">
-                    <h3 className="font-semibold">Suchita Mehra</h3>
+                    <h3 className="font-semibold">Shambhavi, 27</h3>
                     <div className="space-x-1">
                       <i className="text-yellow-400 fa-solid fa-star"></i>
                       <i className="text-yellow-400 fa-solid fa-star"></i>
@@ -134,10 +134,8 @@ const Review = () => {
                     </div>
                   </div>
                 </div>
-                <p className="text-sm w-80">
-                  I've struggled with my PCOS symptoms and searched for answers.
-                  With innumerable roadblocks and redundant solutions, I have
-                  always been driven to create something absolutely authentic
+                <p className="text-sm w-80 h-20">
+                Got my first period after 11 months. Had been diagnosed at a very early age and tried everything. Finally tried YOSHA, first period after 40 days of taking it. Very happy with the results. 
                 </p>
               </div>
             </div>
@@ -149,9 +147,9 @@ const Review = () => {
                 className="relative top-20 left-6 w-32 -mt-20"
               />
               <div className="border rounded-xl px-10 py-6">
-                <div className="flex items-center justify-center mb-4">
+                <div className="flex items-center justify-end mb-4 ">
                   <div className="ml-5">
-                    <h3 className="font-semibold">Suchita Mehra</h3>
+                    <h3 className="font-semibold">Profi, Mother to 15 YO</h3>
                     <div className="space-x-1">
                       <i className="text-yellow-400 fa-solid fa-star"></i>
                       <i className="text-yellow-400 fa-solid fa-star"></i>
@@ -161,10 +159,8 @@ const Review = () => {
                     </div>
                   </div>
                 </div>
-                <p className="text-sm w-80">
-                  I've struggled with my PCOS symptoms and searched for answers.
-                  With innumerable roadblocks and redundant solutions, I have
-                  always been driven to create something absolutely authentic
+                <p className="text-sm w-80 h-20">
+                My daughter finally started losing weight and having regular periods after 2 years of PCOD. Would definitely recommend it. 
                 </p>
               </div>
             </div>
@@ -176,9 +172,9 @@ const Review = () => {
                 className="relative top-20 left-6 w-32 -mt-20"
               />
               <div className="border rounded-xl px-10 py-6">
-                <div className="flex items-center justify-center mb-4">
+                <div className="flex items-center justify-end mb-4">
                   <div className="ml-5">
-                    <h3 className="font-semibold">Suchita Mehra</h3>
+                    <h3 className="font-semibold">Sheena, 24</h3>
                     <div className="space-x-1">
                       <i className="text-yellow-400 fa-solid fa-star"></i>
                       <i className="text-yellow-400 fa-solid fa-star"></i>
@@ -188,10 +184,8 @@ const Review = () => {
                     </div>
                   </div>
                 </div>
-                <p className="text-sm w-80">
-                  I've struggled with my PCOS symptoms and searched for answers.
-                  With innumerable roadblocks and redundant solutions, I have
-                  always been driven to create something absolutely authentic
+                <p className="text-sm w-80 h-20">
+                Got my first PMS cramp and hoping to have my period in the next 3 days after 4 months. Very hopeful and happy today. 
                 </p>
               </div>
             </div>
@@ -205,9 +199,9 @@ const Review = () => {
                 className="relative top-20 left-6 w-32 -mt-20"
               />
               <div className="border rounded-xl px-10 py-6">
-                <div className="flex items-center justify-center mb-4">
+                <div className="flex items-center justify-end mb-4">
                   <div className="ml-5">
-                    <h3 className="font-semibold">Suchita Mehra</h3>
+                    <h3 className="font-semibold">Ayushi, 29</h3>
                     <div className="space-x-1">
                       <i className="text-yellow-400 fa-solid fa-star"></i>
                       <i className="text-yellow-400 fa-solid fa-star"></i>
@@ -217,151 +211,14 @@ const Review = () => {
                     </div>
                   </div>
                 </div>
-                <p className="text-sm w-80">
-                  I've struggled with my PCOS symptoms and searched for answers.
-                  With innumerable roadblocks and redundant solutions, I have
-                  always been driven to create something absolutely authentic
+                <p className="text-sm w-80 h-20 ">
+                Good medicine… no side effects and getting my periods consistently since 3 months now.
                 </p>
               </div>
             </div>
-
-            <div className="m-6">
-              <img
-                src="r1.png"
-                alt=""
-                className="relative top-20 left-6 w-32 -mt-20"
-              />
-              <div className="border rounded-xl px-10 py-6">
-                <div className="flex items-center justify-center mb-4">
-                  <div className="ml-5">
-                    <h3 className="font-semibold">Suchita Mehra</h3>
-                    <div className="space-x-1">
-                      <i className="text-yellow-400 fa-solid fa-star"></i>
-                      <i className="text-yellow-400 fa-solid fa-star"></i>
-                      <i className="text-yellow-400 fa-solid fa-star"></i>
-                      <i className="text-yellow-400 fa-solid fa-star"></i>
-                      <i className="text-yellow-400 fa-solid fa-star"></i>
-                    </div>
-                  </div>
-                </div>
-                <p className="text-sm w-80">
-                  I've struggled with my PCOS symptoms and searched for answers.
-                  With innumerable roadblocks and redundant solutions, I have
-                  always been driven to create something absolutely authentic
-                </p>
-              </div>
-            </div>
-
-            <div className="m-6">
-              <img
-                src="r1.png"
-                alt=""
-                className="relative top-20 left-6 w-32 -mt-20"
-              />
-              <div className="border rounded-xl px-10 py-6">
-                <div className="flex items-center justify-center mb-4">
-                  <div className="ml-5">
-                    <h3 className="font-semibold">Suchita Mehra</h3>
-                    <div className="space-x-1">
-                      <i className="text-yellow-400 fa-solid fa-star"></i>
-                      <i className="text-yellow-400 fa-solid fa-star"></i>
-                      <i className="text-yellow-400 fa-solid fa-star"></i>
-                      <i className="text-yellow-400 fa-solid fa-star"></i>
-                      <i className="text-yellow-400 fa-solid fa-star"></i>
-                    </div>
-                  </div>
-                </div>
-                <p className="text-sm w-80">
-                  I've struggled with my PCOS symptoms and searched for answers.
-                  With innumerable roadblocks and redundant solutions, I have
-                  always been driven to create something absolutely authentic
-                </p>
-              </div>
-            </div>
+            
           </div>
 
-          <div className="flex items-center xl:justify-center">
-            <div className="m-6">
-              <img
-                src="r1.png"
-                alt=""
-                className="relative top-20 left-6 w-32 -mt-20"
-              />
-              <div className="border rounded-xl px-10 py-6">
-                <div className="flex items-center justify-center mb-4">
-                  <div className="ml-5">
-                    <h3 className="font-semibold">Suchita Mehra</h3>
-                    <div className="space-x-1">
-                      <i className="text-yellow-400 fa-solid fa-star"></i>
-                      <i className="text-yellow-400 fa-solid fa-star"></i>
-                      <i className="text-yellow-400 fa-solid fa-star"></i>
-                      <i className="text-yellow-400 fa-solid fa-star"></i>
-                      <i className="text-yellow-400 fa-solid fa-star"></i>
-                    </div>
-                  </div>
-                </div>
-                <p className="text-sm w-80">
-                  I've struggled with my PCOS symptoms and searched for answers.
-                  With innumerable roadblocks and redundant solutions, I have
-                  always been driven to create something absolutely authentic
-                </p>
-              </div>
-            </div>
-
-            <div className="m-6">
-              <img
-                src="r1.png"
-                alt=""
-                className="relative top-20 left-6 w-32 -mt-20"
-              />
-              <div className="border rounded-xl px-10 py-6">
-                <div className="flex items-center justify-center mb-4">
-                  <div className="ml-5">
-                    <h3 className="font-semibold">Suchita Mehra</h3>
-                    <div className="space-x-1">
-                      <i className="text-yellow-400 fa-solid fa-star"></i>
-                      <i className="text-yellow-400 fa-solid fa-star"></i>
-                      <i className="text-yellow-400 fa-solid fa-star"></i>
-                      <i className="text-yellow-400 fa-solid fa-star"></i>
-                      <i className="text-yellow-400 fa-solid fa-star"></i>
-                    </div>
-                  </div>
-                </div>
-                <p className="text-sm w-80">
-                  I've struggled with my PCOS symptoms and searched for answers.
-                  With innumerable roadblocks and redundant solutions, I have
-                  always been driven to create something absolutely authentic
-                </p>
-              </div>
-            </div>
-
-            <div className="m-6">
-              <img
-                src="r1.png"
-                alt=""
-                className="relative top-20 left-6 w-32 -mt-20"
-              />
-              <div className="border rounded-xl px-10 py-6">
-                <div className="flex items-center justify-center mb-4">
-                  <div className="ml-5">
-                    <h3 className="font-semibold">Suchita Mehra</h3>
-                    <div className="space-x-1">
-                      <i className="text-yellow-400 fa-solid fa-star"></i>
-                      <i className="text-yellow-400 fa-solid fa-star"></i>
-                      <i className="text-yellow-400 fa-solid fa-star"></i>
-                      <i className="text-yellow-400 fa-solid fa-star"></i>
-                      <i className="text-yellow-400 fa-solid fa-star"></i>
-                    </div>
-                  </div>
-                </div>
-                <p className="text-sm w-80">
-                  I've struggled with my PCOS symptoms and searched for answers.
-                  With innumerable roadblocks and redundant solutions, I have
-                  always been driven to create something absolutely authentic
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
 
         <div className="text-center sm:hidden">See all {">"} </div>

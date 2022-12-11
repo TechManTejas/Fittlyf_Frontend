@@ -68,7 +68,9 @@ const C1 = () => {
                     </div>
                   </button>
                   <div>
-                  <span className="font-semibold text-lg">₹{`${pack.price}`}</span> 
+                    <span className="font-semibold text-lg">
+                      ₹{`${pack.price}`}
+                    </span>
                   </div>
                 </div>
 
@@ -148,7 +150,22 @@ const C1 = () => {
                   </span>{" "}
                 </span>
                 <span className="text-xs text-red-500">
-                <Link to="/form">Change</Link>
+                  <Link
+                    to="/form"
+                    onClick={() => {
+                      const data = {
+                        cod: cod.current.checked,
+                        id: id,
+                      };
+
+                      dispatch({
+                        type: actionType.SET_PAGE2,
+                        page2Data: data,
+                      });
+                    }}
+                  >
+                    Change
+                  </Link>
                 </span>
               </p>
               <hr />
@@ -158,7 +175,22 @@ const C1 = () => {
                   <span className="text-black pl-6">{`${page1Data.city}, ${page1Data.state}, India`}</span>{" "}
                 </span>
                 <span className="text-xs text-red-500">
-                  <Link to="/form">Change</Link>
+                  <Link
+                    to="/form"
+                    onClick={() => {
+                      const data = {
+                        cod: cod.current.checked,
+                        id: id,
+                      };
+
+                      dispatch({
+                        type: actionType.SET_PAGE2,
+                        page2Data: data,
+                      });
+                    }}
+                  >
+                    Change
+                  </Link>
                 </span>
               </p>
             </div>
@@ -197,17 +229,22 @@ const C1 = () => {
               <div className="flex flex-col-reverse sm:flex-row sm:flex mb-10 sm:justify-between sm:items-center">
                 <div className=" sm:my-0 flex justify-center">
                   <button className="text-sm text-red-500">
-                    <Link to="/form" onClick={() => {
-                      const data = {
-                        cod: cod.current.checked,
-                        id: id,
-                      };
-                  
-                      dispatch({
-                        type: actionType.SET_PAGE2,
-                        page2Data: data,
-                      });
-                    }}>&lt; Return to Information</Link>
+                    <Link
+                      to="/form"
+                      onClick={() => {
+                        const data = {
+                          cod: cod.current.checked,
+                          id: id,
+                        };
+
+                        dispatch({
+                          type: actionType.SET_PAGE2,
+                          page2Data: data,
+                        });
+                      }}
+                    >
+                      &lt; Return to Information
+                    </Link>
                   </button>
                 </div>
 

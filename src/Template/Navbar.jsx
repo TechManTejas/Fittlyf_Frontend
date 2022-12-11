@@ -45,8 +45,8 @@ const Navbar = () => {
         />
       </div> */}
 
-      <div className="mt-0 cursor-pointer grid place-items-center sm:hidden">
-        {!dis && <MenuIcon onClick={() => sd(true)} />}
+      <div className="mt-0 p-1 cursor-pointer grid place-items-center sm:hidden border-2 border-purple-700 rounded-md">
+        {!dis && <MenuIcon fontSize="large" onClick={() => sd(true)} />}
       </div>
     </div>
   );

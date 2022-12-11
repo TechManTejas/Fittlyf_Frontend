@@ -39,7 +39,7 @@ const Main = () => {
           support, advice and more.
         </p>
 
-        <Link to = "/products">
+        <Link to="/products">
           <button
             className="bg-white rounded-3xl px-6 py-4 font-bold text-[#200044] mt-6 text-xs
                     sm:mt-8 sm:text-xs
@@ -55,7 +55,7 @@ const Main = () => {
       </div>
 
       <img
-        src="homeImg.png"
+        src="homeImg1.png"
         loading="lazy"
         alt=""
         className="mr-4

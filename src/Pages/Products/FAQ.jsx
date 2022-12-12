@@ -8,7 +8,7 @@ const SubFAQComp = ({ que, ans }) => {
   return (
     <>
       <div
-        className="border-b w-4/6 cursor-pointer"
+        className="border-b cursor-pointer w-5/6 lg:w-5/6 "
         onClick={() => {
           setshow(!show);
         }}
@@ -49,7 +49,7 @@ const FAQ = () => {
   return (
     <div id="FAQ" className="flex items-center justify-center my-12">
       <div className="w-full flex flex-col items-center">
-        <h3 className="font-normal text-2xl">FAQs</h3>
+        <h3 className="font-normal text-2xl m-4">FAQs</h3>
         {QuestionAnswers.map((qa) => {
           return <SubFAQComp que={qa.q} ans={qa.a} />;
         })}

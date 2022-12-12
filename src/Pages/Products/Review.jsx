@@ -135,7 +135,10 @@ const Review = () => {
                   </div>
                 </div>
                 <p className="text-sm w-80 h-20">
-                Got my first period after 11 months. Had been diagnosed at a very early age and tried everything. Finally tried YOSHA, first period after 40 days of taking it. Very happy with the results. 
+                  Got my first period after 11 months. Had been diagnosed at a
+                  very early age and tried everything. Finally tried YOSHA,
+                  first period after 40 days of taking it. Very happy with the
+                  results.
                 </p>
               </div>
             </div>
@@ -160,11 +163,14 @@ const Review = () => {
                   </div>
                 </div>
                 <p className="text-sm w-80 h-20">
-                My daughter finally started losing weight and having regular periods after 2 years of PCOD. Would definitely recommend it. 
+                  My daughter finally started losing weight and having regular
+                  periods after 2 years of PCOD. Would definitely recommend it.
                 </p>
               </div>
             </div>
+          </div>
 
+          <div className="flex items-center xl:justify-center">
             <div className="m-6">
               <img
                 src="r1.png"
@@ -185,13 +191,12 @@ const Review = () => {
                   </div>
                 </div>
                 <p className="text-sm w-80 h-20">
-                Got my first PMS cramp and hoping to have my period in the next 3 days after 4 months. Very hopeful and happy today. 
+                  Got my first PMS cramp and hoping to have my period in the
+                  next 3 days after 4 months. Very hopeful and happy today.
                 </p>
               </div>
             </div>
-          </div>
 
-          <div className="flex items-center xl:justify-center">
             <div className="m-6">
               <img
                 src="r1.png"
@@ -212,13 +217,12 @@ const Review = () => {
                   </div>
                 </div>
                 <p className="text-sm w-80 h-20 ">
-                Good medicine… no side effects and getting my periods consistently since 3 months now.
+                  Good medicine… no side effects and getting my periods
+                  consistently since 3 months now.
                 </p>
               </div>
             </div>
-            
           </div>
-
         </div>
 
         <div className="text-center sm:hidden">See all {">"} </div>

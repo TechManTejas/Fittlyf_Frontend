@@ -3,6 +3,7 @@ import { backendbaseuri } from "../Config"
 import { Refs } from "../Hooks/Refs";
 
 export const sendOrderPage1Data = async (data) => {
+    console.log(data)
     const response = await axios.post(`${backendbaseuri}api/send/order/1`, data).catch(err => { return err.code; })
     return response
 }

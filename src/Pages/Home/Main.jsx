@@ -55,7 +55,7 @@ const Main = () => {
       </div>
 
       <img
-        src="homeImg1.png"
+        src="homeImg.png"
         loading="lazy"
         alt=""
         className="mr-4

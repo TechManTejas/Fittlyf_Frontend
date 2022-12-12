@@ -82,7 +82,7 @@ const C1 = () => {
       description: "Test Transaction",
       image: "https://example.com/your_logo",
       order_id: data.data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-      callback_url: "https://eneqd3r9zrjok.x.pipedream.net/",
+      callback_url: "",
       prefill: {
         name: name,
         email: "gaurav.kumar@example.com",
@@ -104,13 +104,13 @@ const C1 = () => {
 
         swal({
           title: "Order Placed Successfully",
-          text: "You will recieve an email about your order. THANK YOU :)",
+          text: "THANK YOU :)",
           icon: "success",
           button: "Close",
         });
 
         handlePaymentData(response);
-        if (!shippingSame) {
+        if (!shippingSame) {  
           UpdateBillingAddress(id);
         }
       },
@@ -174,7 +174,6 @@ const C1 = () => {
     if (response.data.code === "success") {
       if (page2Data.cod) {
         placeOrder(id);
-        navigate("/");
         return;
       }
       displayRazorpay(id);

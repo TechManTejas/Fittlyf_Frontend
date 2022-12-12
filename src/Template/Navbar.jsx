@@ -10,13 +10,13 @@ const Navbar = () => {
   return (
     <div
       id="Navbar"
-      className="border-0 border-gray-300 border-b-2 md:space-y-0 p-3 flex-wrap flex items-center justify-around "
+      className="border-0 border-gray-300 border-b-2 md:space-y-0 p-3 flex-wrap flex items-center justify-between sm:justify-around mx-5 "
     >
       <img className="w-28" id="logoImg" src="image2.png" alt="" />
 
-      <div className={dis ? "flex" : "hidden sm:block"}>
-        <ul
-          className="transition-all duration-1000 ease-in-out text-center flex bg-white gap-y-10 h-full fixed p-11 z-10 right-0 top-0 font-medium flex-col sm:flex-row sm:gap-20 sm:relative sm:p-0"
+      <div className={dis ? "flex transition-all duration-1000 ease-in-out" : "hidden sm:block transition-all duration-1000 ease-in-out"}>
+        <div
+          className=" text-center flex bg-white gap-y-5 h-full fixed p-11 z-10 right-0 top-0 font-medium flex-col sm:flex-row sm:gap-20 sm:relative sm:p-0"
         >
           <NavLink className={window.location.pathname === "/" ? "text-base opacity-70 border-0 border-violet-700 border-b-2" : "text-base opacity-70"} to="/">
             Home
@@ -32,7 +32,7 @@ const Navbar = () => {
               Close <CloseIcon />
             </div>
           )}
-        </ul>
+        </div>
       </div>
 
       {/* <div className="flex items-center justify-center gap-x-6">

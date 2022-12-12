@@ -22,10 +22,9 @@ const Believe = () => {
                     <div className="md:grid md:grid-cols-2 md:flex-wrap-reverse">
                         <div className="p-16 bg-[#FFF7F3] flex flex-col items-start justify-center text-2xl">
                             <p className="max-w-[620px]">
-                                “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua.”
+                                “Got my first period after 11 months. Had been diagnosed at a very early age and tried everything. Finally tried YOSHA, first period after 40 days of taking it. Very happy with the results.”
                             </p>
-                            <h3 className="mt-10 font-semibold text-2xl">-Preeti Sinha</h3>
+                            <h3 className="mt-10 font-semibold text-2xl">-Shambhavi, 27</h3>
                         </div>
                         <img src="b1.png" alt=""/>
                     </div>
@@ -34,10 +33,9 @@ const Believe = () => {
                         <img src="b2.png" alt="" />
                         <div className="p-16 bg-[#FFF7F3] flex flex-col items-start justify-center text-2xl">
                             <p className="max-w-[620px]">
-                                “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua.”
+                                “Got my first PMS cramp and hoping to have my period in the next 3 days after 4 months. Very hopeful and happy today.”
                             </p>
-                            <h3 className="mt-10 font-semibold text-2xl">-Preeti Sinha</h3>
+                            <h3 className="mt-10 font-semibold text-2xl">-Sheena, 24</h3>
                         </div>
                     </div>
 

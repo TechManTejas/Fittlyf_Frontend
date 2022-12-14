@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const C1 = ({ data }) => {
   const [showSummary, setShowSummary] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <div className="flex justify-end box:w-[54vw] overflow-auto">
@@ -52,7 +52,7 @@ const C1 = ({ data }) => {
                         <h4 className="font-semibold">
                           YOSHA PCOS PCOD tablets | Delayed Periods | Ayurvedic
                         </h4>
-                        <p className="my-2">{`${data.period} ₹ ${data.price} ${data.bottle} bottle ${data.tablets} tablets`}</p>
+                        <p className="my-2">{`${data.duration} Months ₹ ${data.price} ${data.bottles} bottle ${data.tablets} tablets`}</p>
                       </div>
                       <span className="font-semibold">₹{`${data.price}`}</span>
                     </div>
@@ -129,14 +129,13 @@ const C1 = ({ data }) => {
             <p className="text-sm font-semibold mt-2">Contact information</p>
             <p className="text-sm mt-2">{data.emailPhoneNumber}</p>
             <p className="text-sm font-semibold mt-4">Shipping Address</p>
-            <p className="text-sm mt-2">Fittlyf Store</p>
-            <p className="text-sm">
-              3, Vimal Indl Estate, Golani Complex, waliv, satival, Vasai (east)
-            </p>
-            <p className="text-sm">D block</p>
-            <p className="text-sm">401506 Mumbai MH</p>
-            <p className="text-sm">India</p>
-            <p className="text-sm">9467581235</p>
+            {
+              !data.ShippingAddress && !data.ShippingPin && <p className="text-sm" >Same as Billing Address</p>
+            }
+            <p className="text-sm">{data.ShippingAddress}</p>
+            <p className="text-sm">{data.ShippingOtherAddress}</p>
+            <p className="text-sm">{`${data.ShippingPin} ${data.ShippingCity} ${data.ShippingState}`}</p>
+            <p className="text-sm">{data.ShippingCountry}</p>
             <p className="text-sm font-semibold mt-2">Shipping Method</p>
             <p className="text-sm mt-2">
               {data.cod ? `Cash on Delivery (COD)` : "Prepaid - Free Shipping"}
@@ -156,23 +155,11 @@ const C1 = ({ data }) => {
           </div>
 
           <div className="mb-5">
-            {true ? (
-              <>
-                <button
-                  onClick={() => navigate("/")}
-                  className="text-sm text-white bg-red-500 rounded-md py-6 sm:py-4 px-6 font-semibold w-full"
-                >
-                  <div>Continue Shopping</div>
-                </button>
-              </>
-            ) : (
-              <button
-                onClick={() => navigate("/")}
-                className="text-sm text-white bg-red-500 rounded-md py-6 sm:py-4 px-6 font-semibold w-full"
-              >
+            <a href="https://www.fittlyf.com/">
+              <button className="text-sm text-white bg-red-500 rounded-md py-6 sm:py-4 px-6 font-semibold w-full">
                 <div>Continue Shopping</div>
               </button>
-            )}
+            </a>
           </div>
 
           <div className="flex justify-center items-center mb-5">
@@ -200,6 +187,7 @@ const C1 = ({ data }) => {
 };
 
 const C2 = ({ data }) => {
+
   return (
     <div className="bg-gray-50">
       <div className="h-screen w-[46vw]">
@@ -214,7 +202,9 @@ const C2 = ({ data }) => {
               <h4 className="font-semibold">
                 YOSHA PCOS PCOD tablets | Delayed Periods | Ayurvedic
               </h4>
-              <p className="my-2">{`${data.period} ₹ ${data.price} ${data.bottle} bottle ${data.tablets} tablets`}</p>
+              {data && (
+                <p className="my-2">{`${data.duration} Months ${data.bottles} bottle ${data.tablets} tablets`}</p>
+              )}
             </div>
             <span className="font-semibold">{`₹${data.price}`}</span>
           </div>
@@ -259,8 +249,13 @@ const Form = () => {
         id: id,
       })
       .then((res) => {
-        sd(res.data);
-        console.log(res.data);
+        axios
+          .post(`${backendbaseuri}api/send/order/getproductdata`, {
+            sku: res.data.sku,
+          })
+          .then((data) => {
+            sd({ ...res.data, ...data.data.data.data.pack });
+          });
       });
   }, []);
   return (

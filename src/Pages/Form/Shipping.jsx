@@ -115,12 +115,21 @@ const C1 = () => {
   }
 
   const placeOrder = async (id) => {
-    let _response_ = await axios.post(`${backendbaseuri}placeorder`, { id: id });
+    let _response_ = await axios.post(`${backendbaseuri}placeorder`, {
+      id: id,
+    });
 
-    console.log(_response_);
-
-    const response = await axios
-      .post(`${backendbaseuri}orders/set`, {
+    if (_response_ === "ERR_BAD_RESPONSE") {
+      notify("Server not Responding, Try After Some Time...");
+      return;
+    } else if (_response_ === "ERR_NETWORK") {
+      notify("Cannot connect to network");
+      return;
+    } else if (_response_.status === 204) {
+      notify("Error!!! Try Again");
+      return;
+    } else if (_response_.data.code === "success") {
+      const response = await axios.post(`${backendbaseuri}orders/set`, {
         id: id,
         emailPhoneNumber: page1Data.emailPhoneNumber,
         address: page1Data.address,
@@ -135,7 +144,15 @@ const C1 = () => {
         price: pack.price,
         sku: pack.sku,
         PhoneNumber: page1Data.PhoneNumber,
-      })
+        ShippingCountry: shippingSame ? "" : Refs.billingCountry.current.value,
+        ShippingAddress: shippingSame ? "" : Refs.billingAddress.current.value,
+        ShippingCity: shippingSame ? "" : Refs.billingCity.current.value,
+        ShippingState: shippingSame ? "" : Refs.billingState.current.value,
+        ShippingPin: shippingSame ? "" : Refs.billingPin.current.value,
+        ShippingOtherAddress: shippingSame
+          ? ""
+          : Refs.billingOtherAddress.current.value,
+      });
 
       if (response === "ERR_BAD_RESPONSE") {
         notify("Server not Responding, Try After Some Time...");
@@ -144,11 +161,12 @@ const C1 = () => {
       } else if (response.status === 204) {
         notify("Error!!! Try Again");
       } else if (response.data.code === "success") {
-        navigate(`/order/${response.data.data.orderID}`)
+        navigate(`/order/${response.data.data.orderID}`);
       }
+    }
   };
 
-      // .then((data) => navigate(`/order/${data.data.data.orderID}`));
+  // .then((data) => navigate(`/order/${data.data.data.orderID}`));
 
   const orderPage3data = async () => {
     setloader(true);
@@ -444,7 +462,7 @@ const C1 = () => {
                   {loader ? (
                     <>
                       <button className="text-sm text-white bg-red-500 rounded-md py-6 sm:py-4 px-6 font-semibold w-full">
-                        <div>Complete Order</div>
+                        <div>Loading...</div>
                       </button>
                     </>
                   ) : (

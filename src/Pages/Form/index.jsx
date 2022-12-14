@@ -15,7 +15,7 @@ const C1 = ({ pack }) => {
   //Inital States
   const [showSummary, setShowSummary] = useState(false);
   const [loader, setloader] = useState(false);
-  const [{ page1Data, packNumber }, dispatch] = useStateValue();
+  const [{ page1Data }, dispatch] = useStateValue();
   const navigate = useNavigate();
 
   // Set Initial Value to Input Tags
@@ -56,8 +56,6 @@ const C1 = ({ pack }) => {
 
     let response = await sendOrderPage1Data(data);
 
-    console.log(response);
-
     if (response === "ERR_BAD_RESPONSE") {
       notify("Server not Responding, Try After Some Time...");
       setloader(false);
@@ -71,8 +69,6 @@ const C1 = ({ pack }) => {
       });
       navigate("/payment");
     }
-
-    // navigate("/payment");
   };
 
   return (
@@ -97,7 +93,6 @@ const C1 = ({ pack }) => {
                   </div>
                 </button>
                 <div>
-                  {/* <p className="my-2">{`${pack.period} ₹ ${pack.price} ${pack.bottle} bottle ${pack.tablets} tablets`}</p> */}
                   <span className="font-semibold text-lg">
                     ₹{`${pack.price}`}
                   </span>

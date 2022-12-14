@@ -8,24 +8,10 @@ import { backendbaseuri } from "../../Config/index"; //newly added
 import { actionType } from "../../Context/reducer";
 import { Refs } from "../../Hooks/Refs";
 import { UpdateBillingAddress } from "../../APIs/OrdersAPI";
+import { notify } from "../../Components/Notify";
 import axios from "axios"; // newly added
 import swal from "sweetalert";
-
-async function loadScript(src) {
-  return new Promise((resolve) => {
-    const script = document.createElement("script");
-    script.src = src;
-
-    script.onload = () => {
-      resolve(true);
-    };
-    script.onerror = () => {
-      resolve(false);
-    };
-
-    document.body.appendChild(script);
-  });
-}
+import { loadScript } from "../../Models";
 
 const C1 = () => {
   const [showSummary, setShowSummary] = useState(false);
@@ -39,10 +25,25 @@ const C1 = () => {
   const different = useRef();
 
   const handlePaymentData = async (res) => {
-    await axios.post(`${backendbaseuri}api/send/order/payment`, {
-      ...res,
-      id: id,
-    });
+    const response = await axios.post(
+      `${backendbaseuri}api/send/order/payment`,
+      {
+        ...res,
+        id: id,
+      }
+    );
+
+    if (response === "ERR_BAD_RESPONSE") {
+      notify("Server not Responding, Try After Some Time...");
+    } else if (response === "ERR_NETWORK") {
+      notify("Cannot connect to network");
+    } else if (response.status === 204) {
+      notify("Error!!! Try Again");
+    } else if (response.data.code === "success") {
+      return true;
+    }
+
+    return false;
   };
 
   useEffect(() => {
@@ -58,7 +59,6 @@ const C1 = () => {
   }, []);
 
   //Razorpay Info
-  const [name, setName] = useState("Test Name");
 
   async function displayRazorpay(id) {
     const res = await loadScript(
@@ -71,7 +71,8 @@ const C1 = () => {
     }
 
     const data = await axios.post(`${backendbaseuri}razorpay/`, { id: id });
-    console.log(data);
+
+    if (data.status !== 200) return;
 
     const options = {
       // key: "rzp_live_N1vLKkvguKjZGT", // Enter the Key ID generated from the Dashboard
@@ -79,14 +80,11 @@ const C1 = () => {
       currency: data.data.currency,
       amount: data.data.amount.toString(),
       name: "Fittlyf",
-      description: "Test Transaction",
-      image: "https://example.com/your_logo",
       order_id: data.data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-      callback_url: "",
       prefill: {
-        name: name,
-        email: "gaurav.kumar@example.com",
-        contact: "9999999999",
+        name: page1Data.firstName + " " + page1Data.lastName,
+        email: page1Data.emailPhoneNumber,
+        contact: page1Data.PhoneNumber,
       },
       notes: {
         address: "Razorpay Corporate Office",
@@ -95,13 +93,6 @@ const C1 = () => {
         color: "#3399cc",
       },
       handler: function async(response) {
-        console.log(response.razorpay_payment_id);
-        console.log(response.razorpay_order_id);
-        console.log(response.razorpay_signature);
-        placeOrder(id);
-        console.log(response);
-        console.log("Order placed");
-
         swal({
           title: "Order Placed Successfully",
           text: "THANK YOU :)",
@@ -109,9 +100,12 @@ const C1 = () => {
           button: "Close",
         });
 
-        handlePaymentData(response);
-        if (!shippingSame) {  
-          UpdateBillingAddress(id);
+        if (handlePaymentData(response)) {
+          if (!shippingSame) {
+            UpdateBillingAddress(id);
+          }
+
+          placeOrder(id);
         }
       },
     };
@@ -122,10 +116,8 @@ const C1 = () => {
 
   const placeOrder = async (id) => {
     // let response = await axios.post(`${backendbaseuri}placeorder`, { id: id });
-    // console.log(response);
 
-    console.log(pack);
-    await axios
+    const response = await axios
       .post(`${backendbaseuri}orders/set`, {
         id: id,
         emailPhoneNumber: page1Data.emailPhoneNumber,
@@ -142,24 +134,30 @@ const C1 = () => {
         sku: pack.sku,
         PhoneNumber: page1Data.PhoneNumber,
       })
-      .then((data) => navigate(`/order/${data.data.data.orderID}`));
 
-    // console.log(response)
-    // navigate("/");
-    // return response;
+      if (response === "ERR_BAD_RESPONSE") {
+        notify("Server not Responding, Try After Some Time...");
+      } else if (response === "ERR_NETWORK") {
+        notify("Cannot connect to network");
+      } else if (response.status === 204) {
+        notify("Error!!! Try Again");
+      } else if (response.data.code === "success") {
+        navigate(`/order/${response.data.data.orderID}`)
+      }
   };
+
+      // .then((data) => navigate(`/order/${data.data.data.orderID}`));
 
   const orderPage3data = async () => {
     setloader(true);
+
     const data = {
       shippingSame: shippingSame,
       id: id,
     };
 
-    console.log(data);
-
     if (!shippingSame) {
-      UpdateBillingAddress();
+      UpdateBillingAddress(id);
     }
 
     let response = await sendOrderPage3Data(data);
@@ -169,20 +167,24 @@ const C1 = () => {
       page3Data: data,
     });
 
-    console.log(response);
-
-    if (response.data.code === "success") {
+    if (response === "ERR_BAD_RESPONSE") {
+      notify("Server not Responding, Try After Some Time...");
+      setloader(false);
+    } else if (response === "ERR_NETWORK") {
+      notify("Cannot connect to network");
+      setloader(false);
+    } else if (response.status === 204) {
+      notify("Error!!! Try Again");
+      setloader(false);
+    } else if (response.data.code === "success") {
       if (page2Data.cod) {
         placeOrder(id);
         return;
       }
       displayRazorpay(id);
-      console.log("Pay!");
       setloader(false);
     }
   };
-
-  
 
   return (
     <div className="flex justify-end box:w-[54vw]">

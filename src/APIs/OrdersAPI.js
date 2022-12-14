@@ -21,12 +21,12 @@ export const sendOrderPage3Data = async (data) => {
 export const UpdateBillingAddress = async (id) => {
     const data = {
         id: id,
-        billingCountry: Refs.billingCountry.current.value,
-        billingAddress: Refs.billingAddress.current.value,
-        billingCity: Refs.billingCity.current.value,
-        billingState: Refs.billingState.current.value,
-        billingPin: Refs.billingPin.current.value,
-        billingOtherAddress: Refs.billingOtherAddress.current.value,
+        ShippingCountry: Refs.billingCountry.current.value,
+        ShippingAddress: Refs.billingAddress.current.value,
+        ShippingCity: Refs.billingCity.current.value,
+        ShippingState: Refs.billingState.current.value,
+        ShippingPin: Refs.billingPin.current.value,
+        ShippingOtherAddress: Refs.billingOtherAddress.current.value,
     };
     const response = await axios.post(`${backendbaseuri}api/send/order/updateAddress`, data).catch(err => { return err.code; })
     return response

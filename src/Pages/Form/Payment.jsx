@@ -3,8 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { sendOrderPage2Data } from "../../APIs/OrdersAPI";
 import { useStateValue } from "../../Context/StateProvider";
 import { actionType } from "../../Context/reducer";
+import { notify } from "../../Components/Notify";
 
 const C1 = () => {
+
   const [{ id, page2Data, page1Data, pack }, dispatch] = useStateValue();
   const [showSummary, setShowSummary] = useState(false);
   const [loader, setloader] = useState(false);
@@ -12,6 +14,13 @@ const C1 = () => {
   const navigate = useNavigate();
   const cod = useRef();
   const prepaid = useRef();
+
+  const dispatchValue = (data) => {
+    dispatch({
+      type: actionType.SET_PAGE2,
+      page2Data: data,
+    });
+  }
 
   useEffect(() => {
     if (page2Data) {
@@ -27,21 +36,24 @@ const C1 = () => {
       id: id,
     };
 
-    dispatch({
-      type: actionType.SET_PAGE2,
-      page2Data: data,
-    });
+    dispatchValue(data);  
 
     let response = await sendOrderPage2Data(data);
 
-    console.log(response.data.code);
-
-    if (response.data.code === "success") {
+    if (response === "ERR_BAD_RESPONSE") {
+      notify("Server not Responding, Try After Some Time...");
+      setloader(false);
+    } else if (response === "ERR_NETWORK") {
+      notify("Cannot connect to network");
+      setloader(false);
+    } else if(response.status === 204){
+      notify("Error!!! Try Again")
+      setloader(false);
+    }
+    else if (response.data.code === "success") {
       navigate("/shipping");
       setloader(false);
     }
-
-    // navigate("/shipping");
   };
 
   return (
@@ -157,11 +169,7 @@ const C1 = () => {
                         cod: cod.current.checked,
                         id: id,
                       };
-
-                      dispatch({
-                        type: actionType.SET_PAGE2,
-                        page2Data: data,
-                      });
+                      dispatchValue(data);
                     }}
                   >
                     Change
@@ -182,11 +190,7 @@ const C1 = () => {
                         cod: cod.current.checked,
                         id: id,
                       };
-
-                      dispatch({
-                        type: actionType.SET_PAGE2,
-                        page2Data: data,
-                      });
+                      dispatchValue(data);
                     }}
                   >
                     Change
@@ -237,10 +241,7 @@ const C1 = () => {
                           id: id,
                         };
 
-                        dispatch({
-                          type: actionType.SET_PAGE2,
-                          page2Data: data,
-                        });
+                        dispatchValue(data);
                       }}
                     >
                       &lt; Return to Information

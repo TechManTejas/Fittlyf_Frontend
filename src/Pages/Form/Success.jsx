@@ -129,7 +129,7 @@ const C1 = ({ data }) => {
             <p className="text-sm font-semibold mt-2">Contact information</p>
             <p className="text-sm mt-2">{data.emailPhoneNumber}</p>
             <p className="text-sm font-semibold mt-4">Shipping Address</p>
-            <p className="text-sm mt-2">Something Something</p>
+            <p className="text-sm mt-2">Fittlyf Store</p>
             <p className="text-sm">
               3, Vimal Indl Estate, Golani Complex, waliv, satival, Vasai (east)
             </p>

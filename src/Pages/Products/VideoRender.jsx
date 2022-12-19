@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import CloseIcon from "@mui/icons-material/Close";
-export const VideoRender = ({ showvideo, setsw }) => {
+export const VideoRender = ({ showvideo, setsw, link }) => {
 
   return (
     <div>
@@ -12,7 +12,7 @@ export const VideoRender = ({ showvideo, setsw }) => {
             </div>
             <iframe
               className=" sm:h-[254px] sm:w-[450px] lg:h-[480px] lg:w-[854px]"
-              src="https://www.youtube.com/embed/UN66i-JWaWc"
+              src = {showvideo}
               title="YouTube video player"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

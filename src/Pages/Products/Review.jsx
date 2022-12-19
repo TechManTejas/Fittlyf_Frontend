@@ -6,6 +6,8 @@ import { Carousel } from "react-responsive-carousel";
 const Review = () => {
   const [showvideo, setsw] = useState(false);
 
+  let link = "";
+
   return (
     <div id="Review">
       <VideoRender showvideo={showvideo} setsw={setsw} />
@@ -20,8 +22,8 @@ const Review = () => {
         </h2>
 
         <div className="flex xl:items-center xl:justify-center mx-4 overflow-x-auto">
-          {/* <div
-            onClick={() => setsw(true)}
+          <div
+            onClick={() => setsw("https://www.youtube.com/embed/qPLEq5qYezg")}
             className="m-2 cursor-pointer
                             md:m-2
                             lg:m-6
@@ -30,10 +32,12 @@ const Review = () => {
           >
             <img className="md:w-96" src="Card.png" alt="" />
             <p className="w-96"></p>
-          </div> */}
+          </div>
 
           <div
-            onClick={() => setsw(true)}
+            onClick={() => {
+              setsw("https://www.youtube.com/embed/qPLEq5qYezg");
+            }}
             className="m-2 cursor-pointer
                             md:m-2
                             lg:m-6
@@ -116,14 +120,14 @@ const Review = () => {
                     "
           >
             <div className="m-6">
-              <img
+              {/* <img
                 src="r1.png"
                 alt=""
                 className="relative top-20 left-6 w-32 -mt-20"
-              />
+              /> */}
               <div className="border rounded-xl px-10 py-6">
-                <div className="flex items-center justify-end mb-4">
-                  <div className="ml-5">
+                <div className="flex items-center mb-4 ">
+                  <div className=" w-full flex items-center flex-col justify-center">
                     <h3 className="font-semibold">Shambhavi, 27</h3>
                     <div className="space-x-1">
                       <i className="text-yellow-400 fa-solid fa-star"></i>
@@ -144,14 +148,14 @@ const Review = () => {
             </div>
 
             <div className="m-6">
-              <img
+              {/* <img
                 src="r1.png"
                 alt=""
                 className="relative top-20 left-6 w-32 -mt-20"
-              />
+              /> */}
               <div className="border rounded-xl px-10 py-6">
-                <div className="flex items-center justify-end mb-4 ">
-                  <div className="ml-5">
+                <div className="flex items-center mb-4 ">
+                  <div className=" w-full flex items-center flex-col justify-center">
                     <h3 className="font-semibold">Profi, Mother to 15 YO</h3>
                     <div className="space-x-1">
                       <i className="text-yellow-400 fa-solid fa-star"></i>
@@ -172,14 +176,14 @@ const Review = () => {
 
           <div className="flex items-center xl:justify-center">
             <div className="m-6">
-              <img
+              {/* <img
                 src="r1.png"
                 alt=""
                 className="relative top-20 left-6 w-32 -mt-20"
-              />
+              /> */}
               <div className="border rounded-xl px-10 py-6">
-                <div className="flex items-center justify-end mb-4">
-                  <div className="ml-5">
+                <div className="flex items-center mb-4 ">
+                  <div className=" w-full flex items-center flex-col justify-center">
                     <h3 className="font-semibold">Sheena, 24</h3>
                     <div className="space-x-1">
                       <i className="text-yellow-400 fa-solid fa-star"></i>
@@ -198,14 +202,14 @@ const Review = () => {
             </div>
 
             <div className="m-6">
-              <img
+              {/* <img
                 src="r1.png"
                 alt=""
                 className="relative top-20 left-6 w-32 -mt-20"
-              />
+              /> */}
               <div className="border rounded-xl px-10 py-6">
-                <div className="flex items-center justify-end mb-4">
-                  <div className="ml-5">
+                <div className="flex items-center mb-4 ">
+                  <div className=" w-full flex items-center flex-col justify-center">
                     <h3 className="font-semibold">Ayushi, 29</h3>
                     <div className="space-x-1">
                       <i className="text-yellow-400 fa-solid fa-star"></i>

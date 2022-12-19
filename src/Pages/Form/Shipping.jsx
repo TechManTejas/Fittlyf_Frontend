@@ -75,8 +75,8 @@ const C1 = () => {
     if (data.status !== 200) return;
 
     const options = {
-      // key: "rzp_live_N1vLKkvguKjZGT", // Enter the Key ID generated from the Dashboard
-      key: "rzp_test_WPA6J9hOSf3nLT", // Enter the Key ID generated from the Dashboard
+      key: "rzp_live_N1vLKkvguKjZGT", // Enter the Key ID generated from the Dashboard
+      // key: "rzp_test_WPA6J9hOSf3nLT", // Enter the Key ID generated from the Dashboard
       currency: data.data.currency,
       amount: data.data.amount.toString(),
       name: "Fittlyf",

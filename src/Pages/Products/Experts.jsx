@@ -32,13 +32,13 @@ const Experts = () => {
                         <p className="my-5 text-sm w-60">
                             Yosha is made for women's health and wellness.
                         </p>
-                        <button onClick={() => setsw(true)} className="px-16 py-3 text-sm font-bold border rounded-md border-black">
+                        <button onClick={() => setsw("https://www.youtube.com/embed/dDjMpng8AKc")} className="px-16 py-3 text-sm font-bold border rounded-md border-black">
                             Watch Video
                         </button>
                     </div>
                 </div>
 
-                <div className="lg:flex items-center justify-center mx-10">
+                {/* <div className="lg:flex items-center justify-center mx-10">
                     <img className="w-56 mx-2" src="e2.png" alt="" />
                     <div className="p-2 text-left">
                         <h2 className="font-bold font-serif text-lg">Ms. Jasmine</h2>
@@ -48,11 +48,11 @@ const Experts = () => {
                         <p className="my-5 text-sm w-60">
                             Yosha is made for women's health and wellness.
                         </p>
-                        <button onClick={() => setsw(true)} className="px-16 py-3 text-sm font-bold border rounded-md border-black">
+                        <button onClick={() => setsw("https://www.youtube.com/embed/dDjMpng8AKc")} className="px-16 py-3 text-sm font-bold border rounded-md border-black">
                             Watch Video
                         </button>
                     </div>
-                </div>
+                </div> */}
             </div>
 
             <Carousel showThumbs={true} className="sm:hidden mx-10 my-3" thumbWidth={200}>

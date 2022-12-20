@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import Prod from "../../Images/prod.png"
+
 const Product = () => {
     return (
         <div id="Product" className="py-20 bg-[#4e4d880a]">
@@ -12,7 +14,7 @@ const Product = () => {
             </h1>
             <div className="flex flex-wrap items-center justify-evenly">
                 <img
-                    src="prod.png"
+                    src={Prod}
                     alt=""
                     className="w-auto h-[300px]
                     md:h-full

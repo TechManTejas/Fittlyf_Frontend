@@ -2,6 +2,8 @@ import { VideoRender } from "./VideoRender";
 import { useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+import Card1 from "../../Images/Card.png"
+import Card2 from "../../Images/Card2.png"
 
 const Review = () => {
   const [showvideo, setsw] = useState(false);
@@ -28,7 +30,7 @@ const Review = () => {
                             xl:m-8
                         "
           >
-            <img className="md:w-96" src="Card.png" alt="" />
+            <img className="md:w-96" src={Card1} alt="" />
             <p className="w-96"></p>
           </div>
 
@@ -42,7 +44,7 @@ const Review = () => {
                             xl:m-8
                         "
           >
-            <img className="md:w-96" src="Card2.png" alt="" />
+            <img className="md:w-96" src={Card2} alt="" />
             <p className="w-96"></p>
           </div>
 

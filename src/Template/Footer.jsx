@@ -1,6 +1,7 @@
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import FacebookIcon from "@mui/icons-material/Facebook";
+import FootImg from "../Images/footImg.png"
 
 const Footer = () => {
   return (
@@ -9,7 +10,7 @@ const Footer = () => {
       className="bg-[#2F2635] flex-col lg:flex-row lg:text-left p-4 text-sm flex-wrap justify-around text-gray-400 flex"
     >
       <div className="flex p-3 items-center justify-start">
-        <img src="footImg.png" className="w-36 h-16" alt="" />
+        <img src={FootImg} className="w-36 h-16" alt="" />
       </div>
       <div className="flex">
         <div className="p-2">

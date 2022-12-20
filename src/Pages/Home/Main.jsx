@@ -1,3 +1,5 @@
+import HomeImg from "../../Images/homeImg.png"
+
 import { Link } from "react-router-dom";
 const Main = () => {
   return (
@@ -55,7 +57,7 @@ const Main = () => {
       </div>
 
       <img
-        src="homeImg.png"
+        src={HomeImg}
         loading="lazy"
         alt=""
         className="mr-4

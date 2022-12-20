@@ -1,3 +1,8 @@
+import c1 from "../../Images/c1.avif"
+import c2 from "../../Images/c2.avif"
+import c3 from "../../Images/c3.avif"
+
+
 const Mission = () => {
     return (
         <div id="Mission" className="text-center m-10
@@ -24,7 +29,7 @@ const Mission = () => {
                     2xl:m-6
                 ">
                     <div className="flex items-center justify-center">
-                        <img src="c1.avif" alt="" className="h-36"/>
+                        <img src={c1} alt="" className="h-36"/>
                     </div>
                     <h3 className="font-normal mt-3 text-2xl">Eco-Conscious</h3>
                     <p className="mt-3 text-sm
@@ -40,7 +45,7 @@ const Mission = () => {
                     2xl:m-6
                 ">
                     <div className="flex items-center justify-center">
-                        <img src="c2.avif" alt="" className="h-36" />
+                        <img src={c2} alt="" className="h-36" />
                     </div>
                     <h3 className="font-normal mt-3 text-2xl">Whole Ingredients</h3>
                     <p className="mt-3 text-sm
@@ -56,7 +61,7 @@ const Mission = () => {
                     2xl:m-6
                 ">
                     <div className="flex items-center justify-center">
-                        <img src="c3.avif" alt="" className="h-36" />
+                        <img src={c3} alt="" className="h-36" />
                     </div>
                     <h3 className="font-normal mt-3 text-2xl">Community Driven</h3>
                     <p className="mt-3 text-sm

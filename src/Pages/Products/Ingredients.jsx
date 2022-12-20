@@ -1,3 +1,9 @@
+import i1 from "../../Images/i1.png"
+import i2 from "../../Images/i2.png"
+import i3 from "../../Images/i3.png"
+import i4 from "../../Images/i4.png"
+import i5 from "../../Images/i5.png"
+
 const Ingredients = () => {
   return (
     <div
@@ -16,7 +22,7 @@ const Ingredients = () => {
       >
         <div className="flex flex-col max-w-[230px] m-6">
           <div className="md:flex md:justify-center">
-            <img className="w-20" src="i1.png" alt="" />
+            <img className="w-20" src={i1} alt="" />
           </div>
           <h3 className="font-medium text-xl my-3">Inositol</h3>
           <p className="text-sm h-28">
@@ -27,7 +33,7 @@ const Ingredients = () => {
 
         <div className="flex flex-col max-w-[230px] m-6">
           <div className="md:flex md:justify-center">
-            <img className="w-20" src="i2.png" alt="" />
+            <img className="w-20" src={i2} alt="" />
           </div>
           <h3 className="font-medium text-xl my-3">Shatavari</h3>
           <p className="text-sm h-28">
@@ -39,7 +45,7 @@ const Ingredients = () => {
 
         <div className="flex flex-col max-w-[230px] m-6">
           <div className="md:flex md:justify-center">
-            <img className="w-20" src="i3.png" alt="" />
+            <img className="w-20" src={i3} alt="" />
           </div>
           <h3 className="font-medium text-xl my-3">Manjishtha</h3>
           <p className="text-sm h-28">
@@ -50,7 +56,7 @@ const Ingredients = () => {
 
         <div className="flex flex-col max-w-[230px] m-6">
           <div className="md:flex md:justify-center">
-            <img className="w-20" src="i4.png" alt="" />
+            <img className="w-20" src={i4} alt="" />
           </div>
           <h3 className="font-medium text-xl my-3">Ashoka</h3>
           <p className="text-sm h-28">
@@ -61,7 +67,7 @@ const Ingredients = () => {
 
         <div className="flex flex-col max-w-[230px] m-6">
           <div className="md:flex md:justify-center">
-            <img className="w-20" src="i5.png" alt="" />
+            <img className="w-20" src={i5} alt="" />
           </div>
           <h3 className="font-medium text-xl my-3">Ashwagandha</h3>
           <p className="text-sm h-28">

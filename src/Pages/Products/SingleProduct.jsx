@@ -4,6 +4,10 @@ import { useStateValue } from "../../Context/StateProvider";
 import { actionType } from "../../Context/reducer";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+import p1 from "../../Images/p.png";
+import p2 from "../../Images/p2.png"
+import p3 from "../../Images/p3.png"
+
 
 const SingleProduct = ({ setpack }) => {
   const [{ pack }, dispatch] = useStateValue();
@@ -108,15 +112,15 @@ const SingleProduct = ({ setpack }) => {
         </div>
       </div> */}
 
-      <Carousel showThumbs={false} className="mx-10 my-3 md:w-4/6 lg:w-2/6 " >
+      <Carousel showThumbs={false} className="mx-10 my-3 md:w-4/6 lg:w-2/6 ">
         <div>
-          <img loading="lazy" src="p.png" />
+          <img loading="lazy" src={p1} />
         </div>
         <div>
-          <img loading="lazy" src="p.png" />
+          <img loading="lazy" src={p2} />
         </div>
         <div>
-          <img loading="lazy" src="p.png" />
+          <img loading="lazy" src={p3} />
         </div>
       </Carousel>
 

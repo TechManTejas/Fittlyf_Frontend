@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
+import Image2 from "../Images/image2.png"
 
 const Navbar = () => {
   const [dis, sd] = useState(false);
@@ -12,7 +13,7 @@ const Navbar = () => {
       id="Navbar"
       className="border-0 border-gray-300 border-b-2 md:space-y-0 p-3 flex-wrap flex items-center justify-between sm:justify-around mx-5 "
     >
-      <img className="w-28" id="logoImg" src="image2.png" alt="" />
+      <img className="w-28" id="logoImg" src={Image2} alt="" />
 
       <div className={dis ? "flex transition-all duration-1000 ease-in-out" : "hidden sm:block transition-all duration-1000 ease-in-out"}>
         <div

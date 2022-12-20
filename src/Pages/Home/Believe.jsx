@@ -1,3 +1,6 @@
+import b1 from "../../Images/b1.png"
+import b2 from "../../Images/b2.png"
+
 const Believe = () => {
     return (
         <div id="Believe">
@@ -26,11 +29,11 @@ const Believe = () => {
                             </p>
                             <h3 className="mt-10 font-semibold text-2xl">-Shambhavi, 27</h3>
                         </div>
-                        <img src="b1.png" alt=""/>
+                        <img src={b1} alt=""/>
                     </div>
 
                     <div className="md:grid md:grid-cols-2 md:flex-wrap">
-                        <img src="b2.png" alt="" />
+                        <img src={b2} alt="" />
                         <div className="p-16 bg-[#FFF7F3] flex flex-col items-start justify-center text-2xl">
                             <p className="max-w-[620px]">
                                 “Got my first PMS cramp and hoping to have my period in the next 3 days after 4 months. Very hopeful and happy today.”

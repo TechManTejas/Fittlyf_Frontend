@@ -23,7 +23,7 @@ const Experts = () => {
 
             <div className="hidden sm:flex items-center md:justify-center overflow-auto">
                 <div className="lg:flex items-center justify-center mx-10">
-                    <img className="w-56 mx-2" src="e1.png" alt="" />
+                    <img className="w-56 mx-2" src="Expert.jpg" alt="" />
                     <div className="p-2 text-left">
                         <h2 className="font-bold font-serif text-lg">Ms. Lakshmi</h2>
                         <p className="mt-4 text-sm w-60">
@@ -58,7 +58,7 @@ const Experts = () => {
             <Carousel showThumbs={true} className="sm:hidden mx-10 my-3" thumbWidth={200}>
                 <div>
                     <div className="lg:flex items-center justify-center mx-10">
-                        <img className="w-56 mx-2" src="e1.png" alt="" />
+                        <img className="w-56 mx-2" src="Expert.jpg" alt="" />
                         <div className="p-2 text-left">
                             <h2 className="font-bold font-serif text-lg">Ms. Lakshmi</h2>
                             <p className="mt-4 text-sm w-60">
@@ -73,7 +73,7 @@ const Experts = () => {
                         </div>
                     </div>
                 </div>
-                <div>
+                {/* <div>
                     <div className="lg:flex items-center justify-center mx-10">
                         <img className="w-56 mx-2" src="e2.png" alt="" />
                         <div className="p-2 text-left">
@@ -89,7 +89,7 @@ const Experts = () => {
                             </button>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </Carousel>
         </div>
     );

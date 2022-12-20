@@ -6,8 +6,6 @@ import { Carousel } from "react-responsive-carousel";
 const Review = () => {
   const [showvideo, setsw] = useState(false);
 
-  let link = "";
-
   return (
     <div id="Review">
       <VideoRender showvideo={showvideo} setsw={setsw} />
@@ -127,7 +125,7 @@ const Review = () => {
               /> */}
               <div className="border rounded-xl px-10 py-6">
                 <div className="flex items-center mb-4 ">
-                  <div className=" w-full flex items-center flex-col justify-center">
+                  <div className=" w-full flex  items-start flex-col justify-center">
                     <h3 className="font-semibold">Shambhavi, 27</h3>
                     <div className="space-x-1">
                       <i className="text-yellow-400 fa-solid fa-star"></i>
@@ -155,7 +153,7 @@ const Review = () => {
               /> */}
               <div className="border rounded-xl px-10 py-6">
                 <div className="flex items-center mb-4 ">
-                  <div className=" w-full flex items-center flex-col justify-center">
+                  <div className=" w-full flex items-start flex-col justify-center ">
                     <h3 className="font-semibold">Profi, Mother to 15 YO</h3>
                     <div className="space-x-1">
                       <i className="text-yellow-400 fa-solid fa-star"></i>
@@ -183,7 +181,7 @@ const Review = () => {
               /> */}
               <div className="border rounded-xl px-10 py-6">
                 <div className="flex items-center mb-4 ">
-                  <div className=" w-full flex items-center flex-col justify-center">
+                  <div className=" w-full flex  items-start flex-col justify-center">
                     <h3 className="font-semibold">Sheena, 24</h3>
                     <div className="space-x-1">
                       <i className="text-yellow-400 fa-solid fa-star"></i>
@@ -209,7 +207,7 @@ const Review = () => {
               /> */}
               <div className="border rounded-xl px-10 py-6">
                 <div className="flex items-center mb-4 ">
-                  <div className=" w-full flex items-center flex-col justify-center">
+                  <div className=" w-full flex  items-start flex-col justify-center">
                     <h3 className="font-semibold">Ayushi, 29</h3>
                     <div className="space-x-1">
                       <i className="text-yellow-400 fa-solid fa-star"></i>

@@ -1,4 +1,4 @@
-import HomeImg from "../../Images/homeImg.png"
+import HomeImg from "../../Images/HomeImageTrans.png"
 
 import { Link } from "react-router-dom";
 const Main = () => {
@@ -36,16 +36,14 @@ const Main = () => {
                     2xl:mt-16 2xl:text-2xl
                 "
         >
-          The modern woman's essential health and wellness destination,
-          providing expert-led PCOS,PCOD, prenatal and postnatal medication,
-          support, advice and more.
+          For Women - By Women
         </p>
 
         <Link to="/products">
           <button
-            className="bg-white rounded-3xl px-6 py-4 font-bold text-[#200044] mt-6 text-xs
-                    sm:mt-8 sm:text-xs
-                    lg:mt-12 lg:text-md
+            className="bg-white rounded-lg px-4 py-2 font-bold text-[#200044] mt-6 text-sm
+                    sm:mt-8 sm:text-sm
+                    lg:mt-12 lg:text-lg
                     xl:mt-14 xl:text-xl
                     2xl:mt-16
                 "

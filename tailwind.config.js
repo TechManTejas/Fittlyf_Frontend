@@ -11,6 +11,9 @@ module.exports = {
         'box': '1000px',
       },
     },
+    fontFamily: {
+      'Maharlika': ['"Maharlika"', 'serif'] // Ensure fonts with spaces have " " surrounding it.
+    },
   },
   plugins: [require('tw-elements/dist/plugin'), require('flowbite/plugin')],
 }

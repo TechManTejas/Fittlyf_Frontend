@@ -1,52 +1,26 @@
-import b1 from "../../Images/b1.png"
-import b2 from "../../Images/b2.png"
+import mission from "../../Images/MISSION.JPG"
 
 const Believe = () => {
     return (
-        <div id="Believe">
-
-            <h1 className="text-center mt-8 font-bold font-serif text-3xl tracking-normal
+        <div id="Believe" className="" style = {{color: "#818b7e", background: "#f2efeb", fontFamily: "Maharlika"}}>
+            <div className="">
+                <h1 className=" mt-8 text-5xl tracking-normal text-center p-3
                 sm:mt-10
                 md:mt-12 md:text-4xl
                 lg:mt-16
-            ">We Believe</h1>
-            
-            <p className="mt-6 text-2xl text-center mx-4
+            ">The fittlyf mission</h1>
+
+                <p className="text-md text-left p-3
                 md:text-3xl
             ">
-                We believe in building innovative products and solutions for women one problem at a time.
-            </p>
-
-            <div className="flex items-center justify-center">
-                <div className="my-10 flex items-center justify-center flex-col
-                    md:my-20
-                ">
-
-                    <div className="md:grid md:grid-cols-2 md:flex-wrap-reverse">
-                        <div className="p-16 bg-[#FFF7F3] flex flex-col items-start justify-center text-2xl">
-                            <p className="max-w-[620px]">
-                                “Got my first period after 11 months. Had been diagnosed at a very early age and tried everything. Finally tried YOSHA, first period after 40 days of taking it. Very happy with the results.”
-                            </p>
-                            <h3 className="mt-10 font-semibold text-2xl">-Shambhavi, 27</h3>
-                        </div>
-                        <img src={b1} alt=""/>
-                    </div>
-
-                    <div className="md:grid md:grid-cols-2 md:flex-wrap">
-                        <img src={b2} alt="" />
-                        <div className="p-16 bg-[#FFF7F3] flex flex-col items-start justify-center text-2xl">
-                            <p className="max-w-[620px]">
-                                “Got my first PMS cramp and hoping to have my period in the next 3 days after 4 months. Very hopeful and happy today.”
-                            </p>
-                            <h3 className="mt-10 font-semibold text-2xl">-Sheena, 24</h3>
-                        </div>
-                    </div>
-
-                </div>
-
+                    Fittlyf lives to provide the best and most innovative solution to women's health problems.
+                </p>
             </div>
-
-
+            
+            <div className="flex justify-center pb-5">
+                <img className="w-2/3" src={mission}></img>
+            </div>
+            
         </div>
     )
 }

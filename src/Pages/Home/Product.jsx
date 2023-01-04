@@ -3,7 +3,7 @@ import Prod from "../../Images/product.JPG"
 
 const Product = () => {
     return (
-        <div id="Product" className="pb-2 pt-8 bg-[#4e4d880a]" style={{ color: "#818b7e", background: "#f2efeb" }}>
+        <div id="Product" className="pb-2 pt-8 bg-[#4e4d880a]" style={{ color: "#818b7e", background: "#f2efeb", fontFamily: "Maharlika" }}>
             <h1
                 className="flex mb-8 flex-col text-center font-serif font-medium text-3xl
                 md:text-4xl

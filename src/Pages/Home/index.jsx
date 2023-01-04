@@ -12,11 +12,12 @@ const Home = () => {
         <div id="Home">
             <Navbar />
             <Main />
+            <Product />
             <Video />
             <Mission />
-            <Product />
+            
             <Believe />
-            <Join />
+            {/* <Join /> */}
             <Footer />
         </div>
     )

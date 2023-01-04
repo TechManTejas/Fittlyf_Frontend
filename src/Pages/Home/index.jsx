@@ -5,12 +5,14 @@ import Join from "./Join"
 import Main from "./Main"
 import Mission from "./Mission"
 import Product from "./Product"
+import Video from "./Video"
 
 const Home = () => {
     return (
         <div id="Home">
             <Navbar />
             <Main />
+            <Video />
             <Mission />
             <Product />
             <Believe />

@@ -1,4 +1,4 @@
-import mission from "../../Images/MISSION.JPG"
+import mission from "../../Images/MissionNew.png"
 
 const Believe = () => {
     return (
@@ -17,7 +17,7 @@ const Believe = () => {
                 </p>
             </div>
             
-            <div className="flex justify-center pb-5">
+            <div className="flex justify-center">
                 <img className="w-2/3" src={mission}></img>
             </div>
             

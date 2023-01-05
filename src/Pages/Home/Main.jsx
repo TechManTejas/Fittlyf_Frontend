@@ -1,4 +1,4 @@
-import HomeImg from "../../Images/HomeImageTrans.png"
+import HomeImg from "../../Images/HeroImage.png"
 
 import { Link } from "react-router-dom";
 const Main = () => {

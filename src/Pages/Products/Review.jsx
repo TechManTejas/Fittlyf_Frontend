@@ -21,7 +21,7 @@ const Review = () => {
           Customer Stories
         </h2>
 
-        <div className="flex xl:items-center xl:justify-center mx-4 overflow-x-auto">
+        <div className="hidden md:flex md:items-center md:justify-center mx-4 overflow-x-auto">
           <div
             onClick={() => setsw("https://www.youtube.com/embed/qPLEq5qYezg")}
             className="m-2 cursor-pointer
@@ -62,47 +62,33 @@ const Review = () => {
         </div>
       </div>
 
-      {/* <Carousel showThumbs={false} className="sm:hidden mx-4">
-        <div>
-          <div
-            onClick={() => setsw(true)}
+      <Carousel showThumbs={false} className="md:hidden mx-4">
+      <div
+            onClick={() => setsw("https://www.youtube.com/embed/qPLEq5qYezg")}
             className="m-2 cursor-pointer
                             md:m-2
                             lg:m-6
                             xl:m-8
                         "
           >
-            <img className="md:w-96" src="Card.png" alt="" />
+            <img className="md:w-96 rounded-3xl shadow-xl" src={Card1} alt="" />
             <p className="w-96"></p>
           </div>
-        </div>
-        <div>
+
           <div
-            onClick={() => setsw(true)}
+            onClick={() => {
+              setsw("https://www.youtube.com/embed/qPLEq5qYezg");
+            }}
             className="m-2 cursor-pointer
                             md:m-2
                             lg:m-6
                             xl:m-8
                         "
           >
-            <img className="md:w-96" src="Card2.png" alt="" />
+            <img className="md:w-96 rounded-3xl shadow-xl" src={Card2} alt="" />
             <p className="w-96"></p>
           </div>
-        </div>
-        <div>
-          <div
-            onClick={() => setsw(true)}
-            className="m-2 cursor-pointer
-                            md:m-2
-                            lg:m-6
-                            xl:m-8
-                        "
-          >
-            <img className="md:w-96" src="Card2.png" alt="" />
-            <p className="w-96"></p>
-          </div>
-        </div>
-      </Carousel> */}
+      </Carousel>
 
       <div className="flex flex-col mx-8-4">
         <h2

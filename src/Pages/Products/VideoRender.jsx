@@ -11,7 +11,7 @@ export const VideoRender = ({ showvideo, setsw, link }) => {
               Close <CloseIcon />
             </div>
             <iframe
-              className=" sm:h-[254px] sm:w-[450px] lg:h-[480px] lg:w-[854px]"
+              className=" h-[550px] sm:h-[254px] sm:w-[450px] lg:h-[480px] lg:w-[854px]"
               src = {showvideo}
               title="YouTube video player"
               frameborder="0"

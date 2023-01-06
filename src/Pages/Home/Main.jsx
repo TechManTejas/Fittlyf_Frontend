@@ -18,12 +18,13 @@ const Main = () => {
             "
       >
         <h1
-          className="font-bold tracking-light pt-4 text-4xl
+          className="tracking-light pt-4 text-5xl
                     sm:pt-8 sm:text-4xl
                     lg:pt-12 lg:text-5xl
                     xl:pt-14 xl:text-6xl
                     2xl:pt-16 2xl:text-8xl
                 "
+          style={{ fontFamily: "Maharlika" }}
         >
           Women Health Done Right
         </h1>
@@ -35,6 +36,7 @@ const Main = () => {
                     xl:mt-14 xl:text-xl
                     2xl:mt-16 2xl:text-2xl
                 "
+          style={{ fontFamily: "Maharlika" }}
         >
           For Women - By Women
         </p>

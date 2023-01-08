@@ -6,15 +6,16 @@ const Main = () => {
     <div
       id="Main"
       className="bg-[#8d77ab] text-white items-center
-            md:flex 
+          md:flex 
+          sm:px-8
+          lg:px-20
+          xl:px-28
+          2xl:px-36
         "
     >
       <div
         className="text-left ml-4
-                sm:ml-8
-                lg:ml-10
-                xl:ml-16
-                2xl:ml-24
+                
             "
       >
         <h1
@@ -61,11 +62,8 @@ const Main = () => {
         src={HomeImg}
         loading="lazy"
         alt=""
-        className="mr-4
-                md:w-[60vw] md:mt-24
-                lg:w-[65vw]
-                xl:w-[70vw]
-                2xl:w-[100vw]
+        className="mr-4 mt-8
+                md:w-1/2
             "
       />
     </div>

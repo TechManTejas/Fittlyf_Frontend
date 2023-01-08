@@ -18,23 +18,38 @@ export const Client = () => {
   ];
 
   return (
-    <div style={{ color: "#2e2e2f", fontFamily: "Maharlika" }}>
-      <h1 className="p-4 text-2xl">What Our Clients Say</h1>
-      <div>
-        {data.map((e) => {
-          return (
-            <section className="py-5">
-              <div className="flex flex-col items-center">
-                <p className="w-11/12">{e.desc}</p>
-              </div>
+    <div className="lg:flex lg:justify-center lg:mb-10" style={{ color: "#2e2e2f", fontFamily: "Maharlika" }}>
+      <div className="">
+        <h1 className="p-4 text-3xl
+        sm:text-5xl
+        lg:my-4
+        xl:my-6
+        2xl:my-8
+      ">What Our Clients Say</h1>
+        <div className="lg:flex">
+          {data.map((e) => {
+            return (
+              <div className="p-5 
+                lg:w-[350px]
+                xl:w-[375px]
+                2xl:w-[400px]
+              ">
+                <div className="">
+                  <p className=" text-lg">"{e.desc}"</p>
+                </div>
 
-              <div className="pl-6 pt-6 text-xl">{e.name}</div>
-              <div className="pl-6 text-xl">{e.age}</div>
-              <div className="pl-7"><div className="border-b w-1/6 border-black pt-6"></div></div>
-            </section>
-          );
-        })}
+                <div className="py-5">
+                  <div className="text-xl">{e.name}</div>
+                  <div className="text-xl">{e.age}</div>
+                </div>
+
+                <div className=""><div className="border-b w-2/6 border-black"></div></div>
+              </div>
+            );
+          })}
+        </div>
       </div>
+
     </div>
   );
 };

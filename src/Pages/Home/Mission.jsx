@@ -5,13 +5,18 @@ import c3 from "../../Images/6.png"
 
 const Mission = () => {
     return (
-        <div id="Mission" className="text-center m-10
+        <div id="Mission" className="text-center mx-10 mt-10
+            sm:mb-0
             xl:m-12
             2xl:m-16"
             style={{ color: "#818b7e", fontFamily: "Maharlika" }}
         >
 
-            <h1 className="text-3xl ">What We Do</h1>
+            <h1 className="text-3xl 
+                sm:text-5xl
+                md:text-6xl
+                xl:text-8xl
+            ">What We Do</h1>
 
             {/* <p className="mt-4 text-lg font-medium 
                 xl:text-xl xl:mt-8 xl:mx-40
@@ -22,8 +27,9 @@ const Mission = () => {
 
             <div className="justify-center items-center flex flex-col
                 md:flex md:flex-row mt-8
+                sm:mt-0
             ">
-                <div className="rounded-3xl px-8 py-4 max-w-xs
+                <div className="px-8 py-4 max-w-xs
                     md:m-1 md:py-20
                     lg:m-3
                     xl:m-4
@@ -39,7 +45,7 @@ const Mission = () => {
                     ">Sustainability is our main goal, that's why our packaging is recyclable.</p> */}
                 </div>
 
-                <div className="rounded-3xl border-gray-300 px-8 py-4 max-w-xs 
+                <div className="px-8 py-4 max-w-xs 
                     md:m-1 md:py-20
                     lg:m-3
                     xl:m-4
@@ -55,7 +61,7 @@ const Mission = () => {
                     ">Our natural ingredients will leave you feeling fresh and smooth.</p> */}
                 </div>
 
-                <div className="rounded-3xl  px-8 py-4 max-w-xs
+                <div className="px-8 py-4 max-w-xs
                     md:m-1 md:py-20
                     lg:m-3
                     xl:m-4

@@ -5,23 +5,3 @@
 body {
     overflow-x: hidden;
 }
-::-webkit-scrollbar {
-    -webkit-appearance: none;
-}
-
-::-webkit-scrollbar:vertical {
-    width:3px;
-}
-
-::-webkit-scrollbar:horizontal {
-    height: 3px;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, .5);
-    border-radius: 5px;
-}
-
-::-webkit-scrollbar-track {
-    border-radius: 5px;  
-}

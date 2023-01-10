@@ -38,7 +38,7 @@ export const Client = () => {
                   <p className=" text-lg">"{e.desc}"</p>
                 </div>
 
-                <div className="py-5">
+                <div className="pb-5 pt-1">
                   <div className="text-xl">{e.name}</div>
                   <div className="text-xl">{e.age}</div>
                 </div>

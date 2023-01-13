@@ -10,6 +10,9 @@ module.exports = {
       screens: {
         'box': '1000px',
       },
+      backgroundImage:{
+        'fittlyf-background':"url(./Images/BG.png)",
+      }
     },
     fontFamily: {
       'Maharlika': ['"Maharlika"', 'serif'] // Ensure fonts with spaces have " " surrounding it.

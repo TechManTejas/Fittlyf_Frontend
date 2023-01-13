@@ -6,6 +6,7 @@ import Shipping from "./Pages/Form/Shipping";
 import Payment from "./Pages/Form/Payment";
 import Success from "./Pages/Form/Success"
 import { Notify } from "./Components/Notify";
+import Webinar from "./Pages/Webinar";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route exact path="/shipping" element={<Shipping />} />
         <Route exact path="/payment" element={<Payment />} />
         <Route exact path="/order/:id" element={<Success />} />
+        <Route exact path="/webinar" element={<Webinar />} />
       </Routes>
       <Notify />
     </>

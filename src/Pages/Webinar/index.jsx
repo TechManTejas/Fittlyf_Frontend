@@ -52,21 +52,9 @@ function Webinar() {
                                         m-5
                                     ">
                                         <input className="rounded 
-                                            lg:w-64
-                                            md:w-52
+                                            lg:w-72
                                             w-72
                                         " type="text" placeholder="Name"></input>
-                                    </div>
-                                    <div className="
-                                        lg:m-2.5
-                                        md:m-2
-                                        m-5
-                                    ">
-                                        <input className="rounded 
-                                            lg:w-64
-                                            md:w-52
-                                            w-72
-                                        " type="text" placeholder="Mail"></input>
                                     </div>
                                 </div>
                                 <div className="justify-center items-center
@@ -78,34 +66,24 @@ function Webinar() {
                                         m-5
                                     ">
                                         <input className="rounded 
-                                            lg:w-64
-                                            md:w-52
+                                            lg:w-72
                                             w-72
-                                        " type="text" placeholder="Phone"></input>
+                                        " type="text" placeholder="Email"></input>
                                     </div>
+                                </div>
+                                <div className="justify-center items-center
+                                    md:flex
+                                ">
                                     <div className="
                                         lg:m-2.5
                                         md:m-2
                                         m-5
                                     ">
-                                        <select className="rounded 
-                                            lg:w-64
-                                            md:w-52
+                                        <input className="rounded 
+                                            lg:w-72
                                             w-72
-                                        ">
-                                            <option disabled selected>Choose Your Class</option>
-                                            <option>Class 1</option>
-                                            <option>Class 2</option>
-                                            <option>Class 3</option>
-                                        </select>
+                                        " type="text" placeholder="Phone"></input>
                                     </div>
-                                </div>
-                                <div className="flex w-full">
-                                    <textarea rows={4} className="rounded w-full
-                                        lg:m-2.5
-                                        md:m-2
-                                        mx-5
-                                    " type="text" placeholder="Message (Optional)" style={{resize:"none"}}></textarea>
                                 </div>
                             </div>
                             <div className="flex justify-center text-white ">

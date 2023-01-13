@@ -28,12 +28,21 @@ function Webinar() {
                             md:ml-8
                         ">
                             <div className="font-medium text-2xl 
-                                lg:m-2.5 lg:my-5 lg:mt-10
-                                md:m-2 md:my-4 md:mt-8
+                                lg:m-2.5 lg:mt-8
+                                md:m-2 md:my-4 md:mt-6
                                 m-2 my-3 mt-8
                             " 
-                                style={{fontFamily:"Maharlika"}}>REGISTER FOR WEBINAR</div>
+                                style={{fontFamily:"Maharlika"}}>REGISTER FOR WEBINAR
+                            </div>
+                            <div className="
+                                lg:mb-4
+                                md:mb-2
+                                mb-4
+                            " style={{ fontFamily: "Maharlika" }}>
+                                I was just told to add a random subtext below this title
+                            </div>
                             <div>
+                            
                                 <div className="justify-center items-center
                                     md:flex
                                 ">
@@ -92,7 +101,7 @@ function Webinar() {
                                     </div>
                                 </div>
                                 <div className="flex w-full">
-                                    <textarea rows={3} className="rounded w-full
+                                    <textarea rows={4} className="rounded w-full
                                         lg:m-2.5
                                         md:m-2
                                         mx-5

@@ -35,5 +35,17 @@ export const ValidateAll = () => {
 }
 
 export const ValidateBillingAddress = () => {
-    
+
+}
+
+export const ValidateAllWebinar = (name, email, phone) => {
+    if (email === '') return "Email cannot be empty"
+    if (!validator.isEmail(email)) return "Invalid Email ID"
+
+    if (phone === '') return "Phone Number cannot be empty"
+    if (!phone.match(/^\d{10}$/)) return "Invalid Phone Number"
+
+    if (name === '') return "First Name cannot be Empty"
+
+    return "none"
 }

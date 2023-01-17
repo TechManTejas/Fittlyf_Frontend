@@ -19,7 +19,7 @@ const App = () => {
         <Route exact path="/shipping" element={<Shipping />} />
         <Route exact path="/payment" element={<Payment />} />
         <Route exact path="/order/:id" element={<Success />} />
-        <Route exact path="/webinar" element={<Webinar />} />
+        <Route exact path="/webinar/:id" element={<Webinar />} />
       </Routes>
       <Notify />
     </>

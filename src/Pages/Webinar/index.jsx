@@ -4,8 +4,22 @@ import { sendWebinarData } from "../../APIs/WebinarAPI";
 import { successNotify } from "../../Components/Notify";
 import { notify } from "../../Components/Notify";
 import { ValidateAllWebinar } from "../../Validator";
+import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { useState } from "react";
 
 function Webinar() {
+
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (id !== "hyderabad") {
+      navigate("/");
+    }
+  }, []); 
+
   const name = useRef();
   const phoneNumber = useRef();
   const email = useRef();
@@ -15,7 +29,7 @@ function Webinar() {
       name: name.current.value,
       phoneNumber: phoneNumber.current.value,
       email: email.current.value,
-      city: "Hyderabad",
+      city: id,
     };
 
     const validate = ValidateAllWebinar(
@@ -24,14 +38,17 @@ function Webinar() {
       phoneNumber.current.value
     );
 
-    if(validate !== "none"){
-        notify(validate)
-        return;
+    if (validate !== "none") {
+      notify(validate);
+      return;
     }
-    
+
     await sendWebinarData(data).then((res) => {
       if (res.status === 200) {
         successNotify("Data Saved Successfully");
+        setTimeout(() => {
+          navigate("/");
+        }, 4000);
       } else notify("Try Again Later");
     });
   };

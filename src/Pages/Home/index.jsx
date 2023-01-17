@@ -16,7 +16,6 @@ const Home = () => {
       <Product />
       <Video />
       <Mission />
-
       <Believe />
       {/* <Join /> */}
       <Client />

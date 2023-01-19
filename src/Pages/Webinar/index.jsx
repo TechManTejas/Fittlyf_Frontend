@@ -55,7 +55,7 @@ function Webinar() {
 
   return (
     <>
-      <div>
+      <div className="font-arsenal">
         <div
           className="flex justify-center items-center bg-fittlyf-background bg-no-repeat bg-bottom bg-[#F0E9FF]
                     md:h-screen
@@ -87,12 +87,12 @@ function Webinar() {
                         "
             >
               <div
-                className="font-medium text-2xl 
+                className="text-2xl 
                                 lg:m-2.5 lg:mt-8
                                 md:m-2 md:my-4 md:mt-6
                                 m-2 my-3 mt-8
                             "
-                style={{ fontFamily: "Maharlika" }}
+                // style={{ fontFamily: "Maharlika" }}
               >
                 REGISTER FOR WEBINAR
               </div>
@@ -102,7 +102,7 @@ function Webinar() {
                                 md:mb-2
                                 mb-4
                             "
-                style={{ fontFamily: "Maharlika" }}
+                // style={{ fontFamily: "Maharlika" }}
               >
                 I was just told to add a random subtext below this title
               </div>

@@ -15,7 +15,13 @@ module.exports = {
       }
     },
     fontFamily: {
-      'Maharlika': ['"Maharlika"', 'serif'] // Ensure fonts with spaces have " " surrounding it.
+      'maharlika': ['Maharlika'],
+      'poppins': ['Poppins'],
+      'lato': ['Lato'],
+      'oswald': ['Oswald'],
+      'monda': ['Monda'],
+      'arsenal':['Arsenal'],
+      'merienda':['Merienda'],
     },
   },
   plugins: [require('tw-elements/dist/plugin'), require('flowbite/plugin')],

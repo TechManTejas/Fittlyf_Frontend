@@ -28,6 +28,12 @@ const Navbar = () => {
           <NavLink className={window.location.pathname === "/about" ? "text-base opacity-70 border-0 border-violet-700 border-b-2" : "text-base opacity-70"} to="/about">
             About us
           </NavLink>
+          <NavLink className={window.location.pathname === "/privacy-policy" ? "text-base opacity-70 border-0 border-violet-700 border-b-2" : "text-base opacity-70"} to="/privacy-policy">
+            Privacy Policy
+          </NavLink>
+          <NavLink className={window.location.pathname === "/terms-and-conditions" ? "text-base opacity-70 border-0 border-violet-700 border-b-2" : "text-base opacity-70"} to="/terms-and-conditions">
+            Terms And Conditions
+          </NavLink>
           {dis && (
             <div onClick={() => sd(false)} className="text-xl cursor-pointer">
               Close <CloseIcon />

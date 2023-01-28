@@ -7,6 +7,8 @@ import Payment from "./Pages/Form/Payment";
 import Success from "./Pages/Form/Success"
 import { Notify } from "./Components/Notify";
 import Webinar from "./Pages/Webinar";
+import TermsAndConditions from "./Pages/TermsAndConditions";
+import PrivacyPolicy from "./Pages/PrivacyPolicy";
 
 const App = () => {
   return (
@@ -20,6 +22,8 @@ const App = () => {
         <Route exact path="/payment" element={<Payment />} />
         <Route exact path="/order/:id" element={<Success />} />
         <Route exact path="/webinar/:id" element={<Webinar />} />
+        <Route exact path="/terms-and-conditions" element={<TermsAndConditions />} />
+        <Route exact path="/privacy-policy" element={<PrivacyPolicy />} />
       </Routes>
       <Notify />
     </>

@@ -18,7 +18,7 @@ function Webinar() {
     if (id !== "hyderabad") {
       navigate("/");
     }
-  }, []); 
+  }, []);
 
   const name = useRef();
   const phoneNumber = useRef();
@@ -92,7 +92,7 @@ function Webinar() {
                                 md:m-2 md:my-4 md:mt-6
                                 m-2 my-3 mt-8
                             "
-                // style={{ fontFamily: "Maharlika" }}
+              // style={{ fontFamily: "Maharlika" }}
               >
                 REGISTER FOR WEBINAR
               </div>
@@ -102,7 +102,7 @@ function Webinar() {
                                 md:mb-2
                                 mb-4
                             "
-                // style={{ fontFamily: "Maharlika" }}
+              // style={{ fontFamily: "Maharlika" }}
               >
                 I was just told to add a random subtext below this title
               </div>

@@ -6,6 +6,8 @@ import { StateProvider } from "./Context/StateProvider.js";
 import { initialState } from "./Context/initialState.js";
 import reducer from "./Context/reducer.js";
 
+
+
 ReactDOM
     .createRoot(document.getElementById("root"))
     .render(

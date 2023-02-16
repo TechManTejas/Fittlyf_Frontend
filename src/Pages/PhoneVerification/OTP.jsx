@@ -86,14 +86,17 @@ const OTP = ({number, setGoToOTP}) => {
                                     <div className="flex flex-col space-y-5">
                                         <div className="flex flex-row items-center justify-center text-center text-sm font-medium space-x-1 text-gray-500">
                                             <p>Didn't recieve code?</p>{" "}
-                                            <a
+                                            <button
+                                                onClick={()=>{
+                                                    requestOTP(phoneNumber)
+                                                }}
                                                 className="flex flex-row items-center text-blue-600"
-                                                href="http://"
+
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
                                                 Resend
-                                            </a>
+                                            </button>
                                         </div>
                                         <div>
                                             <button 

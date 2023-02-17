@@ -1,4 +1,30 @@
+import { ValidatePhone } from "../../Validator";
+import { notify } from "../../Components/Notify";
+import { useEffect, useState } from "react";
+
 const MobileNumber = ({ number, setNumber, setGoToOTP }) => {
+
+    const [validate, setValidate] = useState("")
+
+    function updateNumber(number) {
+        setNumber(number)
+        setValidate(ValidatePhone(number))
+    }
+
+    function navigateToOTP(e){
+        e.preventDefault()
+        if(validate == 1) {
+            setGoToOTP(1)
+        }else{
+            notify(validate)
+        }
+    }
+
+    useEffect(() => {
+        setValidate(ValidatePhone(number))
+    }, [])
+    
+
     return (
         <>
             <div className="relative flex min-h-screen flex-col justify-center overflow-hidden py-12">
@@ -23,9 +49,9 @@ const MobileNumber = ({ number, setNumber, setGoToOTP }) => {
                                             <input
                                                 value={number}
                                                 onChange={(e)=>{
-                                                    setNumber(e.target.value)
+                                                    updateNumber(e.target.value)
                                                 }}
-                                                type="text"
+                                                type="number"
                                                 className="w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700"
                                             />
                                         </div>
@@ -34,8 +60,8 @@ const MobileNumber = ({ number, setNumber, setGoToOTP }) => {
                                         
                                         <div>
                                             <button 
-                                            onClick={() => {
-                                                    setGoToOTP(1)
+                                            onClick={(e) => {
+                                                navigateToOTP(e)
                                             }}
                                             className="w-full" style={{ 
                                                 "position": "relative", 

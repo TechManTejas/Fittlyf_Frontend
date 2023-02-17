@@ -2,6 +2,11 @@
 const validator = require('validator');
 import { Refs } from '../Hooks/Refs';
 
+export const ValidatePhone = (phone) => {
+    if (phone === '') return "Phone Number cannot be empty"
+    if (!phone.match(/^\d{10}$/)) return "Invalid Phone Number"
+    return 1
+}
 
 export const ValidateAll = () => {
 

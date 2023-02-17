@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { authentication } from "../../Firebase/firebase";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+import { notify, successNotify } from "../../Components/Notify";
 
 const OTP = ({number, setGoToOTP}) => {
 
@@ -21,8 +22,7 @@ const OTP = ({number, setGoToOTP}) => {
         }, authentication);
     }
 
-    const requestOTP = (phoneNumber) => {
-        generateRecaptcha();
+    const sendOTP = (phoneNumber) => {
         let appVerifier = window.recaptchaVerifier
         signInWithPhoneNumber(authentication, phoneNumber, appVerifier)
             .then(confirmationResult => {
@@ -32,20 +32,27 @@ const OTP = ({number, setGoToOTP}) => {
             });
     }
 
+    const requestOTP = (phoneNumber) => {
+        generateRecaptcha();
+        sendOTP(phoneNumber);
+    }
+
     const verifyOTP = (e) => {
         let otp = e.target.value;
         setOTP(otp)
 
         if (otp.length === 6) {
+            successNotify("Verifying OTP")
             let confirmationResult = window.confirmationResult;
             confirmationResult.confirm(otp).then((result) => {
                 // User signed in successfully.
+                successNotify("Mobile Number Verified")
                 const user = result.user;
                 console.log(user)
                 navigate("/diet-plan")
             }).catch((error) => {
                 // User couldn't sign in (bad verification code?)
-                // ...
+                notify("Bad Verification Code")
             });
         }
     }
@@ -77,9 +84,7 @@ const OTP = ({number, setGoToOTP}) => {
                                                     verifyOTP(e) 
                                                 }}
                                                 className="w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700"
-                                                type="num"
-                                                name=""
-                                                id=""
+                                                type="number"
                                             />
                                         </div>
                                     </div>
@@ -87,8 +92,10 @@ const OTP = ({number, setGoToOTP}) => {
                                         <div className="flex flex-row items-center justify-center text-center text-sm font-medium space-x-1 text-gray-500">
                                             <p>Didn't recieve code?</p>{" "}
                                             <button
-                                                onClick={()=>{
-                                                    requestOTP(phoneNumber)
+                                                onClick={(e)=>{
+                                                    e.preventDefault();
+                                                    let phoneNumber = "+91" + number;
+                                                    sendOTP(phoneNumber)
                                                 }}
                                                 className="flex flex-row items-center text-blue-600"
 

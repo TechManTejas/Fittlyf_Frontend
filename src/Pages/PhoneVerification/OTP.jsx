@@ -96,6 +96,7 @@ const OTP = ({number, setGoToOTP}) => {
                                                     e.preventDefault();
                                                     let phoneNumber = "+91" + number;
                                                     sendOTP(phoneNumber)
+                                                    successNotify("Verification code was resent successfully")
                                                 }}
                                                 className="flex flex-row items-center text-blue-600"
 

@@ -7,6 +7,7 @@ const DietPlan = () => {
     useEffect(() => {
         if(localStorage.getItem("phoneNumber")){
             var phoneNumber = localStorage.getItem("phoneNumber")
+            console.log(phoneNumber)
             // save to database
             localStorage.removeItem("phoneNumber");
         }
@@ -14,9 +15,9 @@ const DietPlan = () => {
         if (localStorage.getItem("otpless_waId")){
             var otpless_waId = localStorage.getItem("otpless_waId")
             axios.post(
-                "https://fittlyf.authlink.me/",
+                "https://fittlyf.authlink.me",
                 {
-                    "waId": "sxdbf604"
+                    "waId": otpless_waId
                 },
                 {
                     headers:{

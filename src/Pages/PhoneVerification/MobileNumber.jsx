@@ -1,10 +1,13 @@
 import { ValidatePhone } from "../../Validator";
 import { notify } from "../../Components/Notify";
 import { useEffect, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const MobileNumber = ({ number, setNumber, setGoToOTP }) => {
 
     const [validate, setValidate] = useState("")
+    const [searchParams, setSearchParams] = useSearchParams();
+    const navigate = useNavigate();
 
     function updateNumber(number) {
         setNumber(number)
@@ -22,9 +25,13 @@ const MobileNumber = ({ number, setNumber, setGoToOTP }) => {
 
     useEffect(() => {
         setValidate(ValidatePhone(number))
+
+        if (!searchParams.get("waId")){
+            localStorage.setItem("otpless_waId", searchParams.get("waId"))
+            navigate('/diet-plan')
+        }
     }, [])
     
-
     return (
         <>
             <div className="relative flex min-h-screen flex-col justify-center overflow-hidden py-12">

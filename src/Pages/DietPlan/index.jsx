@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect } from "react";
+import { backendbaseuri } from "../../Config";
 import HERO from "../../Images/vegan.jpg";
 
 const DietPlan = () => {
@@ -7,31 +8,34 @@ const DietPlan = () => {
     useEffect(() => {
         if(localStorage.getItem("phoneNumber")){
             var phoneNumber = localStorage.getItem("phoneNumber")
+            phoneNumber = phoneNumber.slice(1, phoneNumber.length);
             console.log(phoneNumber)
-            // save to database
+
+            axios.post(`${backendbaseuri}user/otp`,
+                    {
+                        "userMobile": phoneNumber
+                },
+            ).then(({ data }) => {
+                console.log(data);
+            })
+
             localStorage.removeItem("phoneNumber");
         }
 
         if (localStorage.getItem("otpless_waId")){
             var otpless_waId = localStorage.getItem("otpless_waId")
-            // sent otpless_waId to server
+            
             console.log(otpless_waId)
-            // axios.post(
-            //     "https://fittlyf.authlink.me/",
-            //     {
-            //         "waId": otpless_waId
-            //     },
-            //     {
-            //         headers:{
-            //             'Content-Type': 'application/json',
-            //             'clientSecret': 'iyyfgsz1cfe74gmy',
-            //             'clientId':'pqirooh0'
-            //         }
-            //     }
-            // ).then(({data}) => {
-            //     console.log(data);
-            //     //save to database
-            // })
+            
+            axios.post(`${backendbaseuri}user/otpless`,
+                {
+                    "waId": otpless_waId
+                },
+            ).then(({data}) => {
+                console.log(data);
+            })
+
+            localStorage.removeItem("otpless_waId");
         }
     })
 

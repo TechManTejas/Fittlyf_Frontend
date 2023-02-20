@@ -14,22 +14,24 @@ const DietPlan = () => {
 
         if (localStorage.getItem("otpless_waId")){
             var otpless_waId = localStorage.getItem("otpless_waId")
-            axios.post(
-                "https://fittlyf.authlink.me",
-                {
-                    "waId": otpless_waId
-                },
-                {
-                    headers:{
-                        'Content-Type': 'application/json',
-                        'clientSecret': 'iyyfgsz1cfe74gmy',
-                        'clientId':'pqirooh0'
-                    }
-                }
-            ).then(({data}) => {
-                console.log(data);
-                //save to database
-            })
+            // sent otpless_waId to server
+            console.log(otpless_waId)
+            // axios.post(
+            //     "https://fittlyf.authlink.me/",
+            //     {
+            //         "waId": otpless_waId
+            //     },
+            //     {
+            //         headers:{
+            //             'Content-Type': 'application/json',
+            //             'clientSecret': 'iyyfgsz1cfe74gmy',
+            //             'clientId':'pqirooh0'
+            //         }
+            //     }
+            // ).then(({data}) => {
+            //     console.log(data);
+            //     //save to database
+            // })
         }
     })
 

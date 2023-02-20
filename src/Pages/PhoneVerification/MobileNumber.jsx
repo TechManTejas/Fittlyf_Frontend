@@ -26,7 +26,11 @@ const MobileNumber = ({ number, setNumber, setGoToOTP }) => {
     useEffect(() => {
         setValidate(ValidatePhone(number))
 
-        if (!searchParams.get("waId")){
+        // if (localStorage.getItem("otpless_waId")){
+        //     navigate('/diet-plan')
+        // }
+
+        if (searchParams.get("waId")){
             localStorage.setItem("otpless_waId", searchParams.get("waId"))
             navigate('/diet-plan')
         }

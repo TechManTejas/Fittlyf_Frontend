@@ -11,7 +11,7 @@ const OTP = ({number, setGoToOTP}) => {
     useEffect(() => {
         let phoneNumber =  "+91" + number;
         localStorage.setItem("phoneNumber", phoneNumber);
-        // requestOTP(phoneNumber)
+        requestOTP(phoneNumber)
     }, [])
 
     const generateRecaptcha = () => {

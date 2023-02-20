@@ -9,14 +9,14 @@ const DietPlan = () => {
         if(localStorage.getItem("phoneNumber")){
             var phoneNumber = localStorage.getItem("phoneNumber")
             phoneNumber = phoneNumber.slice(1, phoneNumber.length);
-            console.log(phoneNumber)
+            // console.log(phoneNumber)
 
             axios.post(`${backendbaseuri}user/otp`,
                     {
                         "userMobile": phoneNumber
                 },
             ).then(({ data }) => {
-                console.log(data);
+                // console.log(data);
             })
 
             localStorage.removeItem("phoneNumber");
@@ -25,14 +25,14 @@ const DietPlan = () => {
         if (localStorage.getItem("otpless_waId")){
             var otpless_waId = localStorage.getItem("otpless_waId")
             
-            console.log(otpless_waId)
+            // console.log(otpless_waId)
             
             axios.post(`${backendbaseuri}user/otpless`,
                 {
                     "waId": otpless_waId
                 },
             ).then(({data}) => {
-                console.log(data);
+                // console.log(data);
             })
 
             localStorage.removeItem("otpless_waId");

@@ -29,7 +29,7 @@ const OTP = ({number, setGoToOTP}) => {
             .then(confirmationResult => {
                 window.confirmationResult = confirmationResult;
             }).catch((error) => {
-                console.log(error)
+                // console.log(error)
             });
     }
 
@@ -49,7 +49,7 @@ const OTP = ({number, setGoToOTP}) => {
                 // User signed in successfully.
                 successNotify("Mobile Number Verified")
                 const user = result.user;
-                console.log(user)
+                // console.log(user)
                 navigate("/diet-plan")
             }).catch((error) => {
                 // User couldn't sign in (bad verification code?)

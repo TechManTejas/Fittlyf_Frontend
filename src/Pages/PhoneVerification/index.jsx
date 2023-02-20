@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useEffect } from "react";
 import MobileNumber from "./MobileNumber";
 import OTP from "./OTP";
 import './index.css';

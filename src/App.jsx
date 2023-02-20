@@ -16,7 +16,6 @@ import DietPlan from "./Pages/DietPlan";
 const App = () => {
   return (
     <>
-      <button id="whatsapp-login" />
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/products" element={<Products />} />

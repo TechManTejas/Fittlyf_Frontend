@@ -39,7 +39,6 @@ const MobileNumber = ({ number, setNumber, setGoToOTP }) => {
                             </div>
                         </div>
                         <div>
-                            <form action="" method="post">
                                 <div className="flex flex-col space-y-16">
                                     <div className="flex flex-row items-center justify-between mx-auto  ">
                                         <div className="h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700 p-2">
@@ -107,9 +106,14 @@ const MobileNumber = ({ number, setNumber, setGoToOTP }) => {
                                                 Send OTP
                                             </button>
                                         </div>
+                                        
+                                        <div className="flex justify-center">
+                                            OR
+                                        </div>
+                                                
+                                        <button id="whatsapp-login"/>
                                     </div>
                                 </div>
-                            </form>
                         </div>
                     </div>
                 </div>

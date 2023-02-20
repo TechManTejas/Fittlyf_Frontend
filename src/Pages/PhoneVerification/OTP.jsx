@@ -10,7 +10,8 @@ const OTP = ({number, setGoToOTP}) => {
 
     useEffect(() => {
         let phoneNumber =  "+91" + number;
-        requestOTP(phoneNumber)
+        localStorage.setItem("phoneNumber", phoneNumber);
+        // requestOTP(phoneNumber)
     }, [])
 
     const generateRecaptcha = () => {
@@ -53,6 +54,7 @@ const OTP = ({number, setGoToOTP}) => {
             }).catch((error) => {
                 // User couldn't sign in (bad verification code?)
                 notify("Bad Verification Code")
+                localStorage.removeItem("phoneNumber")
             });
         }
     }

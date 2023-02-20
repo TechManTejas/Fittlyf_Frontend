@@ -1,7 +1,36 @@
+import axios from "axios";
 import { useEffect } from "react";
 import HERO from "../../Images/vegan.jpg";
 
 const DietPlan = () => {
+
+    useEffect(() => {
+        if(localStorage.getItem("phoneNumber")){
+            var phoneNumber = localStorage.getItem("phoneNumber")
+            // save to database
+            localStorage.removeItem("phoneNumber");
+        }
+
+        if (localStorage.getItem("otpless_waId")){
+            var otpless_waId = localStorage.getItem("otpless_waId")
+            axios.post(
+                "https://fittlyf.authlink.me/",
+                {
+                    "waId": "sxdbf604"
+                },
+                {
+                    headers:{
+                        'Content-Type': 'application/json',
+                        'clientSecret': 'iyyfgsz1cfe74gmy',
+                        'clientId':'pqirooh0'
+                    }
+                }
+            ).then(({data}) => {
+                console.log(data);
+                //save to database
+            })
+        }
+    })
 
     return (
         <div className="flex justify-center items-center bg-fittlyf-background bg-no-repeat bg-bottom bg-[#F0E9FF] 

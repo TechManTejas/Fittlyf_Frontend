@@ -11,6 +11,7 @@ import TermsAndConditions from "./Pages/TermsAndConditions";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
 import PhoneVerification from "./Pages/PhoneVerification";
 import DietPlan from "./Pages/DietPlan";
+import Paperform from "./Pages/Paperform";
 
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
         <Route exact path="/webinar/:id" element={<Webinar />} />
         <Route exact path="/terms-and-conditions" element={<TermsAndConditions />} />
         <Route exact path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route exact path="/paperform" element={<Paperform />} />
         <Route exact path="/phone-verification" element={<PhoneVerification />} />
         <Route exact path="/diet-plan" element={<DietPlan />} />
       </Routes>

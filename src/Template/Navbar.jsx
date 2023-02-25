@@ -25,6 +25,9 @@ const Navbar = () => {
           <NavLink className={window.location.pathname === "/products" ? "text-base opacity-70 border-0 border-violet-700 border-b-2" : "text-base opacity-70"} to="/products">
             Products
           </NavLink>
+          <NavLink className={window.location.pathname === "/paperform" ? "text-base opacity-70 border-0 border-violet-700 border-b-2" : "text-base opacity-70"} to="/paperform">
+            Paperform
+          </NavLink>
           <NavLink className={window.location.pathname === "/phone-verification" ? "text-base opacity-70 border-0 border-violet-700 border-b-2" : "text-base opacity-70"} to="/phone-verification">
             Verify Mobile Number
           </NavLink>

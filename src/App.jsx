@@ -12,9 +12,22 @@ import PrivacyPolicy from "./Pages/PrivacyPolicy";
 import PhoneVerification from "./Pages/PhoneVerification";
 import DietPlan from "./Pages/DietPlan";
 import Paperform from "./Pages/Paperform";
-
+import { useEffect } from "react";
+import axios from "axios";
 
 const App = () => {
+
+  useEffect(() => {
+    axios.get('https://ipgeolocation.abstractapi.com/v1/?api_key=d0b433a658ad4ab3a5cb21455fc9037e')
+      .then(response => {
+        console.log(response.data);
+        // send this data to server (only the attributes that are necessary)
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  })
+
   return (
     <>
       <Routes>

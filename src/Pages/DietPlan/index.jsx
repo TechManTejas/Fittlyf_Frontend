@@ -112,10 +112,7 @@ const DietPlan = () => {
                     </div>
                     <div className="flex justify-center text-white ">
 
-                        <a
-                            download
-                            type="submit"
-                            href="4_Week_Vegan_Gluten_Free_Mean_Plan.pdf"
+                        <button
                             style={{
                                 "position": "relative",
                                 "boxSizing": "border-box",
@@ -158,7 +155,7 @@ const DietPlan = () => {
                                 "backgroundPositionX": "25% !important"
                             }}>
                             Download PDF
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>

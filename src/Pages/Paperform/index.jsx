@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import PaperformButton from "../../Images/paperformbutton.png"
+
 const Paperform = () => {
 
     useEffect(() => {
@@ -10,11 +12,12 @@ const Paperform = () => {
 
     return (
         <>
-
-            <div id="phone-verification" className="flex justify-center items-center bg-fittlyf-background bg-no-repeat bg-bottom bg-[#F0E9FF]
-                md:h-screen
+            <div className="flex justify-center items-center bg-fittlyf-background bg-no-repeat bg-bottom bg-[#F0E9FF]
+                h-screen
             ">
-                <div data-paperform-id="fittlyf" className="w-full"></div>
+                <button data-paperform-id="fittlyf" data-popup-button={1}>
+                    <img src={PaperformButton}/>
+                </button>
             </div>
         </>
 

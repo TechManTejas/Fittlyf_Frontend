@@ -1,7 +1,9 @@
 import HomeImg from "../../Images/HeroImage.png"
 
 import { Link } from "react-router-dom";
-const Main = () => {
+const Main = ({
+  button = 1
+}) => {
   return (
     <div
       id="Main"
@@ -42,7 +44,8 @@ const Main = () => {
           For Women - By Women
         </p>
 
-        <Link to="/products">
+        {(button === 1) &&
+          <Link to="/products">
           <button
             className="bg-white border-black rounded-lg px-4 py-2 font-bold text-[#200044] mt-6 text-sm shadow-2xl
                     sm:mt-8 sm:text-sm
@@ -55,7 +58,8 @@ const Main = () => {
             <span>CHECK IT OUT</span>
             <i className="ml-4 fa-solid fa-arrow-right"></i>
           </button>
-        </Link>
+          </Link>
+        }
       </div>
 
       <img

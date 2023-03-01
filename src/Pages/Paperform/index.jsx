@@ -50,6 +50,12 @@ const Paperform = () => {
                         Take Quiz
                     </button> 
                 </div>
+
+                <div 
+                    className="calendly-inline-widget h-[720px] w-[400px] m-3" 
+                    data-url="https://calendly.com/fittlyf"
+                />
+                
             </div>
         </>
 

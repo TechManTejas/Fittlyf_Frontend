@@ -101,7 +101,15 @@ export default function AIPD() {
                                     className="relative w-full h-0"
                                     style={{ paddingBottom: "56.25%" }}
                                 >
-                                    
+                                    <iframe
+                                        src="https://www.youtube.com/embed/yuDjeZYYdS4"
+                                        frameBorder={0}
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen=""
+                                        className="absolute top-0 left-0 w-full h-full rounded-xl"
+                                        loading="lazy"
+                                        title="YouTube Video"
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -254,8 +262,7 @@ export default function AIPD() {
                                     Automated Patient Reminders
                                 </h3>
                                 <p className="sm:leading-relaxed mt-2 sm:mt-4 opacity-70 max-w-2xl">
-                                    If a patient doesn't perform the prescribed activity for 2 days,
-                                    TherapEZ sends automated reminders to keep them on track.
+                                    Sends automated reminders to patients when prescribed home activity is missed to keep them on track.
                                 </p>
                             </div>
                         </div>
@@ -639,6 +646,14 @@ export default function AIPD() {
                                     Absolutely! TherapEZ is user-friendly and intuitive, making it easy
                                     for both healthcare providers and patients to navigate and utilize
                                     its features.
+                                </p>
+                            </div>
+                            <div className="bg-slate-50 rounded-xl p-6 sm:p-10">
+                                <h3 className="text-2xl sm:text-3xl sm:mb-2 font-semibold">
+                                    How does TherapEZ track patients?
+                                </h3>
+                                <p className="sm:leading-relaxed mt-2 sm:mt-2 text-lg sm:text-xl">
+                                    TherapEZ utilizes state-of-the-art Visual technology to seamlessly monitor and analyze patient movements in real-time while they do prescribed activities at home.
                                 </p>
                             </div>
                         </div>

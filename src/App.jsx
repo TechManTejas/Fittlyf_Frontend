@@ -14,7 +14,7 @@ import DietPlan from "./Pages/DietPlan";
 import Paperform from "./Pages/Paperform";
 import { useEffect } from "react";
 import axios from "axios";
-import AIPD from "./Pages/AIPD";
+import TherapEZ from "./Pages/TherapEZ";
 
 const App = () => {
 
@@ -33,7 +33,7 @@ const App = () => {
     <>
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route exact path="/aipd" element={<AIPD/>}/>
+        <Route exact path="/therapez" element={<TherapEZ/>}/>
         <Route exact path="/products" element={<Products />} />
         <Route exact path="/about" element={<Home />} />
         <Route exact path="/form" element={<Form />} />

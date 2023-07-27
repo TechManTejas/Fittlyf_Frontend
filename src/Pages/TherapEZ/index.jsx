@@ -1,7 +1,4 @@
-
-export default function AIPD() {
-
-
+export default function TherapEZ() {
 
     return (
         <>

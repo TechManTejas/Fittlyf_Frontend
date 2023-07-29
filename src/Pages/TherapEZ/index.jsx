@@ -1,3 +1,10 @@
+import RealTimeTracking from "../../Images/real_time_tracking.webp"
+import AutomatedReminders from "../../Images/automated_reminders.webp"
+import InstantUpdatesForHealthcareProviders from "../../Images/instant_updates_for_healthcare_providers.webp"
+import MedicalCost from "../../Images/medical_cost.webp"
+import SatisfiedPatient from "../../Images/satisfied_patient.webp"
+import TherapeEZAdVideo from "../../Videos/TherapEZ_Ad_video.mp4"
+
 export default function TherapEZ() {
 
     return (
@@ -99,7 +106,7 @@ export default function TherapEZ() {
                                     style={{ paddingBottom: "56.25%" }}
                                 >
                                     <iframe
-                                        src="https://www.youtube.com/embed/yuDjeZYYdS4"
+                                        src={TherapeEZAdVideo}
                                         frameBorder={0}
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                         allowFullScreen=""
@@ -178,7 +185,7 @@ export default function TherapEZ() {
                                     </div>
                                     <img
                                         loading="lazy"
-                                        src="https://images.unsplash.com/photo-1533749047139-189de3cf06d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0MzE2NTB8MHwxfHNlYXJjaHwxfHxSZWFsLXRpbWUlMjBNb3ZlbWVudCUyMFRyYWNraW5nfGVufDB8fHx8MTY5MDM5MjM0NXww&ixlib=rb-4.0.3&q=80&w=1080&utm_source=60sec.site&utm_medium=referral&utm_campaign=api-credit"
+                                        src={RealTimeTracking}
                                         alt="Real-time Movement Tracking"
                                         className="w-full max-w-2xl object-cover rounded-xl"
                                     />
@@ -248,7 +255,7 @@ export default function TherapEZ() {
                                     </div>
                                     <img
                                         loading="lazy"
-                                        src="https://images.unsplash.com/photo-1606166228927-3feafb447265?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0MzE2NTB8MHwxfHNlYXJjaHw1fHxBdXRvbWF0ZWQlMjBQYXRpZW50JTIwUmVtaW5kZXJzfGVufDB8fHx8MTY5MDM5MjM0NXww&ixlib=rb-4.0.3&q=80&w=1080&utm_source=60sec.site&utm_medium=referral&utm_campaign=api-credit"
+                                        src={AutomatedReminders}
                                         alt="Automated Patient Reminders"
                                         className="w-full max-w-2xl object-cover rounded-xl"
                                     />
@@ -317,7 +324,7 @@ export default function TherapEZ() {
                                     </div>
                                     <img
                                         loading="lazy"
-                                        src="https://images.unsplash.com/photo-1579154491915-611e891d3a5b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0MzE2NTB8MHwxfHNlYXJjaHw1fHxJbnN0YW50JTIwVXBkYXRlcyUyMGZvciUyMEhlYWx0aGNhcmUlMjBQcm92aWRlcnN8ZW58MHx8fHwxNjkwMzkyMzQ2fDA&ixlib=rb-4.0.3&q=80&w=1080&utm_source=60sec.site&utm_medium=referral&utm_campaign=api-credit"
+                                        src={InstantUpdatesForHealthcareProviders}
                                         alt="Instant Updates for Healthcare Providers"
                                         className="w-full max-w-2xl object-cover rounded-xl"
                                     />
@@ -387,7 +394,7 @@ export default function TherapEZ() {
                                     </div>
                                     <img
                                         loading="lazy"
-                                        src="https://images.unsplash.com/photo-1516574290314-5a56c5acdd4e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0MzE2NTB8MHwxfHNlYXJjaHw1fHxDb3N0LWVmZmVjdGl2ZSUyMFRyZWF0bWVudHxlbnwwfHx8fDE2OTAzOTIzNDZ8MA&ixlib=rb-4.0.3&q=80&w=1080&utm_source=60sec.site&utm_medium=referral&utm_campaign=api-credit"
+                                        src={MedicalCost}
                                         alt="Cost-effective Treatment"
                                         className="w-full max-w-2xl object-cover rounded-xl"
                                     />
@@ -457,7 +464,7 @@ export default function TherapEZ() {
                                     </div>
                                     <img
                                         loading="lazy"
-                                        src="https://images.unsplash.com/photo-1606166134649-251b0e969431?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0MzE2NTB8MHwxfHNlYXJjaHw3fHxJbmNyZWFzZWQlMjBQYXRpZW50JTIwU2F0aXNmYWN0aW9ufGVufDB8fHx8MTY5MDM5MjM0Nnww&ixlib=rb-4.0.3&q=80&w=1080&utm_source=60sec.site&utm_medium=referral&utm_campaign=api-credit"
+                                        src={SatisfiedPatient}
                                         alt="Increased Patient Satisfaction"
                                         className="w-full max-w-2xl object-cover rounded-xl"
                                     />
@@ -581,19 +588,10 @@ export default function TherapEZ() {
                         <div className="lg:col-span-2 flex flex-col gap-8 mx-auto">
                             <div className="bg-slate-50 rounded-xl p-6 sm:p-10">
                                 <h3 className="text-2xl sm:text-3xl sm:mb-2 font-semibold">
-                                    TherapEZ employs cutting-edge technology to monitor and record the
-                                    movements of patients. Through a sophisticated tracking system,
-                                    TherapEZ ensures accurate and real-time data on patient activity and
-                                    mobility. This data is crucial for healthcare professionals to
-                                    assess patient progress, identify patterns, and make informed
-                                    decisions about their care.
+                                    How does TherapEZ track patients?
                                 </h3>
                                 <p className="sm:leading-relaxed mt-2 sm:mt-2 text-lg sm:text-xl">
-                                    TherapEZ utilizes state-of-the-art technology to seamlessly monitor
-                                    and analyze patient movements in real-time. This is achieved through
-                                    the integration of wearable devices and smartphone sensors,
-                                    delivering accurate and timely data for an enhanced healthcare
-                                    experience.
+                                    TherapEZ utilizes state-of-the-art Visual technology to seamlessly monitor and analyze patient movements in real-time while they do prescribed activities at home.
                                 </p>
                             </div>
                             <div className="bg-slate-50 rounded-xl p-6 sm:p-10">
@@ -647,10 +645,19 @@ export default function TherapEZ() {
                             </div>
                             <div className="bg-slate-50 rounded-xl p-6 sm:p-10">
                                 <h3 className="text-2xl sm:text-3xl sm:mb-2 font-semibold">
-                                    How does TherapEZ track patients?
+                                    TherapEZ employs cutting-edge technology to monitor and record the
+                                    movements of patients. Through a sophisticated tracking system,
+                                    TherapEZ ensures accurate and real-time data on patient activity and
+                                    mobility. This data is crucial for healthcare professionals to
+                                    assess patient progress, identify patterns, and make informed
+                                    decisions about their care.
                                 </h3>
                                 <p className="sm:leading-relaxed mt-2 sm:mt-2 text-lg sm:text-xl">
-                                    TherapEZ utilizes state-of-the-art Visual technology to seamlessly monitor and analyze patient movements in real-time while they do prescribed activities at home.
+                                    TherapEZ utilizes state-of-the-art technology to seamlessly monitor
+                                    and analyze patient movements in real-time. This is achieved through
+                                    the integration of wearable devices and smartphone sensors,
+                                    delivering accurate and timely data for an enhanced healthcare
+                                    experience.
                                 </p>
                             </div>
                         </div>

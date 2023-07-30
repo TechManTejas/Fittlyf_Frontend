@@ -3,7 +3,6 @@ import AutomatedReminders from "../../Images/automated_reminders.webp"
 import InstantUpdatesForHealthcareProviders from "../../Images/instant_updates_for_healthcare_providers.webp"
 import MedicalCost from "../../Images/medical_cost.webp"
 import SatisfiedPatient from "../../Images/satisfied_patient.webp"
-import TherapeEZAdVideo from "../../Videos/TherapEZ_Ad_video.mp4"
 
 export default function TherapEZ() {
 
@@ -106,7 +105,7 @@ export default function TherapEZ() {
                                     style={{ paddingBottom: "56.25%" }}
                                 >
                                     <iframe
-                                        src={TherapeEZAdVideo}
+                                        src={"https://www.youtube.com/embed/JSZeD_1Dkpg"}
                                         frameBorder={0}
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                         allowFullScreen=""

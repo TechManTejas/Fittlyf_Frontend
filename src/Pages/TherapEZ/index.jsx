@@ -107,8 +107,8 @@ export default function TherapEZ() {
                                     <iframe
                                         src={"https://www.youtube.com/embed/JSZeD_1Dkpg"}
                                         frameBorder={0}
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowFullScreen=""
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
+                                        allowFullScreen={true}
                                         className="absolute top-0 left-0 w-full h-full rounded-xl"
                                         loading="lazy"
                                         title="YouTube Video"

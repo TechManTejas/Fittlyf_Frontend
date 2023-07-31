@@ -553,14 +553,14 @@ export default function TherapEZ() {
                     <div className="grid md:grid-cols-2  lg:grid-cols-2  gap-12 sm:gap-16 mb-20"></div>
                 </div>
             </section>
-            <div className="stripes bg-slate-50 py-10 sm:mb-24">
+            {/* <div className="stripes bg-slate-50 py-10 sm:mb-24">
                 <p className="opacity-50 text-center">This is shown only in edit mode</p>
-                {/* <img
+                <img
                     srcSet="/assets/pricing@2x-cdf97e04671c3e5eafb4aaffb6cdbf5486fec1c2a2d9a7865cf9e871c5c95b36.png 2x"
                     alt="Pricing"
                     className="mx-auto mb-4 mt-8"
                     src="/assets/pricing-855a77ab0ccb86faa7260548fea140dcb743c57b597ec3d218f7e0af0fb763fb.png"
-                /> */}
+                />
                 <p className="text-3xl text-center my-4 font-semibold opacity-90">
                     Pricing Section
                 </p>
@@ -575,7 +575,7 @@ export default function TherapEZ() {
                 >
                     Add pricing section
                 </div>
-            </div>
+            </div> */}
             <div>
                 <section id="faq" className="pb-8 px-5 py-20 sm:py-32">
                     <div className="grid lg:grid-cols-3 gap-6 sm:gap-10 max-w-7xl mx-auto">
@@ -663,14 +663,14 @@ export default function TherapEZ() {
                     </div>
                 </section>
             </div>
-            <div className="stripes bg-slate-50 py-10 mt-16">
+            {/* <div className="stripes bg-slate-50 py-10 mt-16">
                 <p className="opacity-50 text-center">This is shown only in edit mode</p>
-                {/* <img
+                <img
                     srcSet="/assets/social@2x-ebb2c588dc57b9dc670dcaacea9014dc1fbe74c129afee38d93e4c9586e29a94.png 2x"
                     alt="Pricing"
                     className="mx-auto mb-4 mt-8"
                     src="/assets/social-f275aee48525890b40750fb69e99e070d47e2b94f08204bac72876cfb90cc75e.png"
-                /> */}
+                />
                 <p className="text-3xl text-center my-4 font-semibold opacity-90">
                     Social Links
                 </p>
@@ -684,7 +684,7 @@ export default function TherapEZ() {
                 >
                     Add social links
                 </div>
-            </div>
+            </div> */}
             <div
                 className="w-full mx-auto mt-12 sm:mt-32"
                 style={{ background: "rgba(207, 92, 246, 0.08)" }}

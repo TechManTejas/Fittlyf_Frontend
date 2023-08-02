@@ -11,26 +11,60 @@ import TherapEZImage from "../../Images/1.png"
 import YoshaImage from "../../Images/2.png"
 import FittlyfLogo from "../../Images/fittlyf_logo_icon_circle.png"
 import Women from "../../Images/women.png"
+import { useState } from "react";
 
 const Home = () => {
+
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const toggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen);
+  };
+
   return (
     <div id="Home">
       <section className="px-5">
         <div className="">
           <nav className="py-8 max-w-7xl mx-auto flex flex-col sm:flex-row w-full justify-between">
-            <div className="flex gap-2 items-center">
-              <div className="mb-2 w-fit relative">
-                <img
-                  src={FittlyfLogo}
-                  alt="logo-upload"
-                  className="h-12 mx-auto object-contain"
-                />
+            <div className="flex gap-2 items-center justify-between">
+              <div className="flex gap-2 items-center">
+                <div className="mb-2 w-fit relative">
+                  <img
+                    src={FittlyfLogo}
+                    alt="logo-upload"
+                    className="h-12 mx-auto object-contain"
+                  />
+                </div>
+                <a href="/" className="font-semibold text-2xl">
+                  Fittlyf
+                </a>
               </div>
-              <a href="" className="font-semibold text-2xl">
-                Fittlyf
-              </a>
+              <div className="flex items-center sm:hidden">
+                {/* Hamburger Menu */}
+                <button
+                  onClick={toggleDrawer}
+                  className="p-2 text-gray-600 focus:outline-none"
+                  aria-label="Toggle Menu"
+                >
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M4 6h16M4 12h16m-7 6h7"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
             </div>
-            <div className="flex text-base font-medium gap-8">
+            <div className="hidden sm:flex text-base font-medium gap-8">
+              {/* Desktop Navigation Links */}
               <a href="/products" className="hover:opacity-80">
                 YOSHA
               </a>
@@ -43,6 +77,47 @@ const Home = () => {
               <a href="/terms-and-conditions" className="hover:opacity-80">
                 Terms And Conditions
               </a>
+            </div>
+
+            {/* Drawer */}
+            <div
+              className={`fixed top-0 right-0 w-64 h-full bg-slate-100 z-50 shadow-lg transition-transform ease-in-out transform ${isDrawerOpen ? 'translate-x-0' : 'translate-x-full'
+                } sm:hidden`}
+            >
+              <div className="p-8">
+                <button
+                  onClick={toggleDrawer}
+                  className="absolute top-4 right-4 p-2 text-gray-600 focus:outline-none"
+                  aria-label="Close Drawer"
+                >
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M6 18L18 6M6 6l12 12"
+                    ></path>
+                  </svg>
+                </button>
+                <a href="/products" className="block py-2 hover:text-indigo-600">
+                  YOSHA
+                </a>
+                <a href="/therapez" className="block py-2 hover:text-indigo-600">
+                  TherapEZ
+                </a>
+                <a href="/privacy-policy" className="block py-2 hover:text-indigo-600">
+                  Privacy Policy
+                </a>
+                <a href="/terms-and-conditions" className="block py-2 hover:text-indigo-600">
+                  Terms And Conditions
+                </a>
+              </div>
             </div>
           </nav>
         </div>

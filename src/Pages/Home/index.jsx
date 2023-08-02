@@ -7,6 +7,10 @@ import Mission from "./Mission";
 import Product from "./Product";
 import Video from "./Video";
 import { Client } from "./Client";
+import TherapEZImage from "../../Images/1.png"
+import YoshaImage from "../../Images/2.png"
+import FittlyfLogo from "../../Images/fittlyf_logo_icon_circle.png"
+import Women from "../../Images/women.png"
 
 const Home = () => {
   return (
@@ -15,6 +19,13 @@ const Home = () => {
         <div className="">
           <nav className="py-8 max-w-7xl mx-auto flex flex-col sm:flex-row w-full justify-between">
             <div className="flex gap-2 items-center">
+              <div className="mb-2 w-fit relative">
+                <img
+                  src={FittlyfLogo}
+                  alt="logo-upload"
+                  className="h-12 mx-auto object-contain"
+                />
+              </div>
               <a href="" className="font-semibold text-2xl">
                 Fittlyf
               </a>
@@ -38,7 +49,7 @@ const Home = () => {
         <div className="flex gap-20 flex-col-reverse lg:flex-row max-w-7xl py-12 sm:pt-16 mx-auto">
           <div className="flex-1">
             <div className="">
-              <h1 className="text-4xl md:text-7xl  md:leading-none max-w-5xl font-bold md:leading-none">
+              <h1 className="text-4xl md:text-7xl md:leading-none max-w-5xl font-bold">
                 Transforming Health Together
               </h1>
             </div>
@@ -103,18 +114,23 @@ const Home = () => {
               <div className="max-w-7xl mx-auto">
                 <div
                   id="media-container"
-                  className="relative w-full h-0"
-                  style={{ paddingBottom: "56.25%" }}
+                  className="w-full"
                 >
-                  <iframe
-                    src="https://www.youtube.com/embed/7oxMOrJDs7g"
+                  <img
+                    src={Women}
+                    className="top-0 left-0 w-full h-full rounded-xl"
+                    loading="lazy"
+                    title="Hero Image"
+                  />
+                  {/* <img
+                    src={Women}
                     frameBorder={0}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen=""
                     className="absolute top-0 left-0 w-full h-full rounded-xl"
                     loading="lazy"
                     title="YouTube Video"
-                  />
+                  /> */}
                 </div>
               </div>
             </div>
@@ -133,58 +149,9 @@ const Home = () => {
             <div className="rounded-xl text-center lg:text-left items-center flex flex-col lg:flex-row gap-4 md:gap-12 lg:gap-20">
               <div className="flex relative justify-center order-first">
                 <div className="group">
-                  <div className="flex justify-between absolute w-full top-1 px-1">
-                    <div className="inline-flex opacity-0 group-hover:opacity-100 group-hover:origin-left group-hover:scale-100 scale-0 transition gap-3 items-center pl-3 pr-1 py-1 bg-black/60 text-base ring-1 ring-slate-300/10 backdrop-blur-lg rounded-lg text-white">
-                      <span className="text-sm">Change</span>
-                      <div className="flex gap-1">
-                        <a
-                          className="bg-teal-50 text-teal-600 hover:text-teal-700 hover:bg-teal-100 p-1.5 rounded-md transition"
-                          href="/features/292858/update_image"
-                        >
-                          <span className="sr-only">Image from Unsplash</span>
-                          <svg
-                            className="w-5 h-5"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              clipRule="evenodd"
-                              d="M15 3H9V8H15V3ZM8 11H3V21H8H16H21V11H16V16H8V11Z"
-                              fill="currentColor"
-                            />
-                          </svg>
-                        </a>
-                      </div>
-                    </div>
-                    <div>
-                      <a
-                        className="bg-black/50 opacity-0 group-hover:opacity-100 group-hover:origin-right group-hover:scale-100 scale-0 transition  inline-flex items-center justify-center text-white backdrop-blur-lg p-1.5 hover:bg-rose-500 rounded-md"
-                        rel="nofollow"
-                        data-method="delete"
-                        href="/features/292858/destroy_image"
-                      >
-                        <span className="sr-only">Delete Image</span>
-                        <svg
-                          className="w-5 h-5"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          aria-hidden="true"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </a>{" "}
-                    </div>
-                  </div>
                   <img
                     loading="lazy"
-                    src="https://res.cloudinary.com/dgnhkb9bo/image/upload/17uijguxqgzx0y2qs1c0odyrmy6v.png"
+                    src={YoshaImage}
                     alt="Women's Health Supplements that Nurture"
                     className="w-full max-w-2xl object-cover rounded-xl"
                   />
@@ -204,58 +171,9 @@ const Home = () => {
             <div className="rounded-xl text-center lg:text-left items-center flex flex-col lg:flex-row gap-4 md:gap-12 lg:gap-20">
               <div className="flex relative justify-center lg:order-last">
                 <div className="group">
-                  <div className="flex justify-between absolute w-full top-1 px-1">
-                    <div className="inline-flex opacity-0 group-hover:opacity-100 group-hover:origin-left group-hover:scale-100 scale-0 transition gap-3 items-center pl-3 pr-1 py-1 bg-black/60 text-base ring-1 ring-slate-300/10 backdrop-blur-lg rounded-lg text-white">
-                      <span className="text-sm">Change</span>
-                      <div className="flex gap-1">
-                        <a
-                          className="bg-teal-50 text-teal-600 hover:text-teal-700 hover:bg-teal-100 p-1.5 rounded-md transition"
-                          href="/features/292859/update_image"
-                        >
-                          <span className="sr-only">Image from Unsplash</span>
-                          <svg
-                            className="w-5 h-5"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              clipRule="evenodd"
-                              d="M15 3H9V8H15V3ZM8 11H3V21H8H16H21V11H16V16H8V11Z"
-                              fill="currentColor"
-                            />
-                          </svg>
-                        </a>
-                      </div>
-                    </div>
-                    <div>
-                      <a
-                        className="bg-black/50 opacity-0 group-hover:opacity-100 group-hover:origin-right group-hover:scale-100 scale-0 transition  inline-flex items-center justify-center text-white backdrop-blur-lg p-1.5 hover:bg-rose-500 rounded-md"
-                        rel="nofollow"
-                        data-method="delete"
-                        href="/features/292859/destroy_image"
-                      >
-                        <span className="sr-only">Delete Image</span>
-                        <svg
-                          className="w-5 h-5"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          aria-hidden="true"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </a>{" "}
-                    </div>
-                  </div>
                   <img
                     loading="lazy"
-                    src="https://res.cloudinary.com/dgnhkb9bo/image/upload/qpbkt5uzwxixizysq4o3hnlfcavi.png"
+                    src={TherapEZImage}
                     alt="Transforming Physiotherapy Patient Recovery"
                     className="w-full max-w-2xl object-cover rounded-xl"
                   />

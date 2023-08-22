@@ -192,11 +192,10 @@ export default function TherapEZ() {
                             </div>
                             <div>
                                 <h3 className="text-2xl md:text-4xl sm:mb-4 font-semibold">
-                                    Real-time Movement Tracking
+                                EZ Exercise Tracking
                                 </h3>
                                 <p className="sm:leading-relaxed mt-2 sm:mt-4 opacity-70 max-w-2xl">
-                                    TherapEZ tracks patient movements in real-time, ensuring they
-                                    perform exercises daily and correctly.
+                                Free up your time while patients exercise at home. We monitor progress, so you focus on new patients and your clinic growth.
                                 </p>
                             </div>
                         </div>
@@ -262,10 +261,10 @@ export default function TherapEZ() {
                             </div>
                             <div>
                                 <h3 className="text-2xl md:text-4xl sm:mb-4 font-semibold">
-                                    Automated Patient Reminders
+                                EZ Home Routine Monitor
                                 </h3>
                                 <p className="sm:leading-relaxed mt-2 sm:mt-4 opacity-70 max-w-2xl">
-                                    Sends automated reminders to patients when prescribed home activity is missed to keep them on track.
+                                Receive alerts when patients skip home exercises. Offer tailored solutions like in-clinic sessions or virtual consultations for personalized care.
                                 </p>
                             </div>
                         </div>
@@ -541,11 +540,10 @@ export default function TherapEZ() {
                             </div>
                             <div>
                                 <h3 className="text-2xl md:text-4xl sm:mb-4 font-semibold">
-                                    Boost Clinic's Reputation
+                                EZ Review Boost
                                 </h3>
                                 <p className="sm:leading-relaxed mt-2 sm:mt-4 opacity-70 max-w-2xl">
-                                    By using TherapEZ, increase the number of new patients by 50% per
-                                    month and maintain trust and loyalty among existing patients.
+                                Patients rate your clinic on Google without you asking them to leave a review. Elevate your online presence with more and genuine reviews effortlessly.
                                 </p>
                             </div>
                         </div>
@@ -587,52 +585,45 @@ export default function TherapEZ() {
                         <div className="lg:col-span-2 flex flex-col gap-8 mx-auto">
                             <div className="bg-slate-50 rounded-xl p-6 sm:p-10">
                                 <h3 className="text-2xl sm:text-3xl sm:mb-2 font-semibold">
-                                    How does TherapEZ track patients?
+                                    Enhanced Referral
                                 </h3>
                                 <p className="sm:leading-relaxed mt-2 sm:mt-2 text-lg sm:text-xl">
-                                    TherapEZ utilizes state-of-the-art Visual technology to seamlessly monitor and analyze patient movements in real-time while they do prescribed activities at home.
+                                    Successful results and individual focus makes patients feel cared who refer others, increasing clinic revenue through new referrals.
                                 </p>
                             </div>
                             <div className="bg-slate-50 rounded-xl p-6 sm:p-10">
                                 <h3 className="text-2xl sm:text-3xl sm:mb-2 font-semibold">
-                                    Can I customize the prescribed activities for each patient?
+                                    Reduced Patient Attrition
                                 </h3>
                                 <p className="sm:leading-relaxed mt-2 sm:mt-2 text-lg sm:text-xl">
-                                    Yes, TherapEZ allows healthcare providers to customize and tailor
-                                    the prescribed activities based on each patient's specific needs.
+                                    When patients feel better and get special care, they are more likely to finish their treatment. This means the clinic keeps getting money regularly via TherapEZ subscription.
                                 </p>
                             </div>
                             <div className="bg-slate-50 rounded-xl p-6 sm:p-10">
                                 <h3 className="text-2xl sm:text-3xl sm:mb-2 font-semibold">
-                                    What happens if a patient doesn't perform the prescribed activity?
+                                    Branding and Differentiation
                                 </h3>
                                 <p className="sm:leading-relaxed mt-2 sm:mt-2 text-lg sm:text-xl">
-                                    TherapEZ sends automated reminders to the patient and updates the
-                                    healthcare provider, enabling timely intervention to ensure
-                                    adherence.
+                                    Genuine patient reviews lead to a higher number of positive online ratings, boosting the clinic’s credibility. By online ratings show a proven track record of patient satisfaction and get patients.
                                 </p>
                             </div>
                             <div className="bg-slate-50 rounded-xl p-6 sm:p-10">
                                 <h3 className="text-2xl sm:text-3xl sm:mb-2 font-semibold">
-                                    Is TherapEZ suitable for all types of clinics?
+                                    New walk-in patients
                                 </h3>
                                 <p className="sm:leading-relaxed mt-2 sm:mt-2 text-lg sm:text-xl">
-                                    Yes, TherapEZ is designed to benefit clinics of all sizes and
-                                    specialties, helping improve patient recovery and treatment
-                                    outcomes.
+                                    Positive reviews contribute to higher google ranking on search, which makes you the top clinic when searched on Google.
                                 </p>
                             </div>
                             <div className="bg-slate-50 rounded-xl p-6 sm:p-10">
                                 <h3 className="text-2xl sm:text-3xl sm:mb-2 font-semibold">
-                                    How can TherapEZ reduce treatment costs for patients?
+                                    Add-On Services
                                 </h3>
                                 <p className="sm:leading-relaxed mt-2 sm:mt-2 text-lg sm:text-xl">
-                                    By ensuring patients perform exercises correctly at home, TherapEZ
-                                    reduces the need for frequent clinic visits, resulting in cost
-                                    savings for patients.
+                                    By knowing who is not doing exercise at home you can setup virtual consultations, schedule clinic sessions or enhance the home activity plan to make them feel more cared personally and providing you with multiple revenue streams.
                                 </p>
                             </div>
-                            <div className="bg-slate-50 rounded-xl p-6 sm:p-10">
+                            {/* <div className="bg-slate-50 rounded-xl p-6 sm:p-10">
                                 <h3 className="text-2xl sm:text-3xl sm:mb-2 font-semibold">
                                     Is TherapEZ easy to use for both healthcare providers and patients?
                                 </h3>
@@ -658,7 +649,7 @@ export default function TherapEZ() {
                                     delivering accurate and timely data for an enhanced healthcare
                                     experience.
                                 </p>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </section>

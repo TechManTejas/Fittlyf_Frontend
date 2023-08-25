@@ -3,8 +3,26 @@ import AutomatedReminders from "../../Images/automated_reminders.webp"
 import InstantUpdatesForHealthcareProviders from "../../Images/instant_updates_for_healthcare_providers.webp"
 import MedicalCost from "../../Images/medical_cost.webp"
 import SatisfiedPatient from "../../Images/satisfied_patient.webp"
+import axios from "axios"
+import { successNotify } from "../../Components/Notify"
 
 export default function TherapEZ() {
+
+    function submitPhonenumber(e) {
+        e.preventDefault()
+
+        axios.post("https://3.110.216.235/enquiries/", {
+            phone: e.target.phonenumber.value
+        })
+            .then(response => {
+                console.log("Response from server:", response.data);
+                successNotify("Phone no. submitted, we will contact you soon :)")
+                e.target.phonenumber.value = ''
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+    }
 
     return (
         <>
@@ -53,10 +71,9 @@ export default function TherapEZ() {
                                 </h2>
                                 <div className="">
                                     <form
+                                        onSubmit={submitPhonenumber}
                                         className="flex flex-col sm:flex-row gap-y-2 sm:gap-y-2 max-w-2xl gap-x-2 items-center flex-wrap"
-                                        action="/subscribe"
                                         acceptCharset="UTF-8"
-                                        method="post"
                                     >
                                         <input
                                             type="hidden"
@@ -75,13 +92,13 @@ export default function TherapEZ() {
                                             Email address
                                         </label>
                                         <input
-                                            autoComplete="email"
+                                            autoComplete="phonenumber"
                                             required="required"
                                             className="flex-auto rounded-lg border-0 bg-white px-6 py-3.5 shadow-sm ring-1 ring-black/10 focus:ring-2 w-full focus:ring-black/10 text-slate-900 text-base sm:text-xl sm:leading-6"
                                             placeholder="Phone no. "
-                                            type="email"
-                                            name="email"
-                                            id="email"
+                                            type="number"
+                                            name="phonenumber"
+                                            id="phonenumber"
                                         />
                                         <input
                                             type="submit"
@@ -192,10 +209,10 @@ export default function TherapEZ() {
                             </div>
                             <div>
                                 <h3 className="text-2xl md:text-4xl sm:mb-4 font-semibold">
-                                EZ Exercise Tracking
+                                    EZ Exercise Tracking
                                 </h3>
                                 <p className="sm:leading-relaxed mt-2 sm:mt-4 opacity-70 max-w-2xl">
-                                Free up your time while patients exercise at home. We monitor progress, so you focus on new patients and your clinic growth.
+                                    Free up your time while patients exercise at home. We monitor progress, so you focus on new patients and your clinic growth.
                                 </p>
                             </div>
                         </div>
@@ -253,7 +270,7 @@ export default function TherapEZ() {
                                     </div>
                                     <img
                                         loading="lazy"
-                                        src={AutomatedReminders}
+                                        src={InstantUpdatesForHealthcareProviders}
                                         alt="Automated Patient Reminders"
                                         className="w-full max-w-2xl object-cover rounded-xl"
                                     />
@@ -261,10 +278,10 @@ export default function TherapEZ() {
                             </div>
                             <div>
                                 <h3 className="text-2xl md:text-4xl sm:mb-4 font-semibold">
-                                EZ Home Routine Monitor
+                                    EZ Home Routine Monitor
                                 </h3>
                                 <p className="sm:leading-relaxed mt-2 sm:mt-4 opacity-70 max-w-2xl">
-                                Receive alerts when patients skip home exercises. Offer tailored solutions like in-clinic sessions or virtual consultations for personalized care.
+                                    Receive alerts when patients skip home exercises. Offer tailored solutions like in-clinic sessions or virtual consultations for personalized care.
                                 </p>
                             </div>
                         </div>
@@ -540,10 +557,10 @@ export default function TherapEZ() {
                             </div>
                             <div>
                                 <h3 className="text-2xl md:text-4xl sm:mb-4 font-semibold">
-                                EZ Review Boost
+                                    EZ Review Boost
                                 </h3>
                                 <p className="sm:leading-relaxed mt-2 sm:mt-4 opacity-70 max-w-2xl">
-                                Patients rate your clinic on Google without you asking them to leave a review. Elevate your online presence with more and genuine reviews effortlessly.
+                                    Patients rate your clinic on Google without you asking them to leave a review. Elevate your online presence with more and genuine reviews effortlessly.
                                 </p>
                             </div>
                         </div>
